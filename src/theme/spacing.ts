@@ -87,10 +87,8 @@ export const spacing = {
   watchlistEmptyBookmarkIcon: 96,
   /** Empty icon ring padding */
   watchlistEmptyIconPad: 32,
-  /** Radial glow diameter behind empty bookmark */
-  watchlistEmptyGlowDiameter: 224,
-  /** Minimum vertical block for empty-state copy (layout balance) */
-  watchlistEmptyBlockMin: 280,
+  /** watchlist-empty.html `max-w-md` (28rem) for empty block */
+  watchlistEmptyContentMax: 448,
 
   /** Profile screen — aligned with other tab scroll screens */
   profilePagePaddingHorizontal: 24,

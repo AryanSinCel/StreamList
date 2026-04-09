@@ -44,12 +44,12 @@ export const colors = {
   /** Profile avatar ring (outline-variant/20 in search.html) */
   avatar_ring: 'rgba(255, 255, 255, 0.2)',
 
-  /** Empty watchlist radial glow (empty-watchlist.html bg-empty-glow) */
-  empty_state_glow: 'rgba(130, 38, 37, 0.15)',
   /** Ghost “Popular recommendations” placeholders */
   popular_skeleton: 'rgba(53, 53, 52, 0.35)',
   /** Empty bookmark icon plate (empty-watchlist.html ring + soft fill) */
   watchlist_empty_icon_plate: 'rgba(28, 27, 27, 0.35)',
+  /** Solid “Browse Trending Now” CTA (watchlist-empty.html `bg-[#E5383B]`) */
+  watchlist_empty_cta: '#E5383B',
 } as const;
 
 export type ColorName = keyof typeof colors;

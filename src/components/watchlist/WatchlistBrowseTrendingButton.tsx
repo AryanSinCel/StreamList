@@ -1,8 +1,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-import { colors, primaryGradient } from '../../theme/colors';
+import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
@@ -11,6 +10,9 @@ export interface WatchlistBrowseTrendingButtonProps {
   onPress?: () => void;
 }
 
+/**
+ * Solid primary CTA — matches resources/watchlist-empty.html (`bg-[#E5383B] rounded-xl`).
+ */
 export function WatchlistBrowseTrendingButton({
   onPress,
 }: WatchlistBrowseTrendingButtonProps) {
@@ -20,16 +22,9 @@ export function WatchlistBrowseTrendingButton({
       onPress={onPress}
       style={({ pressed }) => [styles.pressable, pressed && styles.pressed]}
     >
-      <LinearGradient
-        colors={primaryGradient.colors}
-        start={primaryGradient.start}
-        end={primaryGradient.end}
-        style={styles.gradient}
-      >
-        <View style={styles.content}>
-          <Text style={styles.label}>Browse Trending Now</Text>
-        </View>
-      </LinearGradient>
+      <View style={styles.inner}>
+        <Text style={styles.label}>Browse Trending Now</Text>
+      </View>
     </Pressable>
   );
 }
@@ -39,21 +34,26 @@ const styles = StyleSheet.create({
     borderRadius: radii.lg,
     overflow: 'hidden',
     width: '100%',
+    backgroundColor: colors.watchlist_empty_cta,
+    shadowColor: colors.secondary_container,
+    shadowOffset: { width: 0, height: spacing.xs },
+    shadowOpacity: 0.2,
+    shadowRadius: spacing.md,
+    elevation: spacing.xs,
   },
   pressed: {
     opacity: 0.92,
+    transform: [{ scale: 0.98 }],
   },
-  gradient: {
-    borderRadius: radii.lg,
+  inner: {
     paddingVertical: spacing.md,
     paddingHorizontal: spacing['3xl'],
-  },
-  content: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   label: {
-    ...typography['headline-detail'],
-    color: colors.on_primary,
+    ...typography['title-lg'],
+    fontWeight: '700',
+    color: colors.on_surface,
   },
 });

@@ -3,6 +3,7 @@ import type { Genre, MovieDetails, MovieListItem } from '../api/types';
 import { buildImageUrl } from './image';
 
 import type { PosterItem } from '../types/poster';
+import type { SearchGridItem } from '../types/searchGrid';
 
 export function extractYear(releaseDate: string | undefined): string {
   if (!releaseDate || releaseDate.length < 4) {
@@ -47,6 +48,20 @@ export function formatGenreLineFromDetails(movie: MovieDetails): string {
     .map((g: Genre) => g.name)
     .slice(0, 2)
     .join(' • ');
+}
+
+/** Maps TMDB list rows to search/watchlist grid cells (posters + meta). */
+export function movieListItemToSearchGridItem(
+  movie: MovieListItem,
+  genreMap: ReadonlyMap<number, string>,
+): SearchGridItem {
+  return {
+    id: movie.id,
+    posterUri: buildImageUrl(movie.poster_path, 'w342') ?? '',
+    title: movie.title || movie.original_title || 'Untitled',
+    genre: genreNamesFromIds(movie.genre_ids, genreMap),
+    ratingLabel: ratingLabelFromVote(movie.vote_average),
+  };
 }
 
 export function movieListItemToPosterItem(

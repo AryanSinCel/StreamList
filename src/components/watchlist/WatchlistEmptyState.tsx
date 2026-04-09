@@ -12,10 +12,12 @@ export interface WatchlistEmptyStateProps {
   onBrowsePress?: () => void;
 }
 
+/**
+ * Empty watchlist — icon plate, copy, solid CTA (no extra glow layer: solid circles read as a “harsh disc” on RN vs HTML blur).
+ */
 export function WatchlistEmptyState({ onBrowsePress }: WatchlistEmptyStateProps) {
   return (
     <View style={styles.wrap}>
-      <View style={styles.glow} pointerEvents="none" />
       <View style={styles.iconPlate}>
         <View style={styles.iconMuted}>
           <BookmarkIcon
@@ -26,7 +28,7 @@ export function WatchlistEmptyState({ onBrowsePress }: WatchlistEmptyStateProps)
       </View>
       <Text style={styles.heading}>Your watchlist is empty</Text>
       <Text style={styles.body}>
-        Save movies and shows you want to watch later and they will appear here
+        {`Save movies and shows you want to watch later and they'll appear here`}
       </Text>
       <WatchlistBrowseTrendingButton onPress={onBrowsePress} />
     </View>
@@ -39,28 +41,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: spacing.md,
     paddingVertical: spacing['3xl'],
-    maxWidth: spacing.homeHeroCopyMax + spacing['5xl'],
+    maxWidth: spacing.watchlistEmptyContentMax,
     alignSelf: 'center',
     width: '100%',
-    minHeight: spacing.watchlistEmptyBlockMin,
-  },
-  glow: {
-    position: 'absolute',
-    width: spacing.watchlistEmptyGlowDiameter,
-    height: spacing.watchlistEmptyGlowDiameter,
-    borderRadius: radii.full,
-    backgroundColor: colors.empty_state_glow,
-    alignSelf: 'center',
-    top: spacing.none,
   },
   iconPlate: {
     padding: spacing.watchlistEmptyIconPad,
     borderRadius: radii.full,
     backgroundColor: colors.watchlist_empty_icon_plate,
-    borderWidth: spacing.single,
-    borderColor: colors.outline_variant,
     marginBottom: spacing['3xl'],
-    opacity: 0.95,
+    shadowColor: colors.secondary_container,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: spacing.md,
+    elevation: spacing.xs,
   },
   iconMuted: {
     opacity: 0.5,

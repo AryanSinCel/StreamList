@@ -8,7 +8,7 @@ import { typography } from '../../theme/typography';
 
 export function WatchlistPopularSkeletons() {
   return (
-    <View style={styles.section}>
+    <View style={styles.section} pointerEvents="none">
       <Text style={styles.heading}>Popular Recommendations</Text>
       <View style={styles.row}>
         <View style={styles.cell}>
@@ -26,7 +26,6 @@ export function WatchlistPopularSkeletons() {
 const styles = StyleSheet.create({
   section: {
     marginTop: spacing.screenBlockLarge,
-    opacity: 0.2,
   },
   heading: {
     ...typography['label-xs'],
@@ -45,10 +44,12 @@ const styles = StyleSheet.create({
   cell: {
     flex: 1,
   },
+  /** Ghost tiles only — watchlist_empty.html `opacity-20` on placeholders, label stays readable */
   poster: {
     width: '100%',
     aspectRatio: 2 / 3,
     borderRadius: radii.lg,
     backgroundColor: colors.popular_skeleton,
+    opacity: 0.35,
   },
 });

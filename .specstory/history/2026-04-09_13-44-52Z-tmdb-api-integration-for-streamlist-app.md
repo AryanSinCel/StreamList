@@ -752,3 +752,7073 @@ _**Agent (composer-2-fast)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating movies api**
+
+I'm adding optional AbortSignal to movie search calls in movies.ts. 
+
+**Handling movie sections**
+
+I'm implementing section-level refetch logic for movie data fetching. I'm adding scroll handlers to ContentRow via `onHorizontalScroll` prop to enable pagination without altering the UI structure. I'm adding scroll detection to ContentRow using onScroll event to trigger pagination when near the end. I'm updating ContentRow to use onScroll for pagination and importing PosterItem from posterTypes.ts. I'm adding a showSkeleton prop to handle loading states before data arrives. I'm implementing AbortController with useEffect to manage search requests and adding signal support to apiClient. 
+
+**Updating search hook**
+
+I'm moving the debounce logic into the useSearch hook and passing the debounced query from the SearchScreen. I'm implementing internal debouncing in the useSearch hook with 400ms delay and restructuring SearchScreen to pass the query directly. I'm adding `trendingDefault` to useSearch hook to handle empty query cases. 
+
+**Extending search hook**
+
+I'm updating useSearch hook to include optional trending data for empty queries. 
+
+**Updating watchlist store**
+
+I'm wiring up the watchlist store to the detail components. I'm implementing a `useWatchlist` hook to fetch watchlist data per the app's hook-only data fetching rule. 
+
+**Implementing watchlist hook**
+
+I'm creating `useWatchlistFeed.ts` hook for watchlist data fetching following the app's hook-only rule. 
+
+**Creating watchlist screen hook**
+
+I'm creating `useWatchlistScreen.ts` hook that fetches trending movies and similar movies for the watchlist screen. 
+
+**Creating watchlist hook**
+
+I'm creating `useWatchlistData.ts` hook to manage watchlist screen data with separate loading states for trending and similar movies. I'm implementing `useWatchlistFeed.ts` hook with empty trending array and loading state. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Checking detail components, search grid, and navigation setup.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailHeroBackdrop.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMetadataRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailCastRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMoreLikeRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailWatchlistActions.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/AppNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating metadata row**
+
+I'm modifying DetailMetadataRow to make chips optional by allowing nullish values, matching the spec. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailPortraitCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGridPosterCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchTrendingFeatured.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/LeadingIconSearchInput.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistGridCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Planning implementation**
+
+I'm mapping out the image URL building function with size options and null handling. 
+
+**Adding signal support**
+
+I'm adding optional `signal` to API request configs for cancellation support. 
+
+**Updating hook structure**
+
+I'm restructuring the hook to use a more granular data object with dedicated fields for each section's state and methods. I'm defining `HomeData` type with nested section state and updating the hook to return `UseQueryResult<T>` with comprehensive data. I'm adding section-specific retry functions to the hook data structure for targeted refetching. 
+
+I'm refactoring the component to show a single CTA button based on watchlist state, changing the UI from showing both buttons to toggling between PrimaryGradient and Outlined styles. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGenreChips.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeLoadingFooter.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMetaChip.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailSynopsisSection.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBecauseRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "homeMockContent|searchMockContent|detailMockContent|watchlistMockContent|tmdbImageUrl"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "homeMockContent|searchMockContent|detailMockContent|watchlistMockContent|tmdbImageUrl",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/screens/DetailScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistGridCard.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/home/HomeHeroCard.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistBecauseRow.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/watchlistMockContent.ts"
+    },
+    {
+      "matchCount": 8,
+      "uri": ".specstory/history/2026-04-09_06-30-03Z-custom-hooks-for-data-fetching.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/home/ContentRow.tsx"
+    },
+    {
+      "matchCount": 13,
+      "uri": ".specstory/history/2026-04-08_17-47-42Z-library-installation-and-configuration-in-react-native.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/HomeScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/search/SearchGridPosterCard.tsx"
+    },
+    {
+      "matchCount": 7,
+      "uri": ".specstory/history/2026-04-09_13-44-52Z-tmdb-api-integration-for-streamlist-app.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistLandscapeCard.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/search/SearchGenreChips.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistHeader.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/search/SearchHeader.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/search/RecentSearchesBlock.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/screens/WatchlistScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/profile/profileMockContent.ts"
+    },
+    {
+      "matchCount": 13,
+      "uri": ".specstory/history/2026-04-09_07-18-19Z-movie-detail-page-ui.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/home/GenreChipStrip.tsx"
+    }
+  ],
+  "totalFiles": 23,
+  "totalMatches": 67
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Reading components**
+
+I'm reading WatchlistLandscapeCard, DetailCastMember, searchMockContent, and SvgIcons for type information. 
+
+**Adding movie display utils**
+
+I'm creating src/utils/movieDisplay.ts with toPosterItem mapper function. I'm implementing `extractYear` helper function for date parsing. 
+
+**Handling pagination**
+
+I'm implementing pagination logic with `totalPages`, `appendLoading`, and `loadMoreTrending` checks. I'm clarifying the loading state logic to trigger `loading: false` after initial data fetch rather than on first paint. I'm simplifying the loading state to trigger `loading: false` immediately after initial render, since user specified no global blocking. I'm setting `loading: true` until genres are loaded or initial error is settled, simplifying the top-level loading state. I'm implementing loading states that are true only during initial fetches and false once any section completes. I'm implementing independent loading states per section with parallel initial fetches and top-level loading set to false. 
+
+I'm setting loading state to true when data is missing and fetch is in progress, using section-specific flags instead of global loading state. I'm reinterpreting the loading state to only block on initial load, not on subsequent data fetches. I'm implementing a more nuanced loading state that distinguishes initial load from subsequent fetches using `hasAnyData` and `isInitialFetching` flags. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **3** results in **1** directory</summary>
+
+Directory: **/Users/aryansingh/Desktop/Project/StreamLite/src** (3 files)
+
+| File |
+|------|
+| `components/watchlist/WatchlistPopularSkeletons.tsx` |
+| `components/detail/DetailCastSkeletonSlot.tsx` |
+| `components/detail/DetailPosterSkeletonSlot.tsx` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistLandscapeCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailCastMember.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/detailMockContent.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/icons/svgIcons.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/AppBrandWordmark.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/icons/svgIcons.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Implementing solution**
+
+I'm creating src/utils/image.ts with buildImageUrl function. 
+
+**Extending api params**
+
+I'm adding optional signal to ApiListParams type for cancellable requests. 
+
+**Updating screens and components**
+
+I'm updating screens and components to use the new ApiListParams with optional signal for cancellable requests. I'm updating DetailPortraitCard to make posterUri optional and moving SearchGridItem to searchTypes.ts. I'm adding `onScroll` prop to ContentRow and wiring ScrollView scroll events. I'm passing row-specific handlers to the `loadMoreTrendingIfNeeded` hook and using spacing constants for scroll threshold calculations. I'm implementing conditional genre row display based on selected chip, hiding third row when 'All' is selected or showing trending duplicate. I'm setting `selectedGenreId = null` for 'All' chip and conditionally rendering the third ContentRow only when `selectedGenreId` is not null. 
+
+I'm implementing conditional rendering for ContentRow based on `selectedGenreId` and adding skeleton loading states for Hero cards. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/profile/profileMockContent.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/searchMockContent.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating mock content**
+
+I'm replacing the imported URI in profileMockContent with a local placeholder constant. I'm updating the mock content to use the new MovieListRequestParams interface for pagination. 
+
+**Cleaning up mock files**
+
+I'm deleting the mock files and fixing the imports. 
+
+**Implementing error handling**
+
+I'm adding retry functionality for error states and skeletons for loading states in the detail screen components. I'm simplifying the genre row logic by having the parent manage `selectedGenreId` and chip index, while the hook returns `genreRowsData` only when a genre is selected. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Implementing TMDB integration: creating core utilities and hooks, then updating screens and components.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Implement image.ts, movieDisplay, API params + movies signal",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Rewrite useHome (per-row loading/pagination) + useSearch + useMovieDetail",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Add useWatchlistFeed + wire Watchlist/Search/Home/Detail screens",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Update UI components (placeholders, metadata, watchlist CTA)",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Remove mock files; fix imports; run lint/tsc/tests",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "success": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/utils/image.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/utils/tmdbImageUrl.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/utils/movieDisplay.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/posterTypes.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/utils/recentSearchesStorage.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Moving `PosterItem` to `src/types` so utils don't import from components.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/types/poster.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/utils/movieDisplay.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating types**
+
+I'm adding `signal` to `MovieListRequestParams` interface in types.ts. I'm replacing `PaginationParams` with `MovieListRequestParams` and adding optional `signal` support across movie-related functions. 
+
+I'm adjusting the `getTrendingMovies` function to properly handle `MovieListRequestParams` by spreading non-page params into the request. I'm updating `getMoviesByGenre` to correctly merge genre-specific params with optional request parameters. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/api/types.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/api/movies.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Writing useHome hook**
+
+I'm implementing the useHome hook with state management for genres and movie lists. 
+
+**Updating useHome hook**
+
+I'm simplifying the useHome hook to load genres, trending, and top-rated movies on mount with a single effect. I'm adding request ID tracking to prevent race conditions when fetching genre data. I'm implementing the load more functionality for trending movies with proper loading states. I'm replacing the useHome hook implementation with functional updates and proper error handling. 
+
+I'm defining the HomeData interface with structured state management for home screen data. I'm simplifying the loading state by removing redundant `sectionErrors` and keeping only `row.error` for error tracking. I'm simplifying the loading state to use `trending.loading && trending.items.length === 0 && topRated.loading && topRated.items.length === 0` for initial paint. I'm simplifying the loading state to use `genresLoading` for initial paint, setting `loading` = `false` after mount. 
+
+I'm adjusting the loading logic to comply with the spec by using `loading` = `trending.loading && trending.items.length === 0` OR `genresLoading && genres.length === 0`. I'm revising the loading logic to show independent skeletons per row by tracking each query's completion separately. 
+
+I'm correcting the loading state logic to only show loading indicator when no data has been rendered yet. I'm correcting the loading state logic to properly handle initial data state and avoid showing loading indicator after first render. I'm clarifying the loading state logic so `loading` reflects only the initial bundle fetch, while individual section loading is tracked separately in `data.trending.loading`. 
+
+**Initializing bundle state**
+
+I'm setting up the initial bundle state with empty rows and loading true, ensuring data always exists while separating loading indicators. 
+
+**Managing loading states**
+
+I'm consolidating loading indicators into a single global state that requires all major loaders to complete before hiding the full-screen loader. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Writing `useHome.ts`, `useSearch.ts`, and `useMovieDetail.ts`.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing useHome issues**
+
+I'm correcting the genre row error handling logic to properly detect when a genre row needs to be shown and has an error. I'm implementing refs for pagination state to prevent stale closure issues with page numbers in callbacks. I'm fixing loadMoreTrending to use refs for latest trending data and prevent race conditions during rapid scrolling. I'm adding refs for all three rows to prevent race conditions and simplifying the fatal error logic to trigger only when all sections fail. I'm simplifying error handling by removing genresError from return value and only showing fatal errors when all sections fail. 
+
+**Handling genre loading states**
+
+I'm ensuring genre rows show loading state when selected and null, using `emptyRow(loading)` for display consistency. I'm setting `genreRow` to loading state in the replace branch and fixing the initial loading behavior when `selectedGenreId` is set. I'm using a single `error` for fatal errors only. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Fixing stale closures in pagination and correcting error handling.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Handling fetch errors**
+
+I'm adding error handling for append failures in fetchTrendingPage to allow retrying load more operations. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing useSearch**
+
+I'm removing duplicate save logic from `useSearch` and ensuring `loading` hook returns `SearchData` with `defaultTrendingLoading` when `debouncedQuery` is empty. I'm removing redundant `saveRecentFromQuery` export and fixing `refetch` behavior for empty queries. 
+
+**Fixing search behavior**
+
+I'll only save searches with results (`res.total_results > 0`) to match successful discovery criteria. I'm handling aborted searches by checking both `controller.signal.aborted` and axios error code `ERR_CANCELED`. 
+
+I'm removing unused `saveRecentFromQuery` from SearchData to simplify the hook. I'm renaming `clearRecentSearches` to `clearRecentAll` to avoid naming conflict. I'm updating SearchData to only save recent searches when total_results > 0 and removing the unused saveRecentFromQuery function. I'm resolving naming conflicts by renaming `clearRecentSearches` to `clearAllRecent` and updating the hook to return `refetch` instead of `refetch default`. 
+
+I'm correcting the loading state logic to differentiate between trending and search states based on query presence. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useMovieDetail.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing useMovieDetail**
+
+I'm importing `SimilarMoviesResponse` instead of using an inline import in `useMovieDetail`. I'm fixing the duplicate import in useMovieDetail to use SimilarMoviesResponse. I'm updating useMovieDetail to use the proper type for Promise.allSettled return value. I'm handling aborted requests in useMovieDetail by checking for 'canceled' error messages and using abort flags instead of relying solely on requestId comparisons. 
+
+**Handling abort errors**
+
+I'm implementing cross-platform abort error detection using `axios.isCancel` and fallbacks for `ERR_CANCELED` code or 'canceled' message. I'm adding `isAbortError` utility to handle abort errors in `utils/error.ts`. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/utils/error.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useMovieDetail.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useMovieDetail.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useMovieDetail.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useMovieDetail.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating components**
+
+I'm updating multiple components to handle null values and improve prop handling. I'm updating SearchGridPosterCard, SearchTrendingFeatured, and SearchTrendingSection to handle props correctly. I'm adding `isLoadingMore` prop to ContentRow and implementing HomeLoadingFooter at the bottom of Home screen. I'm adding `onScroll` prop to ScrollView in ContentRow and implementing horizontal scroll threshold with spacing constants. I'm implementing horizontal scroll threshold detection with `onHorizontalNearEnd` callback. I'm throttling the `onHorizontalNearEnd` callback using a ref to prevent excessive calls. 
+
+I'm adding proper typing to the Detail screen's route parameters using `RouteProp`. I'm refactoring WatchlistGridCard to use a new interface for display items and mapping genres from genreIds in the Zustand store. I'm deciding whether to extend useWatchlistFeed or load genres in useWatchlistScreen for genre name mapping. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Updating components and screens: applying batch edits.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/types/searchGrid.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/types/watchlistLandscape.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/MoviePosterCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/MoviePosterCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/MoviePosterCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/GenreChipStrip.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeLoadingFooter.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailHeroBackdrop.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMetadataRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailWatchlistActions.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailCastMember.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailPortraitCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailCastMember.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailPortraitCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Checking DetailMoreLikeRow**
+
+I'll add Pressable to DetailMoreLikeRow to enable navigation. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMoreLikeRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailPortraitCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGridPosterCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchTrendingFeatured.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGridPosterCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchTrendingSection.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchTextField.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGenreChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/RecentSearchesBlock.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/RecentSearchesBlock.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/RecentSearchesBlock.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing grid layout**
+
+I'm adding flex spacer padding to maintain row layout when grid has fewer than 3 items. 
+
+**Updating grid display types**
+
+I'm updating the grid display item type to include the missing `length` property from the parent. I'm implementing the SearchResultsGrid component for search results display. 
+
+I'm adding a grid display for search results using ScrollView with 2-column layout matching existing patterns. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Creating watchlist types**
+
+I'm creating a new type definition for WatchlistGridDisplayItem in src/types/watchlistGrid.ts. I'm importing WatchlistLandscapeItem and WatchlistLandscapeCard types from types directory. 
+
+**Handling genre chips**
+
+I'm implementing genre chip selection logic with index-based mapping to genre IDs. I'm resetting the index when it exceeds the genres length to prevent out-of-bounds access. I'm adding optional `errorMessage` and `onRetry` props to ContentRow for error handling. I'm adding retry functionality to HomeScreen with Pressable 'Retry' button for section-level errors. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Adding per-section retry functions to `useHome.ts`.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Writing screens**
+
+I'm implementing SearchScreen with debounced results and DetailScreen with cast filtering. 
+
+**Updating detail row**
+
+I'm adding `onNearEnd` handler to `DetailMoreLikeRow` for fetching more similar content. I'm adding `useState` for raw query and `useSearch` hook to `DetailMoreLikeRow`. 
+
+**Implementing search grid**
+
+I'm implementing the search results grid using FlatList with numColumns=2. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/profile/profileMockContent.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/types/watchlistGrid.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistGridCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBecauseRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistGridCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistLandscapeCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBecauseRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMoreLikeRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMoreLikeRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailMoreLikeRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Writing home screen**
+
+I'm implementing the HomeScreen.tsx component with its full structure and layout. I'm importing necessary components and theme files for the home screen layout. I'm implementing the genre chips functionality with dynamic labels based on fetched genres. 
+
+**Fixing genre selection**
+
+I'm fixing the genre selection logic to avoid calling useHome twice and properly compute selectedGenreId from chipIndex and genres. I'm handling the chicken-egg problem where chipIndex depends on genres length from API and must be clamped when genres change. I'm resetting chipIndex to 0 when it exceeds chipLabels length after genres update. 
+
+**Updating genre selection**
+
+I'm implementing useMemo to derive selectedGenreId from chipIndex and genres data. I'm refactoring to separate `selectedGenreId` state from genre data fetching to break the circular dependency. I'm storing the selected genre ID from chip index in state to handle pre-loaded genres. 
+
+**Handling genre loading**
+
+I'm adding null checks for genres loading state to prevent missing IDs when chips are selected before API returns data. I'm refactoring genre selection to store chip index instead of ID and compute ID with useMemo to avoid circular dependencies. I found a circular dependency between `selectedGenreId` and `data` in the genre selection logic. 
+
+**Breaking cycle**
+
+I'm refactoring the genre loading to break the circular dependency by passing `chipIndex` to `useHome` instead of `selectedGenreId`. 
+
+**Refactoring hooks**
+
+I'm refactoring useHome to accept chipIndex directly and handle genre selection internally. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Refactoring `useHome` to accept `selectedGenreChipIndex` to remove the circular dependency.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing home screen**
+
+I'm removing the unused `loading` prop from HomeScreen since data is always non-null due to useMemo in useHome. I'm removing the dead early return in HomeScreen since useHome always returns a non-null data object. 
+
+**Removing dead code**
+
+I'm removing the unnecessary `if (!data)` block and unused `loading` variable from HomeScreen. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Moving API call to hook**
+
+I'm moving the `getMovieDetails` API call from `SearchScreen`'s `useEffect` into the `useSearch` hook. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Removing the forbidden `getMovieDetails` call from `SearchScreen` and deriving featured meta from list data.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing search results**
+
+I'm updating SearchScreen to use `data.results[i].id` directly instead of relying on `movieListItemToPosterItem` which was omitting the numeric ID. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+The string to replace was not found in the file.
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating search screen**
+
+I'm fixing the SearchScreen to properly handle null data from useSearch and correct the genreMap initialization. I found that `useSearch` data is always an object, never null, so I'm updating the type annotation and removing null checks. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Implementing screens**
+
+I'm writing the DetailScreen.tsx and WatchlistScreen.tsx components. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailTopBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailSynopsisSection.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating detail screen**
+
+I'm adding an optional `expanded` prop to DetailSynopsisSection to enable read-more functionality without changing the UI structure. 
+
+**Showing section headers**
+
+I'm implementing conditional rendering for the similar section header based on items length, loading state, and error conditions. 
+
+**Handling similar section states**
+
+I'm implementing conditional rendering for the similar section based on loading, empty, and error states. I'm simplifying the DetailScreen.tsx rewrite and fixing navigation in DetailMoreLikeRow. 
+
+**Fixing nav navigation**
+
+I'm correcting the navigation types and using `navigate` instead of `push` for the Detail screen. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailSynopsisSection.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing detail screen**
+
+I'm implementing the fallback text 'Cast information unavailable' for empty cast sections while keeping the 'Cast' heading. I'm hiding the 'Cast' heading when showing the fallback text 'Cast information unavailable'. 
+
+I'm adjusting the cast section to show the heading even when there are errors. I'm removing unused `loading` from useMovieDetail destructuring in DetailScreen. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistFilterChips.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Refactoring filter chips**
+
+I'm refactoring WatchlistFilterChips to support controlled props while maintaining backward compatibility. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistFilterChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating empty state**
+
+I'm replacing WatchlistEmptyState with inline Text and Pressable for the filter-empty state. I'm adding a browse all button to the empty state with filter-specific text. 
+
+**Updating tab bar**
+
+I'm refactoring tab bar options to use a function component with dynamic tabBarBadge and adding store subscription. I'm switching to using `tabBarBadge` directly in `screenOptions` as a function for simpler implementation. 
+
+I'm using `navigation` in App to avoid duplicating store in `RootNavigator`. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating watchlist screen**
+
+I'm replacing the emptyByFilter block in WatchlistScreen with a custom UI component. I'm implementing conditional rendering for the cast section based on loading and data states. 
+
+I'm adding conditional rendering for the cast section to handle errors and loading states properly. 
+
+**Fixing watchlist screen**
+
+I'm resolving the empty filter UI issue on the watchlist screen. 
+
+**Fixing detail screen**
+
+I'm checking DetailScreenProps typing and removing unused navigation props. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing detail screen**
+
+I'm handling null `data` cases in DetailScreen and fixing SearchScreen's initial data handling. I'm handling empty genres case in DetailScreen and ensuring data is never null in SearchScreen. I'm fixing the WatchlistScreen to handle empty items array and using `items[items.length - 1]` for the most recent item. I'm addressing the bug where `data?.sectionErrors.similar` causes the similar section to incorrectly show when it should be hidden. I'm implementing `navigation.push` for similar detail navigation to maintain stack integrity. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1
+```
+
+```
+src/screens/DetailScreen.tsx(110,9): error TS2345: Argument of type '[never, never]' is not assignable to parameter of type 'never'.
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing detail screen navigation**
+
+I'm implementing typed navigation using CommonActions for proper routing. I'm using NativeStackNavigationProp with SearchStackParamList for typed navigation in the detail screen. 
+
+I'm adjusting the navigation type casting to properly handle multiple stacks with NativeStackNavigationProp. I'm replacing the incorrect type casting with CommonActions.navigate for proper navigation dispatch. 
+
+I'm using `navigation.navigate` with merge to properly navigate to the detail screen. I'm implementing proper typing for navigation using `NativeStackNavigationProp` with union of all stacks. 
+
+I'm fixing navigation typing by using `NavigatorScreenParams` to handle cross-stack navigation properly. 
+
+**Fixing navigation typing**
+
+I'm using `// @ts-expect-error` to fix navigation typing issues with `navigate`. I'm replacing `as never` with explicit typing and `satisfies` for better type safety. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "homeMockContent|searchMockContent|detailMockContent|watchlistMockContent"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "homeMockContent|searchMockContent|detailMockContent|watchlistMockContent",
+  "topFiles": [
+    {
+      "matchCount": 12,
+      "uri": ".specstory/history/2026-04-09_07-18-19Z-movie-detail-page-ui.md"
+    },
+    {
+      "matchCount": 5,
+      "uri": ".specstory/history/2026-04-09_13-44-52Z-tmdb-api-integration-for-streamlist-app.md"
+    },
+    {
+      "matchCount": 6,
+      "uri": ".specstory/history/2026-04-09_12-24-36Z-ui-component-development-best-practices.md"
+    },
+    {
+      "matchCount": 6,
+      "uri": ".specstory/history/2026-04-09_06-30-03Z-custom-hooks-for-data-fetching.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/watchlistMockContent.ts"
+    }
+  ],
+  "totalFiles": 5,
+  "totalMatches": 30
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+/Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx
+  28:3  error  'movieListItemToPosterItem' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Cleaning up mock files**
+
+I'm removing unused import movieListItemToPosterItem from SearchScreen and deleting mock files: homeMockContent.ts, searchMockContent.ts, detailMockContent.ts, watchlistMockContent.ts. 
+
+**Fixing detail screen**
+
+I'm clarifying the logic for showing similar items in DetailScreen based on error and loading states. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing search components**
+
+I'm correcting the `useSearch` hook to properly handle the `data` type and ensure `useMemo` returns `SearchData` instead of `SearchData | null`. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts",
+  "pattern": "return \\{ data"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts",
+  "pattern": "return \\{ data",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/hooks/useSearch.ts"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/__tests__/App.test.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1 && npm test 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1 && npm test 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+&gt; StreamLite@0.0.1 test
+&gt; jest
+
+watchman warning:  Recrawled this watch 7 times, most recently because:
+MustScanSubDirs UserDroppedTo resolve, please review the information on
+https://facebook.github.io/watchman/docs/troubleshooting.html#recrawl
+To clear this warning, run:
+&#96;watchman watch-del '/Users/aryansingh/Desktop/Project/StreamLite' ; watchman watch-project '/Users/aryansingh/Desktop/Project/StreamLite'&#96;
+
+PASS __tests__/App.test.tsx
+  ✓ renders correctly (13 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.505 s, estimated 2 s
+Ran all test suites.
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing detail screen**
+
+I fixed the similarHidden logic to correctly show the section when loading is false, error is false, and items are empty. I'm updating the DetailScreen similar section logic to properly handle the `!similarH` condition. I'm handling the conditional rendering logic for similar section errors and hidden states. I'm fixing the DetailScreen's conditional rendering logic for similar sections and handling edge cases with `similarHidden` state. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "searchMockContent|homeMockContent|detailMockContent|watchlistMockContent"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "searchMockContent|homeMockContent|detailMockContent|watchlistMockContent",
+  "topFiles": [],
+  "totalFiles": 0,
+  "totalMatches": 0
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing useSearch return type**
+
+I'm updating useSearch to return `data: SearchData` instead of `SearchData | null`. 
+
+**Updating useSearch return type**
+
+I'm ensuring both branches of useSearch return SearchData with genres populated. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing search hook**
+
+I'm fixing the useSearch hook to handle the initial empty debouncedQuery state correctly. 
+
+**Updating search data types**
+
+I'm updating the useSearch hook return type to explicitly define data as SearchData and handling null cases in related components. 
+
+**Adding tests**
+
+I'm adding a minimal unit test for buildImageUrl with mocked environment variables. 
+
+**Fixing detail screen**
+
+I fixed the DetailScreen logic where similarItems were incorrectly hidden when data was undefined. I'm adding null checks for `data?.loading.similar` to prevent DetailScreen crashes when data is undefined. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/api/client.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/api/movies.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/api/types.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useHome.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useMovieDetail.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Implement image.ts, movieDisplay, API params + movies signal",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Rewrite useHome (per-row loading/pagination) + useSearch + useMovieDetail",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Add useWatchlistFeed + wire Watchlist/Search/Home/Detail screens",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Update UI components (placeholders, metadata, watchlist CTA)",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Remove mock files; fix imports; run lint/tsc/tests",
+      "id": "5",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Implement image.ts, movieDisplay, API params + movies signal",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Rewrite useHome (per-row loading/pagination) + useSearch + useMovieDetail",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Add useWatchlistFeed + wire Watchlist/Search/Home/Detail screens",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Update UI components (placeholders, metadata, watchlist CTA)",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Remove mock files; fix imports; run lint/tsc/tests",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useSearch.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adding image tests**
+
+I'm adding a simple unit test for `buildImageUrl` without mocking @env, since it doesn't require environment variables. I'm structuring the final answer with tree, summary, and full code for the six files. I'm restructuring the response to avoid token limits by using file paths instead of full code blocks. I'm listing the 6 files with their full content as requested, totaling 900+ lines. I'm including all 6 files in full for the final response. I'm providing full code examples for the key files and noting that complete sources are available in the repository. 
+
+I'm duplicating critical file contents and will provide full source links for compliance. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+## Updated file structure (changed / added)
+
+**API & hooks**
+- `src/api/client.ts` (unchanged behavior; already compliant)
+- `src/api/movies.ts` — `MovieListRequestParams` + `signal` on list calls
+- `src/api/types.ts` — `MovieListRequestParams`
+- `src/hooks/useHome.ts` — per-row state, pagination, chip index → genre id
+- `src/hooks/useSearch.ts` — 400ms debounce, `AbortController`, genres + trending default, recent searches
+- `src/hooks/useMovieDetail.ts` — `Promise.allSettled`, per-section loading/errors/retry
+- `src/hooks/useWatchlistFeed.ts` — **new** (trending for empty watchlist + “because you saved” similar)
+
+**Utils & types**
+- `src/utils/image.ts` — `buildImageUrl(path, size)` (`w185` | `w342` | `w780`)
+- `src/utils/tmdbImageUrl.ts` — re-exports via `buildImageUrl(..., 'w342')`
+- `src/utils/movieDisplay.ts` — **new** (formatting + `PosterItem` mapping)
+- `src/utils/recentSearchesStorage.ts` — **new** (AsyncStorage, max 5)
+- `src/utils/error.ts` — `isAbortError`
+- `src/types/poster.ts`, `src/types/searchGrid.ts`, `src/types/watchlistGrid.ts`, `src/types/watchlistLandscape.ts` — **new**
+
+**Screens**
+- `src/screens/HomeScreen.tsx`, `SearchScreen.tsx`, `DetailScreen.tsx`, `WatchlistScreen.tsx`
+
+**Components** (wiring / placeholders / controlled props)
+- `src/components/home/*` — `ContentRow`, `HomeHeroCard`, `GenreChipStrip`, `HomeLoadingFooter`, `MoviePosterCard`
+- `src/components/detail/*` — `DetailHeroBackdrop`, `DetailMetadataRow`, `DetailWatchlistActions`, `DetailCastMember`, `DetailPortraitCard`, `DetailMoreLikeRow`, `DetailSynopsisSection`
+- `src/components/search/*` — `SearchTextField`, `SearchGenreChips`, `SearchTrendingSection`, `SearchTrendingFeatured`, `SearchGridPosterCard`, `RecentSearchesBlock`, `SearchHeader`
+- `src/components/watchlist/*` — `WatchlistFilterChips`, `WatchlistGridCard`, `WatchlistBecauseRow`, `WatchlistLandscapeCard`, `WatchlistHeader`
+- `src/components/profile/profileMockContent.ts` — avatar URI inlined (no search mock import)
+
+**Navigation**
+- `src/navigation/RootNavigator.tsx` — watchlist tab badge from Zustand `count`
+
+**Removed**
+- `src/components/home/homeMockContent.ts`
+- `src/components/search/searchMockContent.ts`
+- `src/components/detail/detailMockContent.ts`
+- `src/components/watchlist/watchlistMockContent.ts`
+
+---
+
+## What was implemented
+
+- **TMDB** via `src/api/client.ts` (Bearer token from env, normalized errors `{ message, status }`, one network retry) and `src/api/movies.ts` (typed responses, optional `signal`).
+- **`useHome(chipIndex)`** — avoids circular genre selection; hero = first trending item; independent rows with `loadMore*` near end of horizontal rows; section retries.
+- **`useSearch(rawQuery)`** — debounced query, cancel stale search, append pagination, recent terms only after successful search with `total_results > 0`, default trending + genres for the search landing UI.
+- **`useMovieDetail(id)`** — `Promise.allSettled` for details/credits/similar; per-section `loading`, `sectionErrors`, `retry*`; similar pagination.
+- **`useWatchlistFeed(becauseMovieId)`** — genres + empty trending + similar for “because” row (screens stay free of direct API calls except through hooks).
+- **Watchlist** — Zustand `add`/`remove`, duplicate prevention in store, optimistic toggles on detail, tab badge, filters, grid + because row.
+- **Edge cases** — null posters/backdrops, optional metadata chips, empty cast/similar, section errors with retry.
+
+`npx tsc --noEmit`, `npm run lint`, and `npm test` all pass.
+
+---
+
+## Full code (six files — as requested)
+
+These match the current workspace exactly.
+
+### `src/api/client.ts`
+
+```1:90:src/api/client.ts
+import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import { TMDB_ACCESS_TOKEN, TMDB_BASE_URL } from '@env';
+
+import type { TmdbErrorResponse } from './types';
+
+type RequestConfigWithRetry = InternalAxiosRequestConfig & { _retry?: boolean };
+
+/** Normalized error shape from the response interceptor (not exported). */
+interface NormalizedError {
+  message: string;
+  status: number | undefined;
+}
+
+function isTmdbErrorBody(data: unknown): data is TmdbErrorResponse {
+  if (data === null || typeof data !== 'object') {
+    return false;
+  }
+  const o = data as Record<string, unknown>;
+  return typeof o.status_message === 'string' && typeof o.status_code === 'number';
+}
+
+function extractErrorMessage(data: unknown): string | undefined {
+  if (isTmdbErrorBody(data)) {
+    return data.status_message;
+  }
+  if (data && typeof data === 'object') {
+    const record = data as Record<string, unknown>;
+    if (typeof record.message === 'string') {
+      return record.message;
+    }
+  }
+  return undefined;
+}
+
+function normalizeAxiosError(error: AxiosError): NormalizedError {
+  if (error.response) {
+    const msg =
+      extractErrorMessage(error.response.data) ??
+      error.message ??
+      'Request failed';
+    return { message: msg, status: error.response.status };
+  }
+  return {
+    message: error.message || 'Network error',
+    status: undefined,
+  };
+}
+
+/** Retry only when no HTTP response arrived (true network / transport failure). Never retry 4xx/5xx or user aborts. */
+function isNetworkLayerFailure(error: AxiosError): boolean {
+  if (error.response !== undefined) {
+    return false;
+  }
+  if (error.code === 'ERR_CANCELED') {
+    return false;
+  }
+  return true;
+}
+
+const apiClient = axios.create({
+  baseURL: TMDB_BASE_URL,
+  timeout: 15000,
+  headers: {
+    Accept: 'application/json',
+  },
+});
+
+apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  if (TMDB_ACCESS_TOKEN) {
+    config.headers.Authorization = `Bearer ${TMDB_ACCESS_TOKEN}`;
+  }
+  return config;
+});
+
+apiClient.interceptors.response.use(
+  (response: AxiosResponse) => response,
+  async (error: AxiosError) => {
+    const config = error.config as RequestConfigWithRetry | undefined;
+
+    if (config && !config._retry && isNetworkLayerFailure(error)) {
+      config._retry = true;
+      return apiClient.request(config);
+    }
+
+    return Promise.reject(normalizeAxiosError(error));
+  },
+);
+
+export default apiClient;
+```
+
+### `src/api/movies.ts`
+
+```1:149:src/api/movies.ts
+import apiClient from './client';
+import type {
+  DiscoverMoviesResponse,
+  GenresListResponse,
+  MovieCreditsResponse,
+  MovieDetails,
+  MovieListRequestParams,
+  SearchMoviesResponse,
+  SimilarMoviesResponse,
+  TopRatedMoviesResponse,
+  TrendingMoviesResponse,
+} from './types';
+
+function splitParams(
+  params?: MovieListRequestParams,
+): { page?: number; signal?: AbortSignal } {
+  if (params == null) {
+    return {};
+  }
+  const { signal, page } = params;
+  return { page, signal };
+}
+
+/**
+ * GET /trending/movie/week
+ * @see https://developer.themoviedb.org/reference/trending-movies
+ */
+export async function getTrendingMovies(
+  params?: MovieListRequestParams,
+): Promise<TrendingMoviesResponse> {
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<TrendingMoviesResponse>(
+    '/trending/movie/week',
+    { params: page != null ? { page } : undefined, signal },
+  );
+  return data;
+}
+
+/**
+ * GET /movie/top_rated
+ * @see https://developer.themoviedb.org/reference/movie-top-rated-list
+ */
+export async function getTopRatedMovies(
+  params?: MovieListRequestParams,
+): Promise<TopRatedMoviesResponse> {
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<TopRatedMoviesResponse>('/movie/top_rated', {
+    params: page != null ? { page } : undefined,
+    signal,
+  });
+  return data;
+}
+
+/**
+ * GET /genre/movie/list
+ * @see https://developer.themoviedb.org/reference/genre-movie-list
+ */
+export async function getGenres(config?: {
+  signal?: AbortSignal;
+}): Promise<GenresListResponse> {
+  const { data } = await apiClient.get<GenresListResponse>('/genre/movie/list', {
+    signal: config?.signal,
+  });
+  return data;
+}
+
+/**
+ * GET /discover/movie — filter by genre
+ * @see https://developer.themoviedb.org/reference/discover-movie
+ */
+export async function getMoviesByGenre(
+  genreId: number,
+  params?: MovieListRequestParams,
+): Promise<DiscoverMoviesResponse> {
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<DiscoverMoviesResponse>('/discover/movie', {
+    params: {
+      with_genres: genreId,
+      ...(page != null ? { page } : {}),
+    },
+    signal,
+  });
+  return data;
+}
+
+/**
+ * GET /search/movie
+ * @see https://developer.themoviedb.org/reference/search-movie
+ */
+export async function searchMovies(
+  query: string,
+  params?: MovieListRequestParams,
+): Promise<SearchMoviesResponse> {
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<SearchMoviesResponse>('/search/movie', {
+    params: {
+      query,
+      ...(page != null ? { page } : {}),
+    },
+    signal,
+  });
+  return data;
+}
+
+/**
+ * GET /movie/{movie_id}
+ * @see https://developer.themoviedb.org/reference/movie-details
+ */
+export async function getMovieDetails(
+  movieId: number,
+  config?: { signal?: AbortSignal },
+): Promise<MovieDetails> {
+  const { data } = await apiClient.get<MovieDetails>(`/movie/${movieId}`, {
+    signal: config?.signal,
+  });
+  return data;
+}
+
+/**
+ * GET /movie/{movie_id}/credits
+ * @see https://developer.themoviedb.org/reference/movie-credits
+ */
+export async function getMovieCredits(
+  movieId: number,
+  config?: { signal?: AbortSignal },
+): Promise<MovieCreditsResponse> {
+  const { data } = await apiClient.get<MovieCreditsResponse>(
+    `/movie/${movieId}/credits`,
+    { signal: config?.signal },
+  );
+  return data;
+}
+
+/**
+ * GET /movie/{movie_id}/similar
+ * @see https://developer.themoviedb.org/reference/movie-similar-movies
+ */
+export async function getSimilarMovies(
+  movieId: number,
+  params?: MovieListRequestParams,
+): Promise<SimilarMoviesResponse> {
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<SimilarMoviesResponse>(
+    `/movie/${movieId}/similar`,
+    { params: page != null ? { page } : undefined, signal },
+  );
+  return data;
+}
+```
+
+### `src/api/types.ts`
+
+```1:189:src/api/types.ts
+/**
+ * Strict TMDB API v3 response types — no `any`.
+ * @see https://developer.themoviedb.org/reference
+ */
+
+// ---------------------------------------------------------------------------
+// Request params (client-side)
+// ---------------------------------------------------------------------------
+
+export interface PaginationParams {
+  page?: number;
+}
+
+/** Query params + optional `AbortSignal` for cancellation (search, pagination). */
+export interface MovieListRequestParams extends PaginationParams {
+  signal?: AbortSignal;
+}
+
+// ---------------------------------------------------------------------------
+// Shared / primitives
+// ---------------------------------------------------------------------------
+
+export interface Genre {
+  id: number;
+  name: string;
+}
+
+/** GET /genre/movie/list */
+export interface GenresListResponse {
+  genres: Genre[];
+}
+
+/** `belongs_to_collection` on movie details */
+export interface BelongsToCollection {
+  id: number;
+  name: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+}
+
+export interface ProductionCompany {
+  id: number;
+  logo_path: string | null;
+  name: string;
+  origin_country: string;
+}
+
+export interface ProductionCountry {
+  iso_3166_1: string;
+  name: string;
+}
+
+export interface SpokenLanguage {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+}
+
+/** Present when `append_to_response=external_ids` is used */
+export interface ExternalIds {
+  imdb_id: string | null;
+  facebook_id: string | null;
+  instagram_id: string | null;
+  twitter_id: string | null;
+  wikidata_id: string | null;
+}
+
+/**
+ * Movie object returned inside `results` for:
+ * trending, top_rated, discover, search/movie, similar, recommendations, etc.
+ */
+export interface MovieListItem {
+  id: number;
+  title: string;
+  original_title: string;
+  original_language: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  media_type?: 'movie' | 'tv';
+  adult: boolean;
+  genre_ids: number[];
+  popularity: number;
+  release_date: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+/** Paginated list wrapper — shared by multiple movie list endpoints */
+export interface PaginatedMovieList {
+  page: number;
+  results: MovieListItem[];
+  total_pages: number;
+  total_results: number;
+}
+
+/** GET /trending/movie/week */
+export type TrendingMoviesResponse = PaginatedMovieList;
+
+/** GET /movie/top_rated */
+export type TopRatedMoviesResponse = PaginatedMovieList;
+
+/** GET /discover/movie */
+export type DiscoverMoviesResponse = PaginatedMovieList;
+
+/** GET /search/movie */
+export type SearchMoviesResponse = PaginatedMovieList;
+
+/** GET /movie/{id}/similar */
+export type SimilarMoviesResponse = PaginatedMovieList;
+
+/** GET /movie/{movie_id} */
+export interface MovieDetails {
+  adult: boolean;
+  backdrop_path: string | null;
+  belongs_to_collection: BelongsToCollection | null;
+  budget: number;
+  genres: Genre[];
+  homepage: string;
+  id: number;
+  imdb_id: string | null;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  production_companies: ProductionCompany[];
+  production_countries: ProductionCountry[];
+  release_date: string;
+  revenue: number;
+  runtime: number | null;
+  spoken_languages: SpokenLanguage[];
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  /** Only when requested via `append_to_response=external_ids` */
+  external_ids?: ExternalIds;
+}
+
+export interface CastMember {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface CrewMember {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  credit_id: string;
+  department: string;
+  job: string;
+}
+
+/** GET /movie/{movie_id}/credits */
+export interface MovieCreditsResponse {
+  id: number;
+  cast: CastMember[];
+  crew: CrewMember[];
+}
+
+// ---------------------------------------------------------------------------
+// Error JSON bodies (TMDB returns these on failed requests)
+// ---------------------------------------------------------------------------
+
+export interface TmdbErrorResponse {
+  success?: false;
+  status_code: number;
+  status_message: string;
+}
+```
+
+### `src/hooks/useHome.ts`
+
+```1:368:src/hooks/useHome.ts
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+import {
+  getGenres,
+  getMoviesByGenre,
+  getTopRatedMovies,
+  getTrendingMovies,
+} from '../api/movies';
+import type { Genre, MovieListItem } from '../api/types';
+import { getErrorMessage } from '../utils/error';
+
+export interface HomeRowState {
+  items: MovieListItem[];
+  page: number;
+  totalPages: number;
+  loading: boolean;
+  loadingMore: boolean;
+  error: string | null;
+}
+
+export interface HomeData {
+  genres: Genre[];
+  heroMovie: MovieListItem | null;
+  trending: HomeRowState;
+  topRated: HomeRowState;
+  /** Present only when a genre chip other than All is selected. */
+  genreRow: HomeRowState | null;
+  loadMoreTrending: () => void;
+  loadMoreTopRated: () => void;
+  loadMoreGenre: () => void;
+  retryTrending: () => void;
+  retryTopRated: () => void;
+  retryGenre: () => void;
+}
+
+const emptyRow = (loading: boolean): HomeRowState => ({
+  items: [],
+  page: 1,
+  totalPages: 1,
+  loading,
+  loadingMore: false,
+  error: null,
+});
+
+/**
+ * @param selectedGenreChipIndex `0` = All; `1..n` = nth genre from TMDB `/genre/movie/list` (same order as `data.genres`).
+ */
+export function useHome(selectedGenreChipIndex: number): {
+  data: HomeData;
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+} {
+  const [genres, setGenres] = useState<Genre[]>([]);
+  const selectedGenreId =
+    selectedGenreChipIndex === 0
+      ? null
+      : genres[selectedGenreChipIndex - 1]?.id ?? null;
+  const [genresLoading, setGenresLoading] = useState(true);
+  const [genresError, setGenresError] = useState<string | null>(null);
+
+  const [trending, setTrending] = useState<HomeRowState>(() => emptyRow(true));
+  const [topRated, setTopRated] = useState<HomeRowState>(() => emptyRow(true));
+  const [genreRow, setGenreRow] = useState<HomeRowState | null>(null);
+
+  const genreRequestGen = useRef(0);
+  const trendingMoreLock = useRef(false);
+  const topRatedMoreLock = useRef(false);
+  const genreMoreLock = useRef(false);
+
+  const trendingRef = useRef(trending);
+  const topRatedRef = useRef(topRated);
+  const genreRowRef = useRef(genreRow);
+  trendingRef.current = trending;
+  topRatedRef.current = topRated;
+  genreRowRef.current = genreRow;
+
+  const fetchGenres = useCallback(async () => {
+    setGenresLoading(true);
+    setGenresError(null);
+    try {
+      const res = await getGenres();
+      setGenres(res.genres ?? []);
+    } catch (e) {
+      setGenresError(getErrorMessage(e));
+      setGenres([]);
+    } finally {
+      setGenresLoading(false);
+    }
+  }, []);
+
+  const fetchTrendingPage = useCallback(
+    async (page: number, mode: 'replace' | 'append') => {
+      if (mode === 'replace') {
+        setTrending((s) => ({ ...s, loading: true, error: null }));
+      } else {
+        setTrending((s) => ({ ...s, loadingMore: true, error: null }));
+      }
+      try {
+        const res = await getTrendingMovies({ page });
+        setTrending((prev) => ({
+          items:
+            mode === 'append' ? [...prev.items, ...res.results] : res.results,
+          page: res.page,
+          totalPages: res.total_pages,
+          loading: false,
+          loadingMore: false,
+          error: null,
+        }));
+      } catch (e) {
+        const msg = getErrorMessage(e);
+        setTrending((prev) => ({
+          ...prev,
+          loading: false,
+          loadingMore: false,
+          error: mode === 'replace' ? msg : prev.error,
+        }));
+      }
+    },
+    [],
+  );
+
+  const fetchTopRatedPage = useCallback(
+    async (page: number, mode: 'replace' | 'append') => {
+      if (mode === 'replace') {
+        setTopRated((s) => ({ ...s, loading: true, error: null }));
+      } else {
+        setTopRated((s) => ({ ...s, loadingMore: true, error: null }));
+      }
+      try {
+        const res = await getTopRatedMovies({ page });
+        setTopRated((prev) => ({
+          items:
+            mode === 'append' ? [...prev.items, ...res.results] : res.results,
+          page: res.page,
+          totalPages: res.total_pages,
+          loading: false,
+          loadingMore: false,
+          error: null,
+        }));
+      } catch (e) {
+        const msg = getErrorMessage(e);
+        setTopRated((prev) => ({
+          ...prev,
+          loading: false,
+          loadingMore: false,
+          error: mode === 'replace' ? msg : prev.error,
+        }));
+      }
+    },
+    [],
+  );
+
+  const fetchGenrePage = useCallback(
+    async (genreId: number, page: number, mode: 'replace' | 'append') => {
+      const gen = ++genreRequestGen.current;
+      if (mode === 'replace') {
+        setGenreRow((s) =>
+          s
+            ? { ...s, loading: true, error: null }
+            : { ...emptyRow(true), loading: true },
+        );
+      } else {
+        setGenreRow((s) =>
+          s ? { ...s, loadingMore: true, error: null } : s,
+        );
+      }
+      try {
+        const res = await getMoviesByGenre(genreId, { page });
+        if (gen !== genreRequestGen.current) {
+          return;
+        }
+        setGenreRow((prev) => {
+          const base = prev ?? emptyRow(false);
+          return {
+            items:
+              mode === 'append' ? [...base.items, ...res.results] : res.results,
+            page: res.page,
+            totalPages: res.total_pages,
+            loading: false,
+            loadingMore: false,
+            error: null,
+          };
+        });
+      } catch (e) {
+        if (gen !== genreRequestGen.current) {
+          return;
+        }
+        const msg = getErrorMessage(e);
+        setGenreRow((prev) => {
+          const base = prev ?? emptyRow(false);
+          return {
+            ...base,
+            loading: false,
+            loadingMore: false,
+            error: mode === 'replace' ? msg : base.error,
+          };
+        });
+      }
+    },
+    [],
+  );
+
+  const runInitial = useCallback(async () => {
+    await Promise.all([
+      fetchGenres(),
+      fetchTrendingPage(1, 'replace'),
+      fetchTopRatedPage(1, 'replace'),
+    ]);
+  }, [fetchGenres, fetchTrendingPage, fetchTopRatedPage]);
+
+  useEffect(() => {
+    runInitial().catch(() => {});
+  }, [runInitial]);
+
+  useEffect(() => {
+    if (selectedGenreId == null) {
+      genreRequestGen.current += 1;
+      setGenreRow(null);
+      return;
+    }
+    fetchGenrePage(selectedGenreId, 1, 'replace').catch(() => {});
+  }, [selectedGenreId, fetchGenrePage]);
+
+  const loadMoreTrending = useCallback(async () => {
+    if (trendingMoreLock.current) {
+      return;
+    }
+    const t = trendingRef.current;
+    if (t.loading || t.loadingMore) {
+      return;
+    }
+    if (t.page >= t.totalPages) {
+      return;
+    }
+    trendingMoreLock.current = true;
+    try {
+      await fetchTrendingPage(t.page + 1, 'append');
+    } finally {
+      trendingMoreLock.current = false;
+    }
+  }, [fetchTrendingPage]);
+
+  const loadMoreTopRated = useCallback(async () => {
+    if (topRatedMoreLock.current) {
+      return;
+    }
+    const r = topRatedRef.current;
+    if (r.loading || r.loadingMore) {
+      return;
+    }
+    if (r.page >= r.totalPages) {
+      return;
+    }
+    topRatedMoreLock.current = true;
+    try {
+      await fetchTopRatedPage(r.page + 1, 'append');
+    } finally {
+      topRatedMoreLock.current = false;
+    }
+  }, [fetchTopRatedPage]);
+
+  const loadMoreGenre = useCallback(async () => {
+    if (selectedGenreId == null) {
+      return;
+    }
+    const g = genreRowRef.current;
+    if (g == null) {
+      return;
+    }
+    if (genreMoreLock.current) {
+      return;
+    }
+    if (g.loading || g.loadingMore) {
+      return;
+    }
+    if (g.page >= g.totalPages) {
+      return;
+    }
+    genreMoreLock.current = true;
+    try {
+      await fetchGenrePage(selectedGenreId, g.page + 1, 'append');
+    } finally {
+      genreMoreLock.current = false;
+    }
+  }, [selectedGenreId, fetchGenrePage]);
+
+  const refetch = useCallback(() => {
+    fetchGenres().catch(() => {});
+    fetchTrendingPage(1, 'replace').catch(() => {});
+    fetchTopRatedPage(1, 'replace').catch(() => {});
+    if (selectedGenreId != null) {
+      fetchGenrePage(selectedGenreId, 1, 'replace').catch(() => {});
+    }
+  }, [
+    fetchGenres,
+    fetchTrendingPage,
+    fetchTopRatedPage,
+    fetchGenrePage,
+    selectedGenreId,
+  ]);
+
+  const retryTrending = useCallback(() => {
+    fetchTrendingPage(1, 'replace').catch(() => {});
+  }, [fetchTrendingPage]);
+
+  const retryTopRated = useCallback(() => {
+    fetchTopRatedPage(1, 'replace').catch(() => {});
+  }, [fetchTopRatedPage]);
+
+  const retryGenre = useCallback(() => {
+    if (selectedGenreId != null) {
+      fetchGenrePage(selectedGenreId, 1, 'replace').catch(() => {});
+    }
+  }, [selectedGenreId, fetchGenrePage]);
+
+  const heroMovie = trending.items[0] ?? null;
+
+  const data = useMemo<HomeData>(() => {
+    return {
+      genres,
+      heroMovie,
+      trending,
+      topRated,
+      genreRow: selectedGenreId != null ? genreRow : null,
+      loadMoreTrending,
+      loadMoreTopRated,
+      loadMoreGenre,
+      retryTrending,
+      retryTopRated,
+      retryGenre,
+    };
+  }, [
+    genres,
+    heroMovie,
+    trending,
+    topRated,
+    genreRow,
+    selectedGenreId,
+    loadMoreTrending,
+    loadMoreTopRated,
+    loadMoreGenre,
+    retryTrending,
+    retryTopRated,
+    retryGenre,
+  ]);
+
+  const loading =
+    genresLoading ||
+    (trending.loading && trending.items.length === 0) ||
+    (topRated.loading && topRated.items.length === 0);
+
+  const fatal =
+    Boolean(genresError) &&
+    Boolean(trending.error) &&
+    Boolean(topRated.error) &&
+    (selectedGenreId == null || Boolean(genreRow?.error));
+
+  const error = fatal ? 'Unable to load the home screen. Try again.' : null;
+
+  return {
+    data,
+    loading,
+    error,
+    refetch,
+  };
+}
+```
+
+### `src/hooks/useSearch.ts`
+
+```1:289:src/hooks/useSearch.ts
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+import { getGenres, getTrendingMovies, searchMovies } from '../api/movies';
+import type { Genre, MovieListItem } from '../api/types';
+import {
+  clearRecentSearches,
+  loadRecentSearches,
+  pushRecentSearch,
+  removeRecentSearch,
+} from '../utils/recentSearchesStorage';
+import { getErrorMessage, isAbortError } from '../utils/error';
+
+const DEBOUNCE_MS = 400;
+
+export interface SearchData {
+  results: MovieListItem[];
+  page: number;
+  totalPages: number;
+  totalResults: number;
+  hasMore: boolean;
+  query: string;
+  fetchNextPage: () => Promise<void>;
+  /** Trending for default (empty query) search screen — featured + grid. */
+  defaultTrending: MovieListItem[];
+  genres: Genre[];
+  defaultTrendingLoading: boolean;
+  defaultTrendingError: string | null;
+  refetchDefaultTrending: () => void;
+  recentSearches: string[];
+  clearAllRecentSearches: () => Promise<void>;
+  removeRecentSearchTerm: (term: string) => Promise<void>;
+}
+
+/**
+ * TMDB movie search: debounced query, cancellation, pagination, recent terms.
+ */
+export function useSearch(rawQuery: string): {
+  data: SearchData;
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+} {
+  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (debounceTimerRef.current != null) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    debounceTimerRef.current = setTimeout(() => {
+      debounceTimerRef.current = null;
+      setDebouncedQuery(rawQuery.trim());
+    }, DEBOUNCE_MS);
+    return () => {
+      if (debounceTimerRef.current != null) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [rawQuery]);
+
+  const [results, setResults] = useState<MovieListItem[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const requestIdRef = useRef(0);
+  const abortRef = useRef<AbortController | null>(null);
+  const activeQueryRef = useRef('');
+  const pageRef = useRef(1);
+  const totalPagesRef = useRef(1);
+  const fetchingMoreRef = useRef(false);
+
+  const [genres, setGenres] = useState<Genre[]>([]);
+  const [defaultTrending, setDefaultTrending] = useState<MovieListItem[]>([]);
+  const [defaultTrendingLoading, setDefaultTrendingLoading] = useState(true);
+  const [defaultTrendingError, setDefaultTrendingError] = useState<string | null>(
+    null,
+  );
+
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+
+  useEffect(() => {
+    loadRecentSearches().then(setRecentSearches).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    pageRef.current = page;
+  }, [page]);
+
+  useEffect(() => {
+    totalPagesRef.current = totalPages;
+  }, [totalPages]);
+
+  const fetchDefaultTrending = useCallback(async () => {
+    setDefaultTrendingLoading(true);
+    setDefaultTrendingError(null);
+    try {
+      const [g, t] = await Promise.all([getGenres(), getTrendingMovies({ page: 1 })]);
+      setGenres(g.genres ?? []);
+      setDefaultTrending(t.results);
+    } catch (e) {
+      setDefaultTrendingError(getErrorMessage(e));
+      setDefaultTrending([]);
+    } finally {
+      setDefaultTrendingLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchDefaultTrending().catch(() => {});
+  }, [fetchDefaultTrending]);
+
+  const runSearch = useCallback(
+    async (pageNum: number, mode: 'replace' | 'append') => {
+      const q = debouncedQuery;
+      if (!q) {
+        return;
+      }
+      if (abortRef.current) {
+        abortRef.current.abort();
+      }
+      const controller = new AbortController();
+      abortRef.current = controller;
+      const requestId = ++requestIdRef.current;
+      if (mode === 'replace') {
+        setLoading(true);
+      }
+      setError(null);
+      activeQueryRef.current = q;
+
+      try {
+        const res = await searchMovies(q, {
+          page: pageNum,
+          signal: controller.signal,
+        });
+        if (requestId !== requestIdRef.current) {
+          return;
+        }
+        setPage(res.page);
+        setTotalPages(res.total_pages);
+        setTotalResults(res.total_results);
+        setResults((prev) =>
+          mode === 'append' ? [...prev, ...res.results] : res.results,
+        );
+        if (mode === 'replace' && res.total_results > 0) {
+          const next = await pushRecentSearch(q);
+          setRecentSearches(next);
+        }
+      } catch (e) {
+        if (isAbortError(e)) {
+          return;
+        }
+        if (requestId !== requestIdRef.current) {
+          return;
+        }
+        setError(getErrorMessage(e));
+        if (mode === 'replace') {
+          setResults([]);
+          setPage(1);
+          setTotalPages(1);
+          setTotalResults(0);
+        }
+      } finally {
+        if (requestId === requestIdRef.current && mode === 'replace') {
+          setLoading(false);
+        }
+      }
+    },
+    [debouncedQuery],
+  );
+
+  useEffect(() => {
+    if (!debouncedQuery) {
+      if (abortRef.current) {
+        abortRef.current.abort();
+      }
+      requestIdRef.current += 1;
+      activeQueryRef.current = '';
+      setResults([]);
+      setPage(1);
+      setTotalPages(1);
+      setTotalResults(0);
+      setError(null);
+      setLoading(false);
+      return;
+    }
+    runSearch(1, 'replace').catch(() => {});
+  }, [debouncedQuery, runSearch]);
+
+  const refetch = useCallback(() => {
+    if (debouncedQuery) {
+      runSearch(1, 'replace').catch(() => {});
+    } else {
+      fetchDefaultTrending().catch(() => {});
+    }
+  }, [debouncedQuery, runSearch, fetchDefaultTrending]);
+
+  const fetchNextPage = useCallback(async () => {
+    const q = debouncedQuery;
+    if (!q || activeQueryRef.current !== q) {
+      return;
+    }
+    if (fetchingMoreRef.current) {
+      return;
+    }
+    if (pageRef.current >= totalPagesRef.current) {
+      return;
+    }
+    fetchingMoreRef.current = true;
+    try {
+      await runSearch(pageRef.current + 1, 'append');
+    } finally {
+      fetchingMoreRef.current = false;
+    }
+  }, [debouncedQuery, runSearch]);
+
+  const clearRecent = useCallback(async () => {
+    await clearRecentSearches();
+    setRecentSearches([]);
+  }, []);
+
+  const dismissRecent = useCallback(async (term: string) => {
+    const next = await removeRecentSearch(term);
+    setRecentSearches(next);
+  }, []);
+
+  const data = useMemo<SearchData>(() => {
+    const hasQuery = debouncedQuery.length > 0;
+    if (!hasQuery) {
+      return {
+        results: [],
+        page: 1,
+        totalPages: 1,
+        totalResults: 0,
+        hasMore: false,
+        query: '',
+        fetchNextPage,
+        defaultTrending,
+        genres,
+        defaultTrendingLoading,
+        defaultTrendingError,
+        refetchDefaultTrending: fetchDefaultTrending,
+        recentSearches,
+        clearAllRecentSearches: clearRecent,
+        removeRecentSearchTerm: dismissRecent,
+      };
+    }
+    const hasMore = page < totalPages;
+    return {
+      results,
+      page,
+      totalPages,
+      totalResults,
+      hasMore,
+      query: debouncedQuery,
+      fetchNextPage,
+      defaultTrending,
+      genres,
+      defaultTrendingLoading,
+      defaultTrendingError,
+      refetchDefaultTrending: fetchDefaultTrending,
+      recentSearches,
+      clearAllRecentSearches: clearRecent,
+      removeRecentSearchTerm: dismissRecent,
+    };
+  }, [
+    debouncedQuery,
+    results,
+    page,
+    totalPages,
+    totalResults,
+    fetchNextPage,
+    defaultTrending,
+    genres,
+    defaultTrendingLoading,
+    defaultTrendingError,
+    fetchDefaultTrending,
+    recentSearches,
+    clearRecent,
+    dismissRecent,
+  ]);
+
+  const topLoading =
+    debouncedQuery.length > 0 ? loading : defaultTrendingLoading;
+
+  return { data, loading: topLoading, error, refetch };
+}
+```
+
+### `src/hooks/useMovieDetail.ts`
+
+```1:316:src/hooks/useMovieDetail.ts
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+import {
+  getMovieCredits,
+  getMovieDetails,
+  getSimilarMovies,
+} from '../api/movies';
+import type {
+  MovieCreditsResponse,
+  MovieDetails,
+  MovieListItem,
+  SimilarMoviesResponse,
+} from '../api/types';
+import { getErrorMessage } from '../utils/error';
+
+export interface MovieDetailSectionErrors {
+  movie: string | null;
+  credits: string | null;
+  similar: string | null;
+}
+
+export interface SimilarPagination {
+  page: number;
+  totalPages: number;
+  hasMore: boolean;
+}
+
+export interface MovieDetailData {
+  movie: MovieDetails | null;
+  credits: MovieCreditsResponse | null;
+  similar: MovieListItem[];
+  loading: {
+    movie: boolean;
+    credits: boolean;
+    similar: boolean;
+  };
+  sectionErrors: MovieDetailSectionErrors;
+  similarPagination: SimilarPagination;
+  fetchMoreSimilar: () => Promise<void>;
+  retryMovie: () => void;
+  retryCredits: () => void;
+  retrySimilar: () => void;
+}
+
+const emptyErrors = (): MovieDetailSectionErrors => ({
+  movie: null,
+  credits: null,
+  similar: null,
+});
+
+export function useMovieDetail(movieId: number): {
+  data: MovieDetailData | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+} {
+  const [movie, setMovie] = useState<MovieDetails | null>(null);
+  const [credits, setCredits] = useState<MovieCreditsResponse | null>(null);
+  const [similar, setSimilar] = useState<MovieListItem[]>([]);
+  const [sectionErrors, setSectionErrors] = useState<MovieDetailSectionErrors>(
+    emptyErrors,
+  );
+  const [loading, setLoading] = useState({
+    movie: true,
+    credits: true,
+    similar: true,
+  });
+  const [similarPagination, setSimilarPagination] = useState<SimilarPagination>(
+    { page: 1, totalPages: 1, hasMore: false },
+  );
+  const [topError, setTopError] = useState<string | null>(null);
+
+  const requestIdRef = useRef(0);
+  const movieIdRef = useRef(movieId);
+  const similarPageRef = useRef(1);
+  const similarTotalPagesRef = useRef(1);
+  const fetchingMoreSimilarRef = useRef(false);
+
+  useEffect(() => {
+    similarPageRef.current = similarPagination.page;
+  }, [similarPagination.page]);
+
+  useEffect(() => {
+    similarTotalPagesRef.current = similarPagination.totalPages;
+  }, [similarPagination.totalPages]);
+
+  const applySettled = useCallback(
+    (
+      settled: [
+        PromiseSettledResult<MovieDetails>,
+        PromiseSettledResult<MovieCreditsResponse>,
+        PromiseSettledResult<SimilarMoviesResponse>,
+      ],
+    ) => {
+      const [movieRes, creditsRes, similarRes] = settled;
+      const nextErrors = emptyErrors();
+
+      if (movieRes.status === 'fulfilled') {
+        setMovie(movieRes.value);
+      } else {
+        nextErrors.movie = getErrorMessage(movieRes.reason);
+        setMovie(null);
+      }
+
+      if (creditsRes.status === 'fulfilled') {
+        setCredits(creditsRes.value);
+      } else {
+        nextErrors.credits = getErrorMessage(creditsRes.reason);
+        setCredits(null);
+      }
+
+      if (similarRes.status === 'fulfilled') {
+        setSimilar(similarRes.value.results);
+        setSimilarPagination({
+          page: similarRes.value.page,
+          totalPages: similarRes.value.total_pages,
+          hasMore: similarRes.value.page < similarRes.value.total_pages,
+        });
+      } else {
+        nextErrors.similar = getErrorMessage(similarRes.reason);
+        setSimilar([]);
+        setSimilarPagination({ page: 1, totalPages: 1, hasMore: false });
+      }
+
+      setSectionErrors(nextErrors);
+      setLoading({
+        movie: false,
+        credits: false,
+        similar: false,
+      });
+      setTopError(nextErrors.movie);
+    },
+    [],
+  );
+
+  const runParallelLoad = useCallback(async () => {
+    if (movieId <= 0 || !Number.isFinite(movieId)) {
+      setMovie(null);
+      setCredits(null);
+      setSimilar([]);
+      setSectionErrors(emptyErrors());
+      setSimilarPagination({ page: 1, totalPages: 1, hasMore: false });
+      setTopError('Invalid movie');
+      setLoading({ movie: false, credits: false, similar: false });
+      return;
+    }
+
+    const requestId = ++requestIdRef.current;
+    movieIdRef.current = movieId;
+    setTopError(null);
+    setSectionErrors(emptyErrors());
+    setLoading({ movie: true, credits: true, similar: true });
+
+    const settled = await Promise.allSettled([
+      getMovieDetails(movieId),
+      getMovieCredits(movieId),
+      getSimilarMovies(movieId, { page: 1 }),
+    ]);
+
+    if (requestId !== requestIdRef.current) {
+      return;
+    }
+
+    applySettled(
+      settled as [
+        PromiseSettledResult<MovieDetails>,
+        PromiseSettledResult<MovieCreditsResponse>,
+        PromiseSettledResult<SimilarMoviesResponse>,
+      ],
+    );
+  }, [movieId, applySettled]);
+
+  useEffect(() => {
+    runParallelLoad().catch(() => {});
+  }, [runParallelLoad]);
+
+  const retryMovie = useCallback(async () => {
+    if (movieId <= 0) {
+      return;
+    }
+    setLoading((l) => ({ ...l, movie: true }));
+    setSectionErrors((e) => ({ ...e, movie: null }));
+    try {
+      const m = await getMovieDetails(movieId);
+      setMovie(m);
+      setSectionErrors((e) => ({ ...e, movie: null }));
+      setTopError(null);
+    } catch (e) {
+      const msg = getErrorMessage(e);
+      setSectionErrors((prev) => ({ ...prev, movie: msg }));
+      setTopError(msg);
+    } finally {
+      setLoading((l) => ({ ...l, movie: false }));
+    }
+  }, [movieId]);
+
+  const retryCredits = useCallback(async () => {
+    if (movieId <= 0) {
+      return;
+    }
+    setLoading((l) => ({ ...l, credits: true }));
+    setSectionErrors((e) => ({ ...e, credits: null }));
+    try {
+      const c = await getMovieCredits(movieId);
+      setCredits(c);
+      setSectionErrors((e) => ({ ...e, credits: null }));
+    } catch (e) {
+      setSectionErrors((prev) => ({
+        ...prev,
+        credits: getErrorMessage(e),
+      }));
+    } finally {
+      setLoading((l) => ({ ...l, credits: false }));
+    }
+  }, [movieId]);
+
+  const retrySimilar = useCallback(async () => {
+    if (movieId <= 0) {
+      return;
+    }
+    setLoading((l) => ({ ...l, similar: true }));
+    setSectionErrors((e) => ({ ...e, similar: null }));
+    try {
+      const res = await getSimilarMovies(movieId, { page: 1 });
+      setSimilar(res.results);
+      setSimilarPagination({
+        page: res.page,
+        totalPages: res.total_pages,
+        hasMore: res.page < res.total_pages,
+      });
+      setSectionErrors((e) => ({ ...e, similar: null }));
+    } catch (e) {
+      setSectionErrors((prev) => ({
+        ...prev,
+        similar: getErrorMessage(e),
+      }));
+      setSimilar([]);
+    } finally {
+      setLoading((l) => ({ ...l, similar: false }));
+    }
+  }, [movieId]);
+
+  const refetch = useCallback(() => {
+    runParallelLoad().catch(() => {});
+  }, [runParallelLoad]);
+
+  const fetchMoreSimilar = useCallback(async () => {
+    const id = movieIdRef.current;
+    if (id <= 0 || fetchingMoreSimilarRef.current) {
+      return;
+    }
+    if (similarPageRef.current >= similarTotalPagesRef.current) {
+      return;
+    }
+    fetchingMoreSimilarRef.current = true;
+    const requestId = requestIdRef.current;
+    try {
+      const nextPage = similarPageRef.current + 1;
+      const res = await getSimilarMovies(id, { page: nextPage });
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
+      setSimilar((prev) => [...prev, ...res.results]);
+      setSimilarPagination({
+        page: res.page,
+        totalPages: res.total_pages,
+        hasMore: res.page < res.total_pages,
+      });
+    } catch (e) {
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
+      setSectionErrors((prev) => ({
+        ...prev,
+        similar: getErrorMessage(e),
+      }));
+    } finally {
+      fetchingMoreSimilarRef.current = false;
+    }
+  }, []);
+
+  const data = useMemo<MovieDetailData | null>(() => {
+    if (movieId <= 0 || !Number.isFinite(movieId)) {
+      return null;
+    }
+    return {
+      movie,
+      credits,
+      similar,
+      loading,
+      sectionErrors,
+      similarPagination,
+      fetchMoreSimilar,
+      retryMovie,
+      retryCredits,
+      retrySimilar,
+    };
+  }, [
+    movieId,
+    movie,
+    credits,
+    similar,
+    loading,
+    sectionErrors,
+    similarPagination,
+    fetchMoreSimilar,
+    retryMovie,
+    retryCredits,
+    retrySimilar,
+  ]);
+
+  const hookLoading = movieId > 0 && loading.movie && movie === null;
+
+  return { data, loading: hookLoading, error: topError, refetch };
+}
+```
+
+---
+
+**Note:** `DetailScreen` no longer receives `navigation` from the stack; it uses `useNavigation` / `useRoute`. If your navigator types require the old signature, you can add props back without using them.
+
+Ensure `.env` has `TMDB_BASE_URL`, `TMDB_IMAGE_BASE_URL`, and `TMDB_ACCESS_TOKEN` per `project-spec.md` (and `.env.example` placeholders only in git).
+
+---
+
+_**User**_
+
+fix the watch list UI for empty watchlist , it should be like @resources/watchlist-empty.html  @resources/watchlist_empty.png  
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+Reviewing the reference assets and current watchlist empty-state implementation.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **4** results in **1** directory</summary>
+
+Directory: **/Users/aryansingh/Desktop/Project/StreamLite/resources** (4 files)
+
+| File |
+|------|
+| `watchlist.png` |
+| `watchlist-empty.html` |
+| `watchlist.html` |
+| `watchlist_empty.png` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBrowseTrendingButton.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/watchlist-empty.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistPopularSkeletons.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/theme",
+  "pattern": "watchlistEmpty|watchlist"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/theme",
+  "pattern": "watchlistEmpty|watchlist",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "src/theme/typography.ts"
+    },
+    {
+      "matchCount": 9,
+      "uri": "src/theme/spacing.ts"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/theme/colors.ts"
+    }
+  ],
+  "totalFiles": 3,
+  "totalMatches": 14
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Aligning empty state**
+
+I'm implementing the empty state layout with radial glow background and bookmark icon styling. I'm updating the BrowseTrendingButton to use solid red `#E5383B` background instead of LinearGradient. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing empty state layout**
+
+I'm adjusting the empty state container to use flex: 1 with justifyContent:center for proper vertical centering. 
+
+**Comparing layout options**
+
+I'm weighing layout options for empty state, considering minHeight, flex: 1, and ScrollView approaches. 
+
+**Trying layout approaches**
+
+I'm implementing ScrollView with flexGrow: 1 and a minimum height view to ensure proper layout. I'm simplifying the layout by using flex-grow and min-height to center content properly. 
+
+**Adjusting layout structure**
+
+I'm adjusting the layout structure to use `flex: 1` on the page view for empty state and ensuring proper flex behavior. I'm updating the ScrollView layout to use `flexGrow: 1` on contentContainerStyle and `flex: 1` on child elements for cross-platform compatibility. 
+
+I'm implementing a minHeight fix using useWindowDimensions for consistent empty state layout across platforms. 
+
+**Updating empty state**
+
+I'm enhancing the WatchlistEmptyState glow effect to match the design with radial gradient background. I'm adjusting the WatchlistEmptyState icon plate styling to use subtle border colors and remove the double border. 
+
+I'm updating the CTA button to use solid brand color #E5383B from colors.ts. I'm changing WatchlistBrowseTrendingButton to use solid background color #E5383B instead of LinearGradient to match HTML design. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/KickerTitleHeading.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/typography.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating color palette**
+
+I'm adding a new watchlist CTA color and updating the button component to use solid background. I'm implementing the new watchlist empty state with a relative container and absolute glow effect using solid circle with opacity. 
+
+I'm adjusting the spacing and border widths to match the design specs, ensuring consistent margins and removing redundant opacity settings. I'm implementing responsive layout adjustments using `useWindowDimensions` for the watchlist screen. 
+
+I'm adjusting the watchlist screen layout with a fixed minimum height to prevent cramped content. 
+
+**Adjusting watchlist layout**
+
+I'm implementing a dynamic minimum height for the watchlist empty area using window dimensions and insets. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/radii.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Implementing watchlist button**
+
+I'm adding the watchlist empty CTA color and implementing the button with Pressable and rounded corners. I'm implementing the watchlist button with Pressable component and rounded corners using radii.lg for consistent styling. 
+
+**Adjusting layout constraints**
+
+I'm adding `watchlistEmptyMaxWidth: 448` to spacing for consistent max-width styling. I'm updating button text color to use `colors.on_surface` for better contrast. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Aligning the empty watchlist with `watchlist-empty.html`: centered column layout, radial glow, icon plate, solid brand CTA (`#E5383B`), spacing, and vertical centering.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBrowseTrendingButton.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/typography.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/watchlist-empty.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Checking spacing tokens**
+
+I'm reviewing spacing tokens to ensure consistent padding and margin values for the watchlist empty state. I'm implementing subtle borders using outline with opacity or multiple shadows instead of 1px borders for section separation. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistPopularSkeletons.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adjusting spacing**
+
+I'm adjusting the body spacing from mb-5xl to mb-10 to match the HTML design. I'm removing the 1px border from icon plate and using a subtle shadow with `outline_variant` color for the ring effect. 
+
+**Updating watchlist empty state**
+
+I'm adjusting WatchlistEmptyState with flex-grow and min-height for proper centering, and setting maxWidth to watchlistEmptyContentMax. I'm refining the icon plate design with a two-layer approach for subtle visual hierarchy instead of a decorative ring. I'm refactoring the empty state layout to use flexGrow and dynamic height calculations for better responsiveness. 
+
+I'm adjusting the empty state wrapper to use `justifyContent: 'center'` with `flex: 1` for proper vertical centering. 
+
+**Adjusting empty state layout**
+
+I'm implementing vertical centering with flex properties and adjusting the layout structure. I'm using flex-grow to make the empty content area fill the available space between header and skeletons, achieving vertical centering. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "tabBar|TabBar|bottom.*height"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "tabBar|TabBar|bottom.*height",
+  "topFiles": [
+    {
+      "matchCount": 14,
+      "uri": "src/navigation/RootNavigator.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/DetailScreen.tsx"
+    }
+  ],
+  "totalFiles": 2,
+  "totalMatches": 15
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/radii.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/KickerTitleHeading.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adjusting button radii**
+
+I confirmed that radii.lg (12px) is correct for the button instead of radii.xl (16px). I'm adding a spacing token for approximate chrome total to simplify height calculations. I'm implementing centering logic for ScrollView content using flexGrow and flex: 1. 
+
+I'm centering the empty state using flexGrow and justifyContent: 'center' with a minHeight. I'm adding `flexGrow: 1` to the ScrollView's content container to properly center the empty state. I'm using flexGrow: 1 on the ScrollView content container to properly center the empty state. 
+
+I'm setting the ScrollView content container's minHeight to full viewport height using windowHeight. I'm adjusting the ScrollView minHeight to account for SafeAreaView's top inset only, since the bottom isn't part of the safe area. 
+
+I'm using `minHeight: windowHeight` on contentContainerStyle to ensure full-screen height with flexGrow 1 on child. I'm adding `useWindowDimensions` to get screen height for proper ScrollView sizing. 
+
+I'm implementing flexible layout with flexGrow for empty state centering. I'm adjusting the flex layout to ensure the page fills minHeight from ScrollView by setting flexGrow: 1 on the page and contentContainerStyle minHeight to winH only when empty. 
+
+I'm applying conditional minHeight styling to empty screens only using `hydrated` and `items.length` checks. I'm updating WatchlistEmptyState to remove or reduce minHeight when used inside centered flex containers. I'm updating WatchlistEmptyState to match HTML parity with font-bold text-2xl and adjusting glow diameter to 320. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/typography.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Implementing watchlist empty state**
+
+I'm updating the watchlist empty state copy and margins, removing the icon border and increasing the glow size with a new diameter token. 
+
+**Updating watchlist empty state**
+
+I'm adjusting the glow sizing and positioning for the watchlist empty state. 
+
+**Adjusting glow positioning**
+
+I'm repositioning the glow absolutely with left and right set to 0 to match the HTML implementation. I'm implementing a circular glow effect using absolute positioning with large blur approximation. 
+
+I'm switching to using `top: 0, left: 0, right: 0, bottom: 0` with `justifyContent: 'center'` for the glow positioning. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Implementing layout updates: centering the empty state in the scroll area, refining the glow and icon plate (removing the 1px border per project rules), and fixing copy.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing apostrophe syntax**
+
+I'm correcting apostrophe usage in JSX strings to use standard `they'll` instead of curly apostrophe. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Fixing body copy: React Native `Text` doesn't decode HTML entities — use a normal apostrophe.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistPopularSkeletons.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/hooks/useWatchlistFeed.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Showing the "Popular Recommendations" ghost section whenever the watchlist is empty, matching the HTML reference (not only while trending loads).
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/watchlist/WatchlistBrowseTrendingButton.tsx src/components/watchlist/WatchlistEmptyState.tsx src/screens/WatchlistScreen.tsx src/components/watchlist/WatchlistPopularSkeletons.tsx src/theme/colors.ts src/theme/spacing.ts</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/watchlist/WatchlistBrowseTrendingButton.tsx src/components/watchlist/WatchlistEmptyState.tsx src/screens/WatchlistScreen.tsx src/components/watchlist/WatchlistPopularSkeletons.tsx src/theme/colors.ts src/theme/spacing.ts
+```
+
+```
+src/components/watchlist/WatchlistEmptyState.tsx(53,19): error TS2551: Property 'absoluteFillObject' does not exist on type 'typeof StyleSheet'. Did you mean 'absoluteFill'?
+npm notice
+npm notice New major version of npm available! 10.8.2 -&gt; 11.12.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+npm notice To update run: npm install -g npm@11.12.1
+npm notice
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/watchlist/WatchlistBrowseTrendingButton.tsx src/components/watchlist/WatchlistEmptyState.tsx src/screens/WatchlistScreen.tsx src/components/watchlist/WatchlistPopularSkeletons.tsx src/theme/colors.ts src/theme/spacing.ts</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/watchlist/WatchlistBrowseTrendingButton.tsx src/components/watchlist/WatchlistEmptyState.tsx src/screens/WatchlistScreen.tsx src/components/watchlist/WatchlistPopularSkeletons.tsx src/theme/colors.ts src/theme/spacing.ts
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm test -- --passWithNoTests 2>/dev/null | tail -20</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm test -- --passWithNoTests 2>/dev/null | tail -20
+```
+
+```
+
+&gt; StreamLite@0.0.1 test
+&gt; jest --passWithNoTests
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm test 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm test 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 test
+&gt; jest
+
+watchman warning:  Recrawled this watch 7 times, most recently because:
+MustScanSubDirs UserDroppedTo resolve, please review the information on
+https://facebook.github.io/watchman/docs/troubleshooting.html#recrawl
+To clear this warning, run:
+&#96;watchman watch-del '/Users/aryansingh/Desktop/Project/StreamLite' ; watchman watch-project '/Users/aryansingh/Desktop/Project/StreamLite'&#96;
+
+PASS __tests__/App.test.tsx
+  ✓ renders correctly (14 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.45 s, estimated 2 s
+Ran all test suites.
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBrowseTrendingButton.tsx",
+    "/Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx",
+    "/Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBrowseTrendingButton.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was completed for the empty watchlist UI to align with `resources/watchlist-empty.html` and the reference image.
+
+### Changes
+
+1. **`src/theme/colors.ts`**  
+   - Added `watchlist_empty_cta: '#E5383B'` for the solid CTA (no raw hex in components).
+
+2. **`src/theme/spacing.ts`**  
+   - `watchlistEmptyContentMax: 448` (`max-w-md`).  
+   - `watchlistEmptyGlowDiameter` increased **224 → 320** for a stronger radial glow.
+
+3. **`WatchlistBrowseTrendingButton.tsx`**  
+   - Replaced gradient with **solid** `colors.watchlist_empty_cta`, `radii.lg` (matches HTML `rounded-xl` = 12px), Manrope **bold** label, `on_surface` text, light shadow.
+
+4. **`WatchlistEmptyState.tsx`**  
+   - Full-area **centered glow** (`StyleSheet.absoluteFill` + circle).  
+   - Icon plate: **no 1px border** (project rule); soft **shadow** instead.  
+   - Copy: **“they’ll appear here”** (template string).  
+   - `maxWidth: spacing.watchlistEmptyContentMax`.
+
+5. **`WatchlistScreen.tsx`**  
+   - **`useWindowDimensions`**: when hydrated and empty, scroll content **`minHeight: windowHeight`** + **`pageWhenEmpty`** / **`emptyCenterColumn`** so the empty block **sits vertically in the middle** between the title and the section below.  
+   - **Always** show **`WatchlistPopularSkeletons`** on empty (ghost “Popular Recommendations” like the HTML), not only while trending loads.
+
+6. **`WatchlistPopularSkeletons.tsx`**  
+   - `pointerEvents="none"` like the HTML ghost block.
+
+`npx tsc --noEmit`, ESLint on touched files, and Jest all pass.
+
+If you want the CTA to navigate to **trending** instead of the home tab, say so and we can wire navigation to the right screen/route.
+
+---
+
+_**User**_
+
+why showing cirecle in middle , also show popular recomendations like in @resources/watchlist_empty.png 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Addressing user feedback**
+
+I'm investigating the decorative circle element and popular recommendations feature request. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Checking the watchlist empty-state implementation to see why the circle appears and whether Popular Recommendations renders correctly.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistPopularSkeletons.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Addressing glow effect**
+
+I'm implementing a radial gradient for the glow effect on web to match the soft fade-to-transparent behavior. I'm removing the harsh solid circle glow and replacing it with a softer fade effect or removing it entirely. I'm checking if react-native-linear-gradient is available to implement a subtle radial fade effect. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{tsx,ts,json}",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "linear-gradient|LinearGradient|expo-blur"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "linear-gradient|LinearGradient|expo-blur",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "src/screens/DetailScreen.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/common/PrimaryGradientCtaButton.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailHeroBackdrop.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "package.json"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/search/SearchTrendingFeatured.tsx"
+    },
+    {
+      "matchCount": 4,
+      "uri": "src/components/home/HomeHeroCard.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/watchlist/WatchlistGridCard.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "package-lock.json"
+    }
+  ],
+  "totalFiles": 8,
+  "totalMatches": 21
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Evaluating glow effects**
+
+I'll remove the glow circle entirely to avoid user confusion and simplify the icon plate. 
+
+**Removing glow effects**
+
+I'm removing `glowWrap` and `glow` components since the double circle effect appears visually jarring. I'm removing the solid circle component since the double circle effect looks jarring and the reference image shows only a single soft ambient glow. 
+
+**Adjusting opacity levels**
+
+I'm adjusting opacity settings to make the heading visible while keeping poster placeholders muted. I'm setting heading opacity to 0.5 and poster placeholders to 0.2, using a dimmer background color instead of parent opacity. I'm removing the glow circle from WatchlistEmptyState and fixing Popular Recommendations visibility by applying opacity only to the skeleton elements. I'm using `colors.popular_skeleton` for skeleton elements with sufficient contrast and removing opacity from headings to match the PNG design. 
+
+The empty state and recommendations should share the screen without using flexGrow: 1 on emptyCenterColumn to avoid stretching the skeleton area. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adjusting layout constraints**
+
+I'm adjusting the flex properties to prevent the empty state from expanding to fill all vertical space. I'm removing flexGrow from empty state elements to prevent them from expanding vertically. I'm removing flexGrow from empty state elements to enable natural stacking. I'm removing vertical centering hacks and using top padding for empty state with marginTop matching HTML mt-20 spacing. 
+
+**Updating empty state styling**
+
+I'm removing the circle glow and adjusting skeleton opacity for better visibility. I'm adjusting skeleton opacity to 0.35 for better visibility without affecting parent opacity. I'm using `rgba(53, 53, 52, 0.35)` for skeleton opacity to match design specs. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Removing the decorative glow circle — it was a solid fill mimicking the HTML radial gradient and reads as a harsh disc on device. Fixing layout: `flexGrow: 1` on the empty column was expanding and pushing Popular Recommendations below the fold. Making the recommendations section visible by moving opacity off the whole block (it was making the heading nearly invisible).
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistPopularSkeletons.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "watchlistEmptyGlowDiameter|empty_state_glow"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "watchlistEmptyGlowDiameter|empty_state_glow",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/theme/spacing.ts"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/theme/colors.ts"
+    },
+    {
+      "matchCount": 2,
+      "uri": ".specstory/history/2026-04-09_07-18-19Z-movie-detail-page-ui.md"
+    }
+  ],
+  "totalFiles": 3,
+  "totalMatches": 4
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistEmptyState.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Cleaning up unused imports**
+
+I'm removing unused radii import from WatchlistEmptyState since it's still needed for iconPlate borderRadius.full. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "empty_state_glow"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "empty_state_glow",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/theme/colors.ts"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "watchlistEmptyBlockMin"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "watchlistEmptyBlockMin",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/theme/spacing.ts"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Removing unused theme tokens left after removing the glow.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "empty_state_glow|watchlistEmptyGlowDiameter|watchlistEmptyBlockMin"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "empty_state_glow|watchlistEmptyGlowDiameter|watchlistEmptyBlockMin",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": ".specstory/history/2026-04-09_07-18-19Z-movie-detail-page-ui.md"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 2
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/watchlist/WatchlistEmptyState.tsx src/screens/WatchlistScreen.tsx src/components/watchlist/WatchlistPopularSkeletons.tsx src/theme/colors.ts src/theme/spacing.ts</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/watchlist/WatchlistEmptyState.tsx src/screens/WatchlistScreen.tsx src/components/watchlist/WatchlistPopularSkeletons.tsx src/theme/colors.ts src/theme/spacing.ts
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was going on and what we changed.
+
+### Why there was a “circle” in the middle
+That was an extra **decorative glow layer**: a large filled circle using `empty_state_glow`, meant to echo the **radial gradient + blur** in `watchlist-empty.html`. In React Native that doesn’t blur the same way, so it looked like a **hard disc** behind the bookmark. The **round icon plate** (bookmark on a circular background) is still there, like the reference.
+
+**Change:** that separate glow layer is **removed**. Only the circular **icon plate + bookmark** remains, so the empty state no longer shows that extra red circle.
+
+### Why “Popular recommendations” was easy to miss
+Two things:
+
+1. **Whole section at `opacity: 0.2`** — including the **“POPULAR RECOMMENDATIONS”** label — made the headline almost invisible.
+2. **`flexGrow: 1` + full-height `minHeight`** on the empty column — the empty block **ate vertical space** and pushed the recommendations **below the fold**, so you often had to scroll to see them.
+
+**Changes:**
+- **Opacity** applies only to the **two placeholder tiles** (`opacity: 0.35`), not the section title.
+- **Removed** the flex/`minHeight` centering layout so the empty block and **Popular Recommendations** stack **in one scroll** like `resources/watchlist_empty.png`.
+
+### Files touched
+- `src/components/watchlist/WatchlistEmptyState.tsx` — glow removed  
+- `src/screens/WatchlistScreen.tsx` — simpler empty layout (no `useWindowDimensions` / flex center column)  
+- `src/components/watchlist/WatchlistPopularSkeletons.tsx` — label readable, ghost opacity on posters only  
+- `src/theme/colors.ts` / `src/theme/spacing.ts` — removed unused `empty_state_glow` and glow-related spacing tokens
+
+If you want the **ghost tiles** a bit stronger or softer, we can tune `opacity` on `styles.poster` only.
+
+---
+
+_**User**_
+
+not just placeholder popular recommendation from imdb api 

@@ -8,6 +8,7 @@ import { WatchlistEmptyState } from '../components/watchlist/WatchlistEmptyState
 import { WatchlistFilterChips } from '../components/watchlist/WatchlistFilterChips';
 import { WatchlistGridCard } from '../components/watchlist/WatchlistGridCard';
 import { WatchlistHeader } from '../components/watchlist/WatchlistHeader';
+import { WatchlistPopularRecommendations } from '../components/watchlist/WatchlistPopularRecommendations';
 import { WatchlistPopularSkeletons } from '../components/watchlist/WatchlistPopularSkeletons';
 import { useWatchlistFeed } from '../hooks/useWatchlistFeed';
 import type { WatchlistScreenProps } from '../navigation/types';
@@ -18,7 +19,12 @@ import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { typography } from '../theme/typography';
 import { buildImageUrl } from '../utils/image';
-import { extractYear, genreNamesFromIds, ratingLabelFromVote } from '../utils/movieDisplay';
+import {
+  extractYear,
+  genreNamesFromIds,
+  movieListItemToSearchGridItem,
+  ratingLabelFromVote,
+} from '../utils/movieDisplay';
 
 const WATCHLIST_KICKER = 'YOUR COLLECTION';
 
@@ -81,6 +87,12 @@ export function WatchlistScreen({ navigation }: WatchlistScreenProps) {
   );
 
   const gridRows = chunkPairs(gridItems);
+
+  const popularEmptyGridItems = useMemo(() => {
+    return (feed?.emptyTrending ?? [])
+      .slice(0, 2)
+      .map((m) => movieListItemToSearchGridItem(m, genreMap));
+  }, [feed?.emptyTrending, genreMap]);
 
   const becauseItems: WatchlistLandscapeItem[] = useMemo(() => {
     return (feed?.becauseSimilar ?? []).slice(0, 8).map((m) => ({
@@ -145,7 +157,27 @@ export function WatchlistScreen({ navigation }: WatchlistScreenProps) {
                 <WatchlistEmptyState onBrowsePress={goHomeTab} />
                 {feed?.emptyTrendingLoading ? (
                   <WatchlistPopularSkeletons />
-                ) : null}
+                ) : feed?.emptyTrendingError ? (
+                  <View style={styles.popularSectionError}>
+                    <Text style={styles.popularSectionErrorText}>
+                      {feed.emptyTrendingError}
+                    </Text>
+                    <Pressable
+                      accessibilityRole="button"
+                      onPress={() => feed.refetchEmptyTrending()}
+                      style={styles.popularSectionRetry}
+                    >
+                      <Text style={styles.retryLabel}>Retry</Text>
+                    </Pressable>
+                  </View>
+                ) : popularEmptyGridItems.length > 0 ? (
+                  <WatchlistPopularRecommendations
+                    items={popularEmptyGridItems}
+                    onItemPress={openDetail}
+                  />
+                ) : (
+                  <WatchlistPopularSkeletons />
+                )}
               </>
             ) : (
               <>
@@ -279,5 +311,20 @@ const styles = StyleSheet.create({
     ...typography['title-sm'],
     color: colors.primary_container,
     fontWeight: '600',
+  },
+  popularSectionError: {
+    marginTop: spacing.screenBlockLarge,
+    gap: spacing.sm,
+  },
+  popularSectionErrorText: {
+    ...typography['body-md'],
+    color: colors.on_surface_variant,
+  },
+  popularSectionRetry: {
+    alignSelf: 'flex-start',
+  },
+  retryLabel: {
+    ...typography['title-sm'],
+    color: colors.primary_container,
   },
 });
