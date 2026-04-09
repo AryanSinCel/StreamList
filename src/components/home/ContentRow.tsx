@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { HomeCarouselSkeletonStrip } from './HomeCarouselSkeletonStrip';
 import { MoviePosterCard } from './MoviePosterCard';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
@@ -14,6 +15,8 @@ const NEAR_END_PAD =
 export interface ContentRowProps {
   title: string;
   items: PosterItem[];
+  /** Initial fetch in progress (empty horizontal strip). */
+  loading?: boolean;
   onSeeAllPress?: () => void;
   onItemPress?: (item: PosterItem) => void;
   marginBottom?: number;
@@ -24,6 +27,7 @@ export interface ContentRowProps {
 export function ContentRow({
   title,
   items,
+  loading = false,
   onSeeAllPress,
   onItemPress,
   marginBottom = spacing['9xl'],
@@ -63,15 +67,19 @@ export function ContentRow({
         onScroll={handleScroll}
         scrollEventThrottle={16}
       >
-        {items.map((item) => (
-          <MoviePosterCard
-            key={item.id}
-            posterUri={item.posterUri}
-            title={item.title}
-            subtitle={item.subtitle}
-            onPress={onItemPress ? () => onItemPress(item) : undefined}
-          />
-        ))}
+        {loading && items.length === 0 ? (
+          <HomeCarouselSkeletonStrip />
+        ) : (
+          items.map((item) => (
+            <MoviePosterCard
+              key={item.id}
+              posterUri={item.posterUri}
+              title={item.title}
+              subtitle={item.subtitle}
+              onPress={onItemPress ? () => onItemPress(item) : undefined}
+            />
+          ))
+        )}
       </ScrollView>
     </View>
   );

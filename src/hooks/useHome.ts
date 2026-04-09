@@ -23,14 +23,16 @@ export interface HomeData {
   heroMovie: MovieListItem | null;
   trending: HomeRowState;
   topRated: HomeRowState;
-  /** Present only when a genre chip other than All is selected. */
-  genreRow: HomeRowState | null;
+  /** Discover rows keyed by TMDB genre id (filled lazily when “All” + rail visible). */
+  genreRows: Record<number, HomeRowState>;
   loadMoreTrending: () => void;
   loadMoreTopRated: () => void;
-  loadMoreGenre: () => void;
+  /** First page for a genre rail (viewport lazy-load or chip selection). */
+  ensureGenreRowLoaded: (genreId: number) => void;
+  loadMoreGenre: (genreId: number) => void;
   retryTrending: () => void;
   retryTopRated: () => void;
-  retryGenre: () => void;
+  retryGenre: (genreId: number) => void;
 }
 
 const emptyRow = (loading: boolean): HomeRowState => ({
@@ -61,19 +63,19 @@ export function useHome(selectedGenreChipIndex: number): {
 
   const [trending, setTrending] = useState<HomeRowState>(() => emptyRow(true));
   const [topRated, setTopRated] = useState<HomeRowState>(() => emptyRow(true));
-  const [genreRow, setGenreRow] = useState<HomeRowState | null>(null);
+  const [genreRows, setGenreRows] = useState<Record<number, HomeRowState>>({});
 
-  const genreRequestGen = useRef(0);
+  const genreRequestGenById = useRef(new Map<number, number>());
   const trendingMoreLock = useRef(false);
   const topRatedMoreLock = useRef(false);
-  const genreMoreLock = useRef(false);
+  const genreMoreLocks = useRef(new Map<number, boolean>());
 
   const trendingRef = useRef(trending);
   const topRatedRef = useRef(topRated);
-  const genreRowRef = useRef(genreRow);
+  const genreRowsRef = useRef(genreRows);
   trendingRef.current = trending;
   topRatedRef.current = topRated;
-  genreRowRef.current = genreRow;
+  genreRowsRef.current = genreRows;
 
   const fetchGenres = useCallback(async () => {
     setGenresLoading(true);
@@ -153,47 +155,68 @@ export function useHome(selectedGenreChipIndex: number): {
 
   const fetchGenrePage = useCallback(
     async (genreId: number, page: number, mode: 'replace' | 'append') => {
-      const gen = ++genreRequestGen.current;
+      const map = genreRequestGenById.current;
+      const nextGen = (map.get(genreId) ?? 0) + 1;
+      map.set(genreId, nextGen);
+      const requestAtStart = nextGen;
+
       if (mode === 'replace') {
-        setGenreRow((s) =>
-          s
-            ? { ...s, loading: true, error: null }
-            : { ...emptyRow(true), loading: true },
-        );
+        setGenreRows((prev) => ({
+          ...prev,
+          [genreId]: {
+            ...(prev[genreId] ?? emptyRow(false)),
+            loading: true,
+            loadingMore: false,
+            error: null,
+          },
+        }));
       } else {
-        setGenreRow((s) =>
-          s ? { ...s, loadingMore: true, error: null } : s,
-        );
+        setGenreRows((prev) => {
+          const base = prev[genreId];
+          if (!base) {
+            return prev;
+          }
+          return {
+            ...prev,
+            [genreId]: { ...base, loadingMore: true, error: null },
+          };
+        });
       }
       try {
         const res = await getMoviesByGenre(genreId, { page });
-        if (gen !== genreRequestGen.current) {
+        if (map.get(genreId) !== requestAtStart) {
           return;
         }
-        setGenreRow((prev) => {
-          const base = prev ?? emptyRow(false);
+        setGenreRows((prev) => {
+          const base = prev[genreId] ?? emptyRow(false);
           return {
-            items:
-              mode === 'append' ? [...base.items, ...res.results] : res.results,
-            page: res.page,
-            totalPages: res.total_pages,
-            loading: false,
-            loadingMore: false,
-            error: null,
+            ...prev,
+            [genreId]: {
+              items:
+                mode === 'append' ? [...base.items, ...res.results] : res.results,
+              page: res.page,
+              totalPages: res.total_pages,
+              loading: false,
+              loadingMore: false,
+              error: null,
+            },
           };
         });
       } catch (e) {
-        if (gen !== genreRequestGen.current) {
+        if (map.get(genreId) !== requestAtStart) {
           return;
         }
         const msg = getErrorMessage(e);
-        setGenreRow((prev) => {
-          const base = prev ?? emptyRow(false);
+        setGenreRows((prev) => {
+          const base = prev[genreId] ?? emptyRow(false);
           return {
-            ...base,
-            loading: false,
-            loadingMore: false,
-            error: mode === 'replace' ? msg : base.error,
+            ...prev,
+            [genreId]: {
+              ...base,
+              loading: false,
+              loadingMore: false,
+              error: mode === 'replace' ? msg : base.error,
+            },
           };
         });
       }
@@ -215,12 +238,27 @@ export function useHome(selectedGenreChipIndex: number): {
 
   useEffect(() => {
     if (selectedGenreId == null) {
-      genreRequestGen.current += 1;
-      setGenreRow(null);
       return;
     }
     fetchGenrePage(selectedGenreId, 1, 'replace').catch(() => {});
   }, [selectedGenreId, fetchGenrePage]);
+
+  const ensureGenreRowLoaded = useCallback(
+    (genreId: number) => {
+      const row = genreRowsRef.current[genreId];
+      if (row?.loading || row?.loadingMore) {
+        return;
+      }
+      if (row && row.items.length > 0) {
+        return;
+      }
+      if (row?.error) {
+        return;
+      }
+      fetchGenrePage(genreId, 1, 'replace').catch(() => {});
+    },
+    [fetchGenrePage],
+  );
 
   const loadMoreTrending = useCallback(async () => {
     if (trendingMoreLock.current) {
@@ -260,30 +298,30 @@ export function useHome(selectedGenreChipIndex: number): {
     }
   }, [fetchTopRatedPage]);
 
-  const loadMoreGenre = useCallback(async () => {
-    if (selectedGenreId == null) {
-      return;
-    }
-    const g = genreRowRef.current;
-    if (g == null) {
-      return;
-    }
-    if (genreMoreLock.current) {
-      return;
-    }
-    if (g.loading || g.loadingMore) {
-      return;
-    }
-    if (g.page >= g.totalPages) {
-      return;
-    }
-    genreMoreLock.current = true;
-    try {
-      await fetchGenrePage(selectedGenreId, g.page + 1, 'append');
-    } finally {
-      genreMoreLock.current = false;
-    }
-  }, [selectedGenreId, fetchGenrePage]);
+  const loadMoreGenre = useCallback(
+    async (genreId: number) => {
+      if (genreMoreLocks.current.get(genreId)) {
+        return;
+      }
+      const g = genreRowsRef.current[genreId];
+      if (g == null) {
+        return;
+      }
+      if (g.loading || g.loadingMore) {
+        return;
+      }
+      if (g.page >= g.totalPages) {
+        return;
+      }
+      genreMoreLocks.current.set(genreId, true);
+      try {
+        await fetchGenrePage(genreId, g.page + 1, 'append');
+      } finally {
+        genreMoreLocks.current.set(genreId, false);
+      }
+    },
+    [fetchGenrePage],
+  );
 
   const refetch = useCallback(() => {
     fetchGenres().catch(() => {});
@@ -308,11 +346,12 @@ export function useHome(selectedGenreChipIndex: number): {
     fetchTopRatedPage(1, 'replace').catch(() => {});
   }, [fetchTopRatedPage]);
 
-  const retryGenre = useCallback(() => {
-    if (selectedGenreId != null) {
-      fetchGenrePage(selectedGenreId, 1, 'replace').catch(() => {});
-    }
-  }, [selectedGenreId, fetchGenrePage]);
+  const retryGenre = useCallback(
+    (genreId: number) => {
+      fetchGenrePage(genreId, 1, 'replace').catch(() => {});
+    },
+    [fetchGenrePage],
+  );
 
   const heroMovie = trending.items[0] ?? null;
 
@@ -322,9 +361,10 @@ export function useHome(selectedGenreChipIndex: number): {
       heroMovie,
       trending,
       topRated,
-      genreRow: selectedGenreId != null ? genreRow : null,
+      genreRows,
       loadMoreTrending,
       loadMoreTopRated,
+      ensureGenreRowLoaded,
       loadMoreGenre,
       retryTrending,
       retryTopRated,
@@ -335,10 +375,10 @@ export function useHome(selectedGenreChipIndex: number): {
     heroMovie,
     trending,
     topRated,
-    genreRow,
-    selectedGenreId,
+    genreRows,
     loadMoreTrending,
     loadMoreTopRated,
+    ensureGenreRowLoaded,
     loadMoreGenre,
     retryTrending,
     retryTopRated,
@@ -353,8 +393,7 @@ export function useHome(selectedGenreChipIndex: number): {
   const fatal =
     Boolean(genresError) &&
     Boolean(trending.error) &&
-    Boolean(topRated.error) &&
-    (selectedGenreId == null || Boolean(genreRow?.error));
+    Boolean(topRated.error);
 
   const error = fatal ? 'Unable to load the home screen. Try again.' : null;
 
