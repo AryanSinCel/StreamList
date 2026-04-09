@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   title: {
-    ...typography['headline-md'],
+    ...typography['headline-sm'],
     color: colors.on_surface,
     flexShrink: 1,
     marginRight: spacing.sm,

@@ -51,11 +51,12 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   title: {
-    ...typography['headline-md'],
+    ...typography['headline-detail'],
     color: colors.on_surface,
   },
   action: {
-    ...typography['title-sm'],
-    color: colors.primary_container,
+    ...typography['label-sm'],
+    fontWeight: '700',
+    color: colors.primary,
   },
 });

@@ -33,8 +33,7 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   wordmark: {
-    ...typography['display-md'],
-    fontSize: spacing.xl,
+    ...typography['headline-md'],
     color: colors.primary_container,
     textTransform: 'uppercase',
   },

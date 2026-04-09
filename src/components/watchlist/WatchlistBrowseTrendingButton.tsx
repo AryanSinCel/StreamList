@@ -53,8 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    ...typography['title-lg'],
+    ...typography['headline-detail'],
     color: colors.on_primary,
-    fontWeight: '700',
   },
 });

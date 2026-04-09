@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   input: {
-    ...typography['body-md'],
+    ...typography['body-lg'],
     color: colors.on_surface,
     backgroundColor: colors.surface_container_low,
     borderRadius: radii.lg,

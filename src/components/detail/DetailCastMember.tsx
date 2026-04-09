@@ -47,13 +47,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface_container_high,
   },
   name: {
-    ...typography['label-sm'],
-    fontWeight: '600',
+    ...typography['label-cast-name'],
     color: colors.on_surface,
     textAlign: 'center',
   },
   role: {
-    ...typography['label-sm'],
+    ...typography['label-cast-role'],
     color: colors.on_surface_variant,
     textAlign: 'center',
     marginTop: spacing.xxs,

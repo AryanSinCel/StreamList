@@ -922,3 +922,355 @@ That token is defined as **28px** (`fontSize: spacing['2xl']`, and `2xl` is **28
 ```
 
 So the answer: **28px** (same as `project-spec.md` §6.2 for `headline-md` / section headers like “Trending Now”).
+
+---
+
+_**User**_
+
+@resources/home.html @resources/search.html @resources/watchlist.html @resources/movie-showDetail.html  take this refrence and make sure the ui label size and everything else is same as in these .html files  because i can see some text label font size is completely large compared to what it is in html 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+Analyzing reference HTML typography and comparing it to the app's theme and components to align label sizes and related styles.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/home.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/search.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/watchlist.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/movie-showDetail.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **4** results in **1** directory</summary>
+
+Directory: **/Users/aryansingh/Desktop/Project/StreamLite/resources** (4 files)
+
+| File |
+|------|
+| `watchlist-empty.html` |
+| `watchlist_empty.png` |
+| `watchlist.html` |
+| `watchlist.png` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/typography.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/project-spec.md</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Checking tailwind defaults**
+
+I found that Tailwind v3 default text-2xl is 24px, but the project spec expects 28px for headline-md. I noticed that `text-2xl` is 24px in Tailwind but the project spec expects 28px for `headline-md`, creating a 4px discrepancy. 
+
+**Adjusting font sizes**
+
+I'm adjusting Tailwind font sizes to match project specs, starting with `text-xs` and `text-sm`. I'm mapping font sizes to Tailwind classes and aligning spacing tokens with HTML reference sizes. I'm resolving inconsistency between HTML reference sizes and Tailwind token mappings for text-lg and other font sizes. I'm adding semantic tokens for headline sizes to match HTML reference values. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Mapping HTML Tailwind classes to pixel sizes and auditing components. `watchlist.html` is empty — checking `watchlist-empty.html`.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/watchlist-empty.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "typography\\["
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "typography\\[",
+  "topFiles": [
+    {
+      "matchCount": 3,
+      "uri": "src/components/search/SearchGridPosterCard.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/home/MoviePosterCard.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/watchlist/WatchlistBecauseRow.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/common/HorizontalSelectableChips.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/search/SearchTrendingFeatured.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/home/ContentRow.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/watchlist/WatchlistLandscapeCard.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/common/MenuSectionLabel.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/detail/DetailPortraitCard.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/detail/DetailMetaChip.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/profile/ProfileStatsRow.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/common/OutlinedGhostCtaButton.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistFilterChips.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/watchlist/WatchlistEmptyState.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/common/KickerTitleHeading.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/navigation/RootNavigator.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistBrowseTrendingButton.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/common/SectionHeaderRow.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/detail/DetailCastMember.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/common/AppBrandWordmark.tsx"
+    }
+  ],
+  "totalFiles": 34,
+  "totalMatches": 62
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adjusting spacing scale**
+
+I'm changing headline-md from spacing['2xl'] (28px) to spacing.xl (24px) to match Tailwind's text-2xl. I'm adding new typography tokens for search and detail section titles to maintain consistent spacing. 
+
+I'm adding `spacing.typeLg: 18` to spacing.ts to maintain consistent typography sizing. I'm adding `mdPlus: 18` to the spacing scale to fill the missing text-lg equivalent. 
+
+I'm updating headline-md to use spacing.xl fontSize and adding headline-sm with Manrope 20px. I'm splitting the headline tokens to use 24px for home content and 20px for search, updating SearchTrendingSection and RecentSearchesBlock accordingly. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/resources/search.html</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/MoviePosterCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGridPosterCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating typography**
+
+I'm updating the home carousel title font to `title-sm` (14px Inter 600) and subtitle to `label-sm` (12px). I'm standardizing typography tokens, using `title-sm` (14px Inter 600) for home carousel titles and considering `title-md` (16px Manrope 700) for search grid headers. I'm defining `poster-title` for search grid headers with Manrope 16px 700 fontWeight, matching `fontSize: spacing.md`. I'm adding `title-md` with Manrope 16px at fontWeight 600 or 700, and defining `display-md` hero title at 48px based on Tailwind's text-5xl = 48px. I'm adjusting headline sizes: changing headline-md from 28px to 24px and adding headline-sm at 20px for search sections. </details></think>

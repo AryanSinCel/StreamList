@@ -137,7 +137,7 @@ const tabNavigatorScreenOptions = {
   tabBarShowLabel: true,
   tabBarActiveTintColor: colors.primary_container,
   tabBarInactiveTintColor: colors.on_surface_variant,
-  tabBarLabelStyle: [typography['label-sm'], styles.tabLabel],
+  tabBarLabelStyle: [typography['label-tab'], styles.tabLabel],
   tabBarStyle: styles.tabBar,
   tabBarBackground: TabBarBackground,
 };

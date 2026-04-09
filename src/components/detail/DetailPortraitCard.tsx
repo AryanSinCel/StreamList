@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.image_overlay,
   },
   title: {
-    ...typography['title-lg'],
+    ...typography['label-sm'],
+    fontWeight: '500',
     color: colors.on_surface,
   },
 });

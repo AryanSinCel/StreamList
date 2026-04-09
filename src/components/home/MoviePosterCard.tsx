@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   title: {
-    ...typography['title-lg'],
+    ...typography['title-sm'],
     color: colors.on_surface,
   },
   subtitle: {

@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xxs,
   },
   title: {
-    ...typography['title-lg'],
+    ...typography['title-md'],
     flex: 1,
     minWidth: 0,
     color: colors.on_surface,

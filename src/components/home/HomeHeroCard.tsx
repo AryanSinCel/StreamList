@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   heroBody: {
-    ...typography['body-md'],
-    color: colors.on_surface,
+    ...typography['body-lg'],
+    color: colors.on_surface_variant,
     marginBottom: spacing['3xl'],
     maxWidth: spacing.homeHeroCopyMax,
   },

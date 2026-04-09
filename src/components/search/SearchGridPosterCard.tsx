@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     color: colors.on_surface,
   },
   title: {
-    ...typography['title-lg'],
+    ...typography['title-md'],
     color: colors.on_surface,
   },
   genre: {

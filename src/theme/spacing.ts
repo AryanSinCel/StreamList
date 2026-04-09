@@ -15,7 +15,11 @@ export const spacing = {
   sm: 12,
   /** 14px — body / title-sm per typography spec (between 12 and 16 grid) */
   smPlus: 14,
+  /** Between `sm` (12) and `md` (16) — cast names (movie-showDetail.html `text-[11px]`) */
+  smNarrow: 11,
   md: 16,
+  /** Tailwind `text-lg` (18px) — detail section titles, Stitch large CTAs */
+  mdPlus: 18,
   lg: 20,
   xl: 24,
   '2xl': 28,

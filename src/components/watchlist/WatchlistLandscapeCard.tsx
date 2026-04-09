@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     ...typography['label-xs'],
     color: colors.on_surface_variant,
     textTransform: 'uppercase',
-    letterSpacing: spacing.sm,
+    letterSpacing: spacing.single,
     marginTop: spacing.xxs,
   },
 });

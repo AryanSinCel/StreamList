@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing['5xl'],
   },
   title: {
-    ...typography['headline-md'],
+    ...typography['headline-detail'],
     color: colors.on_surface,
     marginBottom: spacing.sm,
   },

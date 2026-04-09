@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   castHeading: {
-    ...typography['headline-md'],
+    ...typography['headline-detail'],
     color: colors.on_surface,
     marginBottom: spacing.md,
   },
