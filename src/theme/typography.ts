@@ -60,6 +60,13 @@ export const typography = {
     fontWeight: '400',
     letterSpacing: 0,
   },
+  /** Badge / kicker (home.html "New Release") */
+  'label-xs': {
+    fontFamily: fontFamily.inter,
+    fontSize: spacing.xsPlus,
+    fontWeight: '700',
+    letterSpacing: spacing.single,
+  },
 } as const satisfies Record<string, TextStyle>;
 
 export type TypographyToken = keyof typeof typography;

@@ -20,9 +20,17 @@ export const colors = {
   // Text
   on_surface: '#E5E2E1',
   on_surface_variant: '#E4BDBA',
+  /** Text on `primary` / gradient CTAs (M3-style; resources/home.html) */
+  on_primary: '#68000B',
+  /** Text on `primary_container` badges */
+  on_primary_container: '#5C0008',
 
   // Utility
   outline_variant: 'rgba(255,255,255,0.15)',
+  /** Hero / card elevation (iOS shadow) */
+  shadow: '#000000',
+  /** Secondary hero button (surface_container_highest @ ~80% opacity, home.html) */
+  surface_container_highest_backdrop: 'rgba(53, 53, 52, 0.8)',
 
   /** Glass tab bar (project-spec §6.4) */
   tab_bar_background: 'rgba(35, 35, 35, 0.70)',
@@ -35,4 +43,11 @@ export const primaryGradient = {
   colors: [colors.primary, colors.primary_container] as [string, string],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 1 },
+} as const;
+
+/** Hero “Watch Now” — left-to-right coral → red (resources/home.html) */
+export const primaryGradientHorizontal = {
+  colors: [colors.primary, colors.primary_container] as [string, string],
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 0 },
 } as const;
