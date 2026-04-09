@@ -1,0 +1,42 @@
+---
+description: StreamLite data layer, API, hooks, theme, and TypeScript conventions
+alwaysApply: true
+---
+
+# StreamLite — mandatory conventions
+
+## Data fetching and API
+
+- **Never** fetch data inside screen components (`src/screens/**`). Screens render UI only; they consume hooks and navigation.
+- **Always** use custom hooks in `src/hooks/` for data fetching (e.g. `useHome`, `useSearch`, `useMovieDetail`).
+- **Always** use the central API client from `src/api/client.ts` (or thin wrappers in `src/api/movies.ts`). **Never** import `axios` outside `src/api/client.ts`.
+- For **parallel** independent requests (e.g. detail screen), use **`Promise.allSettled`** — not sequential `await` chains when sections must load independently.
+- **Handle null / missing API fields** defensively: `poster_path`, `backdrop_path`, `runtime`, `vote_average`, empty arrays, etc. (placeholders, omit chips, section-level errors — per spec).
+
+## Hook contract
+
+Every data-fetching hook must return this shape (names and types as in project spec):
+
+```typescript
+{
+  data: T | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+}
+```
+
+## Theme and layout
+
+- **No hardcoded colors** — import tokens from `src/theme/colors.ts` only.
+- **No hardcoded spacing** — use `src/theme/spacing.ts` (or derived spacing from tokens).
+- **No 1px borders** for layout or section separation — use spacing and background colour shifts only (the “no-line” rule).
+
+## TypeScript
+
+- **Strict typing** — `no any`. Prefer interfaces from `src/api/types.ts` for API shapes.
+- Navigation params must be typed in `src/navigation/types.ts` and used consistently.
+
+## Folder structure
+
+Follow `resources/project-spec.md` §5: `api/`, `components/`, `hooks/`, `navigation/`, `screens/`, `store/`, `theme/`, `utils/` — do not invent parallel layouts.
