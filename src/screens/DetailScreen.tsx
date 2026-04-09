@@ -215,7 +215,17 @@ export function DetailScreen() {
 
           {!similarHidden ? (
             <>
-              <SectionHeaderRow title="More Like This" actionLabel="See All" />
+              <SectionHeaderRow
+                title="More Like This"
+                actionLabel="See All"
+                onActionPress={() =>
+                  navigation.navigate('SeeAll', {
+                    type: 'similar',
+                    movieId,
+                    title: 'More Like This',
+                  })
+                }
+              />
               {data?.sectionErrors.similar ? (
                 <View style={styles.rowErr}>
                   <Text style={styles.errText}>{data.sectionErrors.similar}</Text>

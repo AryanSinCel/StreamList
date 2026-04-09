@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  getFocusedRouteNameFromRoute,
+  type Route,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   BookmarkIcon,
@@ -10,6 +14,7 @@ import {
 } from '../components/icons/svgIcons';
 import { DetailScreen } from '../screens/DetailScreen';
 import { HomeScreen } from '../screens/HomeScreen';
+import { SeeAllScreen } from '../screens/SeeAllScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { WatchlistScreen } from '../screens/WatchlistScreen';
@@ -31,6 +36,20 @@ const WatchlistStack = createNativeStackNavigator<WatchlistStackParamList>();
 const ProfileStack = createNativeStackNavigator<ProfileStackParamList>();
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
+
+const TAB_BAR_HIDDEN_STYLE = { display: 'none' as const };
+
+/**
+ * Bottom tabs are only shown on each stack’s root screen; pushing See All, Detail,
+ * or any other nested route hides the tab bar for the active tab.
+ */
+function tabBarStyleForStackRoot(
+  route: Route<string, object | undefined>,
+  rootScreenName: string,
+) {
+  const focused = getFocusedRouteNameFromRoute(route) ?? rootScreenName;
+  return focused === rootScreenName ? styles.tabBar : TAB_BAR_HIDDEN_STYLE;
+}
 
 const stackScreenOptions = {
   headerShown: false,
@@ -70,6 +89,7 @@ function HomeStackNavigator() {
   return (
     <HomeStack.Navigator screenOptions={stackScreenOptions}>
       <HomeStack.Screen name="HomeMain" component={HomeScreen} />
+      <HomeStack.Screen name="SeeAll" component={SeeAllScreen} />
       <HomeStack.Screen
         name="Detail"
         component={DetailScreen}
@@ -83,6 +103,7 @@ function SearchStackNavigator() {
   return (
     <SearchStack.Navigator screenOptions={stackScreenOptions}>
       <SearchStack.Screen name="SearchMain" component={SearchScreen} />
+      <SearchStack.Screen name="SeeAll" component={SeeAllScreen} />
       <SearchStack.Screen
         name="Detail"
         component={DetailScreen}
@@ -96,6 +117,7 @@ function WatchlistStackNavigator() {
   return (
     <WatchlistStack.Navigator screenOptions={stackScreenOptions}>
       <WatchlistStack.Screen name="WatchlistMain" component={WatchlistScreen} />
+      <WatchlistStack.Screen name="SeeAll" component={SeeAllScreen} />
       <WatchlistStack.Screen
         name="Detail"
         component={DetailScreen}
@@ -109,6 +131,7 @@ function ProfileStackNavigator() {
   return (
     <ProfileStack.Navigator screenOptions={stackScreenOptions}>
       <ProfileStack.Screen name="ProfileMain" component={ProfileScreen} />
+      <ProfileStack.Screen name="SeeAll" component={SeeAllScreen} />
       <ProfileStack.Screen
         name="Detail"
         component={DetailScreen}
@@ -151,26 +174,39 @@ export function RootNavigator() {
       <Tab.Screen
         name="HomeTab"
         component={HomeStackNavigator}
-        options={{ tabBarLabel: 'HOME', tabBarIcon: HomeTabIcon }}
+        options={({ route }) => ({
+          tabBarLabel: 'HOME',
+          tabBarIcon: HomeTabIcon,
+          tabBarStyle: tabBarStyleForStackRoot(route, 'HomeMain'),
+        })}
       />
       <Tab.Screen
         name="SearchTab"
         component={SearchStackNavigator}
-        options={{ tabBarLabel: 'SEARCH', tabBarIcon: SearchTabIcon }}
+        options={({ route }) => ({
+          tabBarLabel: 'SEARCH',
+          tabBarIcon: SearchTabIcon,
+          tabBarStyle: tabBarStyleForStackRoot(route, 'SearchMain'),
+        })}
       />
       <Tab.Screen
         name="WatchlistTab"
         component={WatchlistStackNavigator}
-        options={{
+        options={({ route }) => ({
           tabBarLabel: 'WATCHLIST',
           tabBarIcon: WatchlistTabIcon,
           tabBarBadge: watchlistCount > 0 ? watchlistCount : undefined,
-        }}
+          tabBarStyle: tabBarStyleForStackRoot(route, 'WatchlistMain'),
+        })}
       />
       <Tab.Screen
         name="ProfileTab"
         component={ProfileStackNavigator}
-        options={{ tabBarLabel: 'PROFILE', tabBarIcon: ProfileTabIcon }}
+        options={({ route }) => ({
+          tabBarLabel: 'PROFILE',
+          tabBarIcon: ProfileTabIcon,
+          tabBarStyle: tabBarStyleForStackRoot(route, 'ProfileMain'),
+        })}
       />
     </Tab.Navigator>
   );

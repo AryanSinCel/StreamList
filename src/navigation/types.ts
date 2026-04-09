@@ -2,8 +2,12 @@ import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type {
   CompositeScreenProps,
   NavigatorScreenParams,
+  RouteProp,
 } from '@react-navigation/native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 /** Shared detail route — TMDB id + media kind */
 export type DetailParams = {
@@ -11,23 +15,44 @@ export type DetailParams = {
   mediaType: 'movie' | 'tv';
 };
 
+export type SeeAllParams = {
+  type: 'trending' | 'top_rated' | 'genre' | 'similar';
+  genreId?: number;
+  /** Source movie id when `type` is `similar` (TMDB /movie/{id}/similar). */
+  movieId?: number;
+  title: string;
+};
+
 export type HomeStackParamList = {
   HomeMain: undefined;
+  SeeAll: SeeAllParams;
   Detail: DetailParams;
 };
 
 export type SearchStackParamList = {
   SearchMain: undefined;
+  SeeAll: SeeAllParams;
   Detail: DetailParams;
 };
 
 export type WatchlistStackParamList = {
   WatchlistMain: undefined;
+  SeeAll: SeeAllParams;
   Detail: DetailParams;
 };
 
 export type ProfileStackParamList = {
   ProfileMain: undefined;
+  SeeAll: SeeAllParams;
+  Detail: DetailParams;
+};
+
+/**
+ * Minimal routes `SeeAllScreen` uses on every tab stack (`SeeAll` → `Detail`).
+ * Keeps navigation typing stable across Home / Search / Watchlist / Profile stacks.
+ */
+export type SeeAllFlowParamList = {
+  SeeAll: SeeAllParams;
   Detail: DetailParams;
 };
 
@@ -45,6 +70,11 @@ export type HomeScreenProps = CompositeScreenProps<
   NativeStackScreenProps<HomeStackParamList, 'HomeMain'>,
   BottomTabScreenProps<MainTabParamList, 'HomeTab'>
 >;
+
+export type SeeAllScreenProps = {
+  navigation: NativeStackNavigationProp<SeeAllFlowParamList, 'SeeAll'>;
+  route: RouteProp<SeeAllFlowParamList, 'SeeAll'>;
+};
 
 export type SearchScreenProps = CompositeScreenProps<
   NativeStackScreenProps<SearchStackParamList, 'SearchMain'>,

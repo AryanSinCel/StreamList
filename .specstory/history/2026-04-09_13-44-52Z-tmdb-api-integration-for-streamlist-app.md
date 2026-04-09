@@ -10034,4 +10034,519 @@ I'm implementing three skeleton components: HomePosterSkeletonCard, HomeCarousel
 
 **Implementing skeleton components**
 
-I'm replacing ActivityIndicator with HomeCarouselSkeletonStrip and mapping HomePosterSkeletonCard five times for the carousel. </details></think>
+I'm replacing ActivityIndicator with HomeCarouselSkeletonStrip and mapping HomePosterSkeletonCard five times for the carousel. I'm replacing the spinner with an animated View pulse effect and 'Loading more' text for the footer skeleton. I'm replacing the HomeHeroCard placeholder with a skeleton using animated gradient blocks that mimic the layout. 
+
+**Creating skeleton component**
+
+I'm implementing `HomeHeroSkeleton.tsx` with animated gradient blocks matching HomeHeroCard dimensions and using it when `heroLoading` is true. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Creating skeleton components**
+
+I'm implementing HomePosterSkeletonCard and HomeCarouselSkeletonStrip with shared opacity animation using one Animated.Value for the strip. 
+
+**Implementing skeletons**
+
+I'm creating HomeHeroSkeleton component and updating ContentRow to use HomeCarouselSkeletonStrip for loading states. 
+
+**Updating skeleton styles**
+
+I'm adding skeleton color variants to colors.ts and implementing animated pulse effects for HomeScreen loading states. I'm using `surface_container_highest` for skeleton fills and implementing animated pulse effects. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Adding home skeleton components (pulsing poster strips and hero placeholder) and wiring them into `ContentRow`, `HomeLoadingFooter`, and `HomeScreen`.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adding skeleton component**
+
+I'm creating `HomePosterSkeletonCard.tsx` with a standalone animated skeleton using SKELETON_SLOTS = 5 constant. I'm adding opacity animation to the carousel skeleton strip with a single animation loop. I'm implementing the skeleton layout with animated opacity and matching dimensions to the movie poster card. I'm implementing skeleton components with animated opacity and static shapes for the loading states. 
+
+**Implementing skeleton component**
+
+I'm removing unused ActivityIndicator import from ContentRow and cleaning up HomeHeroCard optional loading prop handling. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomePosterSkeletonCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeCarouselSkeletonStrip.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Refactoring carousel**
+
+I'm replacing the redundant ScrollView with a single ScrollView using flexDirection row and gap for the HomeCarouselSkeletonStrip. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroSkeleton.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeCarouselSkeletonStrip.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeCarouselSkeletonStrip.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeLoadingFooter.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Handling edge cases**
+
+I'm addressing the edge case where HomeHeroCard shows empty backdrop when hero is null and trending is empty. I'm preventing the animation loop from starting when visible is false to avoid unnecessary effect cleanup issues. I'm fixing the animation loop cleanup to properly stop the loop when visible becomes false. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/home/HomePosterSkeletonCard.tsx src/components/home/HomeCarouselSkeletonStrip.tsx src/components/home/HomeHeroSkeleton.tsx src/components/home/HomeLoadingFooter.tsx src/components/home/ContentRow.tsx src/screens/HomeScreen.tsx 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npx eslint src/components/home/HomePosterSkeletonCard.tsx src/components/home/HomeCarouselSkeletonStrip.tsx src/components/home/HomeHeroSkeleton.tsx src/components/home/HomeLoadingFooter.tsx src/components/home/ContentRow.tsx src/screens/HomeScreen.tsx 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm test -- --no-watchman 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm test -- --no-watchman 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 test
+&gt; jest --no-watchman
+
+PASS __tests__/movieDisplay.test.ts
+PASS __tests__/App.test.tsx
+
+Test Suites: 2 passed, 2 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.523 s, estimated 2 s
+Ran all test suites.
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+Here’s what was added for **skeleton-style loading on Home** (aligned with detail: pulsing opacity on `surface_container_highest` blocks).
+
+### What changed
+
+1. **`HomePosterSkeletonCard.tsx`**  
+   - Single home poster–sized block (160×240) + two text bars, no animation (parent handles pulse).
+
+2. **`HomeCarouselSkeletonStrip.tsx`**  
+   - Five skeleton cards in a row with a shared **opacity loop** (same idea as `DetailPosterSkeletonSlot`).
+
+3. **`ContentRow.tsx`**  
+   - Replaced **`ActivityIndicator`** with **`HomeCarouselSkeletonStrip`** when `loading && items.length === 0`.
+
+4. **`HomeHeroSkeleton.tsx`**  
+   - Full hero height (`homeHeroHeight`), badge/title/body/action blocks with **pulsing opacity** while trending/hero data is loading.
+
+5. **`HomeLoadingFooter.tsx`**  
+   - Replaced spinner with **three small pulsing pills** + “Loading more content” (muted).
+
+6. **`HomeScreen.tsx`**  
+   - **`heroLoading`** → render **`HomeHeroSkeleton`** instead of **`HomeHeroCard`**.  
+   - **Trending** / **Top Rated** rows pass **`loading`** when the row is loading and the list is still empty.
+
+### Already covered
+
+- **Lazy genre rails** and **single-genre chip** rows still use **`ContentRow` `loading`** → they now get the same carousel skeletons.
+
+### Files touched
+
+- `src/components/home/HomePosterSkeletonCard.tsx` (new)  
+- `src/components/home/HomeCarouselSkeletonStrip.tsx` (new)  
+- `src/components/home/HomeHeroSkeleton.tsx` (new)  
+- `src/components/home/ContentRow.tsx`  
+- `src/components/home/HomeLoadingFooter.tsx`  
+- `src/screens/HomeScreen.tsx`  
+
+`npx tsc --noEmit`, ESLint on these files, and Jest all pass.
+
+---
+
+_**User**_
+
+when switching tab , the content comes from top for split second before showing it exact spots , what could be the reason 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Investigating tab transition UX**
+
+I'm investigating the tab navigation UX issue where content briefly appears from the top during tab switches. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Checking how tabs and screens are set up in the project to give a concrete answer.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Checking tab navigation defaults**
+
+I'm verifying React Navigation 6's default behavior for bottom tab screen mounting and lazy loading settings. The ScrollView reset symptom likely occurs because tab screens remount and lose their scroll position, causing content to jump from top when focus returns. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+That “one frame at the top, then it snaps into place” feeling usually comes from **layout or scroll state settling after the first paint**, not from your tab labels themselves. In your setup (bottom tabs + per-tab stacks + `SafeAreaView` + `ScrollView`), these are the most likely causes:
+
+### 1. **Safe area / insets applying on the second frame**
+`SafeAreaView` from `react-native-safe-area-context` often needs a layout pass to apply the correct top/bottom insets. The first frame can lay out as if insets were 0 (or wrong), then content **shifts down** once insets are known. That reads as “everything was too high / from the top, then it moved.”
+
+### 2. **Scroll position reset when the tab remounts**
+If a tab’s root screen **unmounts** when you leave the tab (depends on navigator options and version), coming back **remounts** the screen. `ScrollView` then starts at **`contentOffset.y === 0`**, so you briefly see the top of the feed before any persisted scroll (if you had implemented it) applies. Even with default tab behavior, focus transitions can interact with scroll restoration.
+
+### 3. **Async layout: height 0 → real height**
+Anything that depends on **measured size** (images, `onLayout`, lists without fixed height) can make the scroll content’s height change after mount. The scroll view **relayouts**, and visible content can **jump** relative to the viewport.
+
+### 4. **Tab / stack transition animation**
+React Navigation’s native stack or tab transition can show the new screen **starting from a default position** and then finishing the transition, which feels like a quick wrong-then-right frame.
+
+### 5. **Dev-only: Strict Mode / fast refresh**
+In development, double mounting can exaggerate flashes; production often looks calmer.
+
+---
+
+**What to check in your app**
+
+- Whether **`SafeAreaView` `edges`** match each screen (you use `edges={['top']}` on some screens — compare with others).
+- Whether tab screens **stay mounted** when switching (React Navigation **lazy** / **detachInactiveScreens** / **freeze** options change this).
+- Whether **`ScrollView`** should **persist scroll** across tab changes (would require storing `contentOffset` or using a list that preserves offset — not default).
+
+If you describe **which tab** (Home vs Watchlist) and whether it happens **only after scrolling** vs **every switch**, we can narrow it to scroll reset vs safe area vs remount. I’m in **Ask mode** so I can’t change code; if you want this investigated with concrete options in-repo, switch to **Agent mode**.
+
+---
+
+_**User**_
+
+ for home not happeing but for search and watchlist  and profile only for the first time 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Analyzing tab navigation**
+
+The tab switching behavior indicates lazy loading is enabled, where screens only mount on first visit. The Home tab mounts immediately on app load, avoiding any first-render jitter that occurs with lazily-loaded tabs. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+That pattern fits **lazy tab screens** and **which tab loads first**, not a bug in Search/Watchlist/Profile alone.
+
+### Why Home looks fine
+**Home** is almost always the **initial tab**, so its stack mounts **when the app starts**. By the time you’re switching tabs, Home has already done its first layout, safe-area pass, and scroll setup. You’re not seeing a “first mount” of Home when you tap it.
+
+### Why Search / Watchlist / Profile “jump” only the first time
+With **React Navigation bottom tabs**, inactive tabs are often **not mounted until you open them once** (this is the usual **`lazy`** behavior: first visit = first mount).
+
+On that **first** visit you get, in one shot:
+
+1. **First paint** of the whole screen (often scroll at top, default layout).
+2. **Safe area insets** applied after the first layout (content can shift).
+3. **`ScrollView` / content** finishing layout (images, lists, etc.).
+
+After that, that tab’s tree **stays mounted** (typically), so **later** switches back to it don’t repeat the full first-mount sequence—so the flash/jump mostly disappears.
+
+### Takeaway
+It’s expected when tabs are **lazy-loaded**: only the **initial tab** avoids the “first open” jitter during normal use; other tabs pay that cost **once per tab** the first time you open them.
+
+If you want to **reduce or move** that cost (e.g. mount all tabs at startup, or pre-mount off-screen), that’s a navigation/rendering tradeoff—say if you want that explored in the repo, switch to **Agent mode** and we can align with `@react-navigation/bottom-tabs` options (`lazy`, `freezeOnBlur`, etc.) and your performance goals.

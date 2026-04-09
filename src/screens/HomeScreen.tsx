@@ -18,7 +18,7 @@ import { HomeHeroSkeleton } from '../components/home/HomeHeroSkeleton';
 import { HomeLoadingFooter } from '../components/home/HomeLoadingFooter';
 import { LazyGenreRail } from '../components/home/LazyGenreRail';
 import { useHome } from '../hooks/useHome';
-import type { HomeScreenProps } from '../navigation/types';
+import type { HomeScreenProps, SeeAllParams } from '../navigation/types';
 import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { typography } from '../theme/typography';
@@ -53,6 +53,13 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
   const openDetail = useCallback(
     (movieId: number) => {
       navigation.navigate('Detail', { id: movieId, mediaType: 'movie' });
+    },
+    [navigation],
+  );
+
+  const openSeeAll = useCallback(
+    (params: SeeAllParams) => {
+      navigation.navigate('SeeAll', params);
     },
     [navigation],
   );
@@ -168,7 +175,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
               data.trending.loading && trendingPosters.length === 0
             }
             onSeeAllPress={() =>
-              trendingPosters[0] && openDetail(trendingPosters[0].numericId)
+              openSeeAll({ type: 'trending', title: 'Trending Now' })
             }
             onItemPress={(item) => openDetail(item.numericId)}
             onNearEnd={data.loadMoreTrending}
@@ -189,7 +196,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
               data.topRated.loading && topRatedPosters.length === 0
             }
             onSeeAllPress={() =>
-              topRatedPosters[0] && openDetail(topRatedPosters[0].numericId)
+              openSeeAll({ type: 'top_rated', title: 'Top Rated' })
             }
             onItemPress={(item) => openDetail(item.numericId)}
             onNearEnd={data.loadMoreTopRated}
@@ -208,13 +215,9 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
                   onLoadMore={() => data.loadMoreGenre(g.id)}
                   onRetry={() => data.retryGenre(g.id)}
                   onItemPress={openDetail}
-                  onSeeAllPress={() => {
-                    const row = data.genreRows[g.id];
-                    const first = row?.items[0];
-                    if (first) {
-                      openDetail(first.id);
-                    }
-                  }}
+                  onSeeAllPress={() =>
+                    openSeeAll({ type: 'genre', genreId: g.id, title: g.name })
+                  }
                 />
               ))
             : null}
@@ -242,10 +245,16 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
                     singleFilterGenrePosters.length === 0,
                 )}
                 marginBottom={spacing.screenBlockLarge}
-                onSeeAllPress={() =>
-                  singleFilterGenrePosters[0] &&
-                  openDetail(singleFilterGenrePosters[0].numericId)
-                }
+                onSeeAllPress={() => {
+                  if (selectedGenreId == null) {
+                    return;
+                  }
+                  openSeeAll({
+                    type: 'genre',
+                    genreId: selectedGenreId,
+                    title: genreTitle || 'Genre',
+                  });
+                }}
                 onItemPress={(item) => openDetail(item.numericId)}
                 onNearEnd={() => data.loadMoreGenre(selectedGenreId)}
               />
