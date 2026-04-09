@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface_container_low,
     borderRadius: radii.lg,
     paddingVertical: spacing.md,
-    paddingLeft: spacing['7xl'],
+    paddingLeft: spacing['8xl'],
     paddingRight: spacing.md,
   },
 });

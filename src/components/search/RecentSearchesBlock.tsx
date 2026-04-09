@@ -27,6 +27,7 @@ export function RecentSearchesBlock({
           accessibilityRole="button"
           onPress={onClearAllPress}
           hitSlop={spacing.xs}
+          style={styles.clearButton}
         >
           <Text style={styles.clear}>Clear All</Text>
         </Pressable>
@@ -76,13 +77,18 @@ const styles = StyleSheet.create({
   title: {
     ...typography['headline-md'],
     color: colors.on_surface,
+    flexShrink: 1,
+    marginRight: spacing.sm,
+  },
+  clearButton: {
+    flexShrink: 0,
   },
   clear: {
     ...typography['label-sm'],
     fontWeight: '600',
-    color: colors.primary_container,
+    color: colors.primary,
     textTransform: 'uppercase',
-    letterSpacing: spacing.sm,
+    letterSpacing: spacing.single,
   },
   list: {
     gap: spacing.single,
