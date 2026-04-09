@@ -2,10 +2,8 @@ import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type {
   CompositeScreenProps,
   NavigatorScreenParams,
-  RouteProp,
 } from '@react-navigation/native';
 import type {
-  NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 
@@ -23,41 +21,26 @@ export type SeeAllParams = {
   title: string;
 };
 
+/** Per-tab stacks — only tab roots; Detail / See All live on `RootStackParamList`. */
 export type HomeStackParamList = {
   HomeMain: undefined;
-  SeeAll: SeeAllParams;
-  Detail: DetailParams;
 };
 
 export type SearchStackParamList = {
   SearchMain: undefined;
-  SeeAll: SeeAllParams;
-  Detail: DetailParams;
 };
 
 export type WatchlistStackParamList = {
   WatchlistMain: undefined;
-  SeeAll: SeeAllParams;
-  Detail: DetailParams;
 };
 
 export type ProfileStackParamList = {
   ProfileMain: undefined;
-  SeeAll: SeeAllParams;
-  Detail: DetailParams;
 };
 
 /**
- * Minimal routes `SeeAllScreen` uses on every tab stack (`SeeAll` → `Detail`).
- * Keeps navigation typing stable across Home / Search / Watchlist / Profile stacks.
- */
-export type SeeAllFlowParamList = {
-  SeeAll: SeeAllParams;
-  Detail: DetailParams;
-};
-
-/**
- * Root navigator: bottom tabs, each tab hosts its own stack (spec §3 / §5).
+ * Bottom tabs; each tab hosts a single-screen stack (spec §3 / §5).
+ * Modal flows use the root stack (`Detail`, `SeeAll`).
  */
 export type MainTabParamList = {
   HomeTab: NavigatorScreenParams<HomeStackParamList>;
@@ -66,39 +49,60 @@ export type MainTabParamList = {
   ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };
 
+/**
+ * Root native stack: tabs + shared screens. Keeps tab bar off Detail / See All.
+ */
+export type RootStackParamList = {
+  MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
+  Detail: DetailParams;
+  SeeAll: SeeAllParams;
+};
+
 export type HomeScreenProps = CompositeScreenProps<
   NativeStackScreenProps<HomeStackParamList, 'HomeMain'>,
-  BottomTabScreenProps<MainTabParamList, 'HomeTab'>
+  CompositeScreenProps<
+    BottomTabScreenProps<MainTabParamList, 'HomeTab'>,
+    NativeStackScreenProps<RootStackParamList>
+  >
 >;
 
-export type SeeAllScreenProps = {
-  navigation: NativeStackNavigationProp<SeeAllFlowParamList, 'SeeAll'>;
-  route: RouteProp<SeeAllFlowParamList, 'SeeAll'>;
-};
+export type SeeAllScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  'SeeAll'
+>;
 
 export type SearchScreenProps = CompositeScreenProps<
   NativeStackScreenProps<SearchStackParamList, 'SearchMain'>,
-  BottomTabScreenProps<MainTabParamList, 'SearchTab'>
+  CompositeScreenProps<
+    BottomTabScreenProps<MainTabParamList, 'SearchTab'>,
+    NativeStackScreenProps<RootStackParamList>
+  >
 >;
 
 export type WatchlistScreenProps = CompositeScreenProps<
   NativeStackScreenProps<WatchlistStackParamList, 'WatchlistMain'>,
-  BottomTabScreenProps<MainTabParamList, 'WatchlistTab'>
+  CompositeScreenProps<
+    BottomTabScreenProps<MainTabParamList, 'WatchlistTab'>,
+    NativeStackScreenProps<RootStackParamList>
+  >
 >;
 
 export type ProfileScreenProps = CompositeScreenProps<
   NativeStackScreenProps<ProfileStackParamList, 'ProfileMain'>,
-  BottomTabScreenProps<MainTabParamList, 'ProfileTab'>
+  CompositeScreenProps<
+    BottomTabScreenProps<MainTabParamList, 'ProfileTab'>,
+    NativeStackScreenProps<RootStackParamList>
+  >
 >;
 
-/** Detail appears on every tab stack with the same params */
+/** Detail on root stack */
 export type DetailScreenProps = NativeStackScreenProps<
-  { Detail: DetailParams },
+  RootStackParamList,
   'Detail'
 >;
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends MainTabParamList {}
+    interface RootParamList extends RootStackParamList {}
   }
 }

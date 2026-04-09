@@ -1,5 +1,14 @@
 {
   "sessions": {
+    "613d8cef-3d33-4a66-957c-165867c9ab7f": {
+      "user_message_count": 4,
+      "agent_message_count": 64,
+      "start_timestamp": "2026-04-10T01:37:33+05:30",
+      "end_timestamp": "2026-04-10T01:37:33+05:30",
+      "markdown_size_bytes": 35271,
+      "provider": "cursoride",
+      "last_updated": "2026-04-09T20:19:31Z"
+    },
     "7af726fe-4c4c-4fb7-9766-c19052790660": {
       "user_message_count": 6,
       "agent_message_count": 236,
