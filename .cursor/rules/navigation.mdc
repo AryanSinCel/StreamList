@@ -1,0 +1,27 @@
+---
+description: StreamLite React Navigation — typed routes, params, stack-per-tab
+globs:
+  - src/navigation/**/*.tsx
+  - src/screens/**/*.tsx
+alwaysApply: false
+---
+
+# Navigation
+
+See `project-spec.md` §7.5 and `src/navigation/types.ts`.
+
+## Types
+
+- Define **all** param lists in **`src/navigation/types.ts`** (`RootTabParamList`, per-tab stack lists). **Do not** use untyped `navigation.navigate('Screen', …)` string routes without typings.
+
+## Params
+
+- Pass **IDs** (e.g. `movieId: number`) — **not** large objects or full API entities. Screens load detail via hooks using the id.
+
+## Stack behaviour
+
+- Detail is pushed on the **stack nested in the current tab** so back returns to the correct tab context (spec §7.5).
+
+## Centralisation
+
+- Prefer **small navigator modules** and typed helpers (e.g. `navigation.navigate` wrappers) over scattering navigation calls with duplicated string names — still fully typed.

@@ -2879,4 +2879,278 @@ _**Agent (composer-2-fast)**_
 <think><details><summary>Thought Process</summary>
 **Comparing image designs**
 
-I'm analyzing the design differences between the desired horizontal layout with play icon and 'Watch</details></think>
+I'm analyzing the design differences between the desired horizontal layout with play icon and 'Watch Now' text side-by-side versus the current vertical stack. I'm re-reading the descriptions carefully to align the reference design's hero button with the correct layout and gradient specifications. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Checking the hero layout: the reference shows a horizontal "Watch Now" (icon + single-line label) and a stacked button layout.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Analyzing layout issue**
+
+The 'Watch Now' text wrapping is likely causing vertical stacking on narrow screens. 
+
+**Fixing layout issue**
+
+I'm adjusting the watch label to prevent text wrapping and reworking button layout to match the reference design. I'm adjusting button layout to prevent text wrapping by using column flexDirection with stretch alignment. 
+
+**Adjusting button layout**
+
+I'm repositioning the watch button to align with the user's desired layout from the first image. I'm preventing text wrapping on the 'Watch Now' label by setting numberOfLines={1} and adjustsFontSizeToFit={false}. 
+
+I'm implementing Solution A to stack buttons vertically for better text handling on narrow screens. I'm changing actions to column layout with full-width buttons and adding numberOfLines={1} to watchLabel. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Reorganizing button layout**
+
+I'm stacking buttons vertically with full width to match the reference design and applying a horizontal gradient to the Watch Now button. I'm adding `primaryGradientHorizontal` to colors.ts with end `{ x: 1, y: 0 }` to match the theme rules. I'm implementing full-width details button with centered text using `alignItems: 'center'`. 
+
+**Updating theme tokens**
+
+I'm adding primaryGradientHorizontal to the theme colors file. 
+
+**Fixing text wrapping**
+
+I'm implementing flex shrink and line truncation to prevent text wrapping in Watch Now buttons. 
+
+**Adjusting layout**
+
+I'm switching to a vertical stack layout for the Watch Now button to match the design doc and avoid text wrapping issues. I'm correcting the Watch Now layout to horizontal (icon-left, text-right) to match the first image reference and fix the vertical stacking issue. I'm implementing a vertical stack of buttons with horizontal gradient and numberOfLines={1} to fix the vertical stacking issue. I'm implementing a vertical stack for the watch row layout based on reference designs, since the label wrapping was the issue not button order. I'm keeping the row layout for watch actions but fixing the wrapping by setting flex direction to row with nowrap and adding flex grow with min width to prevent overflow. I'm adjusting flex properties to give Watch button priority and prevent text wrapping with `numberOfLines={1}` and `flexShrink: 1`. 
+
+I'm adjusting flex ratios to prioritize the Watch button by giving it `flex: 2` and details `flex: 1` to prevent text wrapping. I'm using `flexGrow: 2` for watch and `flexGrow: 1` for details to give watch 2/3 of the row width. I'm refining the watch layout with `flexDirection: 'row'` and `flexShrink: 1` for the label. I'm implementing a flex 2/1 split for watch and details sections with numberOfLines={1} on the watch label. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Fixing layout: "Watch" and "Now" wrap when the Watch button is too narrow in a side-by-side row. Giving the primary button more horizontal space, forcing a single-line label, and using a left-to-right gradient to match the reference.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Checking font scaling compatibility**
+
+I'm verifying `adjustsFontSizeToFit` compatibility across iOS and Android platforms. I'm checking `adjustsFontSizeToFit` compatibility across platforms and considering removing it for Android 0.71+ in favor of flex + `numberOfLines`. 
+
+**Adjusting layout constraints**
+
+I'm adding `flex: 1` to `watchGradient` to ensure it expands properly within its flex parent. I'm adding `flex: 1` to `watchGradient` style to ensure it stretches properly. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx",
+    "/Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was going wrong and what we changed.
+
+### What was wrong (second screenshot)
+With **two equal-width** hero buttons, the “Watch Now” control was **too narrow**. The label broke so **“Watch”** and **“Now”** stacked. The gradient also read as “salmon” because it used the **diagonal** `primaryGradient` instead of a clear **left → right** sweep.
+
+### What we changed
+
+1. **`src/theme/colors.ts`**  
+   - Added **`primaryGradientHorizontal`**: same coral → red tokens, but **`end: { x: 1, y: 0 }`** so the fill matches the reference.
+
+2. **`src/components/home/HomeHeroCard.tsx`**  
+   - **Row layout**: `flexWrap: 'nowrap'` so the two buttons stay on one row.  
+   - **Width split**: **`watchPressable` `flex: 2`**, **`detailsBtn` `flex: 1`** so the primary CTA gets more room and the label can stay on **one line**.  
+   - **Label**: `numberOfLines={1}`, optional **`adjustsFontSizeToFit`** + **`minimumFontScale={0.85}`** for very small widths.  
+   - **Inner row**: `flexWrap: 'nowrap'` on `watchContent`, `flexShrink: 1` on the label, slightly tighter horizontal padding (`spacing.lg`) so icon + text fit.  
+   - **Gradient**: uses **`primaryGradientHorizontal`** instead of the diagonal gradient.  
+   - **`watchGradient`**: `width: '100%'` so the gradient fills the wider button.
+
+Together, this matches the **first** reference: horizontal gradient, icon + **“Watch Now”** on **one line**, and **Details** beside it at a sensible width.

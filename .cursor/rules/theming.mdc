@@ -1,0 +1,29 @@
+---
+description: StreamLite design tokens — typography, radii, contrast
+globs:
+  - src/theme/**/*.ts
+  - src/components/**/*.tsx
+alwaysApply: false
+---
+
+# Theming and UI consistency
+
+`streamlite-project.mdc` covers **colors** and **spacing** (no hardcoded hex/pixels). This file adds **typography** and **radii** plus accessibility.
+
+## Tokens
+
+- **Typography**: use **`src/theme/typography.ts`** for font sizes, weights, and families (Manrope / Inter per `project-spec.md` §6.2). Do not scatter raw `fontSize` / `fontFamily` values in components.
+- **Corner radius**: use **`src/theme/radii.ts`** — spec references (e.g. 16 / 12 / 8px) map to tokens (`xl`, `lg`, `md`, etc.).
+- **Colours / spacing**: **`src/theme/colors.ts`**, **`src/theme/spacing.ts`** only.
+
+## Consistency
+
+- Do not mix **ad-hoc** light/dark values — the app uses the single dark **Cinematic Curator** palette from the spec.
+
+## Accessibility
+
+- Ensure readable **contrast**: primary text uses **`on_surface`** on surfaces; secondary copy uses **`on_surface_variant`** — avoid low-contrast pairings for body text.
+
+## Layout
+
+- Section separation uses **spacing** and **surface** shifts — **no 1px borders** for layout (see `streamlite-project.mdc`).

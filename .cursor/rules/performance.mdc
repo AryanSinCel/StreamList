@@ -1,0 +1,25 @@
+---
+description: StreamLite React performance — memoisation, lists, render stability
+globs:
+  - src/components/**/*.tsx
+  - src/screens/**/*.tsx
+alwaysApply: false
+---
+
+# Performance
+
+Align with `project-spec.md` (lists, infinite scroll) and keep UI responsive.
+
+## Lists
+
+- Use **`FlatList`** (or `SectionList`) for **long** lists and grids that grow — not `ScrollView` + `.map()` for large datasets. Horizontal carousels with bounded items may use `ScrollView` per screen designs.
+
+## Memoisation
+
+- Wrap **expensive** presentational trees in **`React.memo`** when props are stable and re-renders are costly.
+- Use **`useCallback`** for functions passed to memoised children or list `renderItem`.
+- Use **`useMemo`** for derived values that are expensive or used as list dependencies.
+
+## Render hygiene
+
+- Avoid **inline object/array literals** in props when they cause avoidable child re-renders — extract to constants, `useMemo`, or styles outside render when it matters.

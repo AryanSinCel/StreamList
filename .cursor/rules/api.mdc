@@ -1,0 +1,33 @@
+---
+description: StreamLite API client, errors, and TMDB usage
+globs: src/api/**/*.ts
+alwaysApply: false
+---
+
+# API and networking
+
+See `project-spec.md` §8–9 and `streamlite-project.mdc`.
+
+## Central client
+
+- **Only** `src/api/client.ts` configures Axios. **Never** import `axios` elsewhere.
+- Request interceptor: **`Authorization: Bearer`** from env (not per-call strings).
+- Response interceptor: normalise errors to a **consistent shape** (e.g. `message`, `status`) per §9.1.
+- **Retry**: one automatic retry on **network** failures, not on 4xx/5xx — per §9.1.
+
+## Endpoints
+
+- Implement HTTP calls in **`src/api/movies.ts`** (or thin modules) using the shared client — no ad-hoc `fetch` in hooks or components.
+
+## Images
+
+- Build poster/backdrop URLs via **`src/utils/image.ts`**; return **`null`** when TMDB path is null — never concatenate broken URLs.
+
+## Errors and logging
+
+- Surface **user-friendly** `error` strings from hooks — not raw stack traces or TMDB payloads.
+- **Development**: log API failures for debugging. **Production**: avoid noisy console logging of tokens or full responses.
+
+## Pagination
+
+- Use `page` where applicable; respect `total_pages` / per-page limits from TMDB (see spec §8).

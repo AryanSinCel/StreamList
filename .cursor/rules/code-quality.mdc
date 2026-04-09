@@ -1,0 +1,39 @@
+---
+description: StreamLite code style, file size, imports, defensive UI
+globs:
+  - src/**/*.ts
+  - src/**/*.tsx
+alwaysApply: false
+---
+
+# Code quality and defensive UI
+
+Complements `project-spec.md` §9 (TypeScript, error boundaries) and `streamlite-project.mdc`.
+
+## TypeScript
+
+- **`strict`**: no `any`. API shapes live in **`src/api/types.ts`**.
+
+## File size
+
+- Prefer files **under ~300 lines**. Split hooks, components, or API modules when they grow beyond that.
+
+## Imports
+
+- **Group imports**: external packages → blank line → internal `@/` or relative modules → blank line → types/styles if needed.
+- Remove **unused** imports and variables (keep ESLint clean).
+
+## Naming
+
+- Follow existing project naming (PascalCase components, camelCase functions/hooks, consistent file names).
+
+## Error handling and null safety
+
+- **Never** assume TMDB fields exist — handle **`null` / missing** `poster_path`, `backdrop_path`, `runtime`, `vote_average`, empty arrays (see `project-spec.md` §7.3).
+- UI must **not crash** on undefined data — use placeholders, omit chips, or section-level empty/error states.
+- Show **user-friendly** error messages — not raw HTTP text — and expose **retry** via hook **`refetch`** where applicable.
+
+## State
+
+- **Do not duplicate** server-backed state in local `useState` when the hook already provides it.
+- **Lift state** only when multiple siblings need the same UI state (e.g. filters shared across sections).

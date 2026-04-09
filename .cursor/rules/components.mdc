@@ -1,0 +1,35 @@
+---
+description: StreamLite UI components — placement, purity, composition, testability
+globs: src/components/**/*.tsx
+alwaysApply: false
+---
+
+# Components (UI layer)
+
+Cross-check `project-spec.md` §5–6 and `streamlite-project.mdc` (screens do not fetch data).
+
+## Placement
+
+- Put **reusable** UI in `src/components/**` — not under `src/screens/`.
+- Organise by feature area (`common/`, `home/`, etc.) per project structure.
+
+## Purity and hooks
+
+- Keep components **UI-focused**: **no data fetching** (`useEffect` + API) and **no navigation** calls — those belong in screens or thin containers. Passing props from parents is preferred.
+- **Zustand** (e.g. watchlist) may be used in small interactive components when it matches existing patterns — avoid duplicating hook/store logic that already exists upstream.
+- **Never** call hooks conditionally (follow Rules of Hooks).
+
+## Reusable component API
+
+- Accept optional **`style`** (or `contentStyle` / nested style props) and **merge** with defaults so callers can override layout without forking components.
+- Accept **`testID`** on root touchables and forward it for tests.
+
+## Composition
+
+- Prefer **composition** over inheritance; use **`children`** for flexible slots.
+- Avoid **monolithic** files: split into subcomponents (e.g. header / content / footer) when a file approaches **~150–200 lines** or multiple responsibilities.
+- **Do not duplicate** UI — extract shared primitives (buttons, rows, cards) used in more than one place.
+
+## Lists
+
+- For **long or virtualised** lists, prefer **`FlatList`** (or `FlashList` if added) over mapping inside `ScrollView`. Short horizontal carousels may use `ScrollView` per screen spec.

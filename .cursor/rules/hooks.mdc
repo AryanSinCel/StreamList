@@ -1,0 +1,32 @@
+---
+description: StreamLite data hooks — contract, search debounce, cancellation, no navigation
+globs: src/hooks/**/*.ts
+alwaysApply: false
+---
+
+# Hooks (data layer)
+
+Must align with `project-spec.md` §5, §7.2, §9.2 and `streamlite-project.mdc`.
+
+## Contract
+
+- Every data-fetching hook returns: `{ data, loading, error, refetch }` with types from the spec (`UseQueryResult<T>`).
+- **Normalise** API responses in the hook (or in `src/api/movies.ts`) before the UI sees them — components should not parse raw TMDB shapes.
+
+## Independence
+
+- Hooks stay **reusable** and **free of UI imports**.
+- **Do not** call `navigation` or route helpers inside hooks; screens pass callbacks or receive data only.
+
+## Search and filters (`useSearch` and similar)
+
+- **Debounce** text input (e.g. **400ms** after typing stops) per spec — do not request on every keystroke.
+- **Cancel stale requests** when a newer query is in flight (Axios `AbortController` / cancel token) so old responses cannot overwrite new ones.
+
+## Parallel requests
+
+- For independent sections (e.g. detail), initiate calls together and handle per-section results — use **`Promise.allSettled`** as in `streamlite-project.mdc`, not sequential chains when sections must load independently.
+
+## State
+
+- **Do not** mirror server data in extra component `useState` when it already comes from the hook — derive display state from hook `data` / `loading` / `error`.
