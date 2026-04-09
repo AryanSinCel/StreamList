@@ -375,7 +375,20 @@ _**Agent (composer-2-fast)**_
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/performance.mdc</summary>
 
-Status: **loading**
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/theming.mdc</summary>
 
 </details>
 
@@ -385,3 +398,3570 @@ Status: **loading**
 <summary>Tool use: **edit_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/code-quality.mdc</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/navigation.mdc</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/code-quality.mdc</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating project structure**
+
+I'm adding the missing rules folder structure to match the Cursor convention. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Softening the components rule: the spec uses Zustand for the watchlist; banning all store subscriptions would conflict.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/components.mdc</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was added and how it fits the rest of the repo.
+
+### Location
+
+Rules live under **`.cursor/rules/`** (same place `project-spec.md` §5 and §10 expect), as **`.mdc`** files so Cursor can use YAML frontmatter (`description`, `globs`, `alwaysApply`). That matches your list (`components`, `hooks`, `api`, etc.) without duplicating everything already in **`streamlite-project.mdc`**.
+
+### New files
+
+| File | Focus |
+|------|--------|
+| [`.cursor/rules/components.mdc`](.cursor/rules/components.mdc) | Reusable UI under `src/components/`, purity vs screens, composition, `style` + `testID`, `FlatList` for long lists |
+| [`.cursor/rules/hooks.mdc`](.cursor/rules/hooks.mdc) | Hook contract, normalisation, no navigation in hooks, debounce + cancel (spec §7.2), `Promise.allSettled`, avoid duplicating hook data in UI state |
+| [`.cursor/rules/api.mdc`](.cursor/rules/api.mdc) | Central Axios client, interceptors/retry (§9.1), `movies.ts` wrappers, `utils/image.ts`, dev vs prod logging |
+| [`.cursor/rules/navigation.mdc`](.cursor/rules/navigation.mdc) | Typed param lists, pass IDs only, stack-per-tab (§7.5); applies to `navigation/` and `screens/` |
+| [`.cursor/rules/performance.mdc`](.cursor/rules/performance.mdc) | `memo` / `useCallback` / `useMemo`, stable props, `FlatList` for large lists |
+| [`.cursor/rules/theming.mdc`](.cursor/rules/theming.mdc) | `typography.ts`, `radii.ts`, contrast — **not** repeating colours/spacing already in `streamlite-project.mdc` |
+| [`.cursor/rules/code-quality.mdc`](.cursor/rules/code-quality.mdc) | File length, import grouping, null-safety / friendly errors, state discipline |
+
+### What was intentionally **not** duplicated
+
+- **Colours, spacing, no 1px borders, folder layout, hook return shape, API client location** — stay in **`streamlite-project.mdc`**.
+- **Separate `error-handling.md`** — folded into **`code-quality.mdc`** so you don’t maintain two sources of truth.
+
+If you want these as plain **`.md`** under a top-level `rules/` folder for humans only, say so and we can mirror or move them; for Cursor, **`.mdc` in `.cursor/rules/`** is the right shape.
+
+---
+
+_**User**_
+
+Refactor the entire UI codebase to extract reusable components and enforce clean architecture.
+
+GOAL:
+- Screens should contain ONLY screen-specific UI and logic
+- All reusable UI must be moved to a common components folder
+
+INSTRUCTIONS:
+
+1. Identify reusable UI patterns across all screens:
+   - Buttons
+   - Inputs / TextFields
+   - Headers / AppBars
+   - Cards / List items
+   - Loaders / Empty states
+   - Modals / Alerts
+   - Reusable layouts (wrappers, containers, spacing blocks)
+
+2. Extract them into:
+   /components/common
+
+3. Ensure each common component:
+   - Is fully reusable
+   - Has no screen-specific logic
+   - Is driven by props (no hardcoded values)
+   - Uses proper TypeScript interfaces (NO `any`)
+   - Follows consistent design system (spacing, colors, typography)
+
+4. Update all screens:
+   - Replace duplicated UI with common components
+   - Keep screens clean and minimal
+   - Only retain unique layout + business logic
+
+5. If a component is only used in one screen:
+   - Keep it inside that screen OR move to /components/specific
+
+6. Create a clean structure:
+   /components
+     /common
+     /specific (if needed)
+   /screens
+
+7. Add:
+   - index.ts (barrel export) inside /components/common
+   - Proper naming conventions
+   - Small, modular components (avoid large monolith components)
+
+8. DO NOT:
+   - Break existing functionality
+   - Over-engineer unnecessary abstractions
+
+OUTPUT:
+- Refactored files
+- Newly created reusable components
+- Updated imports across project
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+Exploring the components and screens structure to identify duplication and plan the refactor.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **72** results in **1** directory</summary>
+
+Directory: **/Users/aryansingh/Desktop/Project/StreamLite/src** (72 files)
+
+| File |
+|------|
+| `navigation/RootNavigator.tsx` |
+| `components/watchlist/WatchlistBrowseTrendingButton.tsx` |
+| `components/profile/ProfileMenuStack.tsx` |
+| `components/search/SearchTextField.tsx` |
+| `components/detail/DetailMoreLikeRow.tsx` |
+| `components/detail/DetailPortraitCard.tsx` |
+| `components/profile/ProfileMenuRow.tsx` |
+| `theme/typography.ts` |
+| `components/detail/DetailSectionHeader.tsx` |
+| `navigation/AppNavigator.tsx` |
+| `components/detail/DetailWatchlistActions.tsx` |
+| `components/home/HomeLoadingFooter.tsx` |
+| `components/detail/DetailMetaChip.tsx` |
+| `screens/DetailScreen.tsx` |
+| `theme/spacing.ts` |
+| `hooks/useSearch.ts` |
+| `components/watchlist/WatchlistCollectionHeading.tsx` |
+| `components/icons/svgIcons.tsx` |
+| `components/watchlist/WatchlistEmptyState.tsx` |
+| `components/search/SearchGenreChips.tsx` |
+| `components/home/homeMockContent.ts` |
+| `components/detail/DetailMetadataRow.tsx` |
+| `components/search/RecentSearchesBlock.tsx` |
+| `theme/radii.ts` |
+| `components/detail/DetailOutlinedCtaButton.tsx` |
+| `components/detail/DetailTopBar.tsx` |
+| `components/detail/DetailPosterSkeletonSlot.tsx` |
+| `components/home/ContentRow.tsx` |
+| `components/search/SearchTrendingFeatured.tsx` |
+| `components/watchlist/WatchlistPopularSkeletons.tsx` |
+| `screens/HomeScreen.tsx` |
+| `components/profile/ProfileIdentitySection.tsx` |
+| `hooks/useMovieDetail.ts` |
+| `components/detail/detailMockContent.ts` |
+| `components/watchlist/watchlistMockContent.ts` |
+| `components/search/searchMockContent.ts` |
+| `components/home/HomeHeader.tsx` |
+| `components/detail/DetailCastSkeletonSlot.tsx` |
+| `utils/error.ts` |
+| `components/search/SearchHeader.tsx` |
+| `theme/colors.ts` |
+| `utils/tmdbImageUrl.ts` |
+| `components/detail/DetailSynopsisSection.tsx` |
+| `components/watchlist/WatchlistFilterChips.tsx` |
+| `components/detail/DetailHeroBackdrop.tsx` |
+| `utils/image.ts` |
+| `components/detail/DetailCastMember.tsx` |
+| `components/detail/DetailIconButton.tsx` |
+| `components/home/GenreChipStrip.tsx` |
+| `components/watchlist/WatchlistGridCard.tsx` |
+| `types/env.d.ts` |
+| `store/watchlistStore.ts` |
+| `components/search/SearchTrendingSection.tsx` |
+| `components/watchlist/WatchlistHeader.tsx` |
+| `components/watchlist/WatchlistLandscapeCard.tsx` |
+| `components/profile/ProfileSectionHeading.tsx` |
+| `components/profile/ProfileStatsRow.tsx` |
+| `api/types.ts` |
+| `screens/WatchlistScreen.tsx` |
+| `screens/SearchScreen.tsx` |
+| `hooks/useHome.ts` |
+| `components/profile/profileMockContent.ts` |
+| `api/client.ts` |
+| `components/home/MoviePosterCard.tsx` |
+| `components/search/SearchGridPosterCard.tsx` |
+| `components/home/HomeHeroCard.tsx` |
+| `components/detail/DetailCastRow.tsx` |
+| `components/detail/DetailPrimaryCtaButton.tsx` |
+| `components/watchlist/WatchlistBecauseRow.tsx` |
+| `screens/ProfileScreen.tsx` |
+| `api/movies.ts` |
+| `navigation/types.ts` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/.cursor/rules/streamlite-project.mdc</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/HomeScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/ProfileScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailSectionHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistCollectionHeading.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/profile/ProfileSectionHeading.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/MoviePosterCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGridPosterCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistGridCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/GenreChipStrip.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGenreChips.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistFilterChips.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Designing UI components**
+
+I'm designing reusable UI components: AppBrandWordmark, AppHeaderBar, and RingAvatar with configurable borders. I'm unifying padding variants with a compact/comfortable toggle for consistent spacing across components. 
+
+**Updating chip component**
+
+I'm adding an `idleSurface` prop to Chips to control surface container levels. 
+
+**Moving components**
+
+I'm restructuring components into /common and /specific directories as per the user's preference. I'm moving SectionHeaderRow, KickerTitleBlock, and ScreenScrollLayout components to common directory, with ScreenScrollLayout potentially being over-engineered. 
+
+I'm extracting common layout patterns into `common/ScreenContainer.tsx` to avoid duplicating SafeAreaView + ScrollView + padding logic. 
+
+**Extracting components**
+
+I'm extracting AppBrandWordmark and AppHeader into common components for reuse. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailIconButton.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailOutlinedCtaButton.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailPrimaryCtaButton.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchTextField.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Implementing refactor**
+
+I'm creating modular components: AppBrandWordmark, AppHeaderBar, RingAvatar, and IconCircleButton. 
+
+**Creating modular components**
+
+I'm adding `backgroundColor` prop to `DetailIconButton` and creating `HorizontalSelectableChips`, `SectionHeaderRow`, and `KickerTitleHeading` components. I'm moving Detail CTA buttons to common components and creating SearchField and ScreenSafeScrollView wrappers. 
+
+I'm adding index.ts barrel exports for the new component modules. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "DetailSectionHeader|DetailPrimaryCtaButton|DetailOutlinedCtaButton|DetailIconButton|WatchlistCollectionHeading|ProfileSectionHeading"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "DetailSectionHeader|DetailPrimaryCtaButton|DetailOutlinedCtaButton|DetailIconButton|WatchlistCollectionHeading|ProfileSectionHeading",
+  "topFiles": [
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailPrimaryCtaButton.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/profile/ProfileSectionHeading.tsx"
+    },
+    {
+      "matchCount": 21,
+      "uri": ".specstory/history/2026-04-09_07-18-19Z-movie-detail-page-ui.md"
+    },
+    {
+      "matchCount": 5,
+      "uri": "src/components/detail/DetailTopBar.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/screens/DetailScreen.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailIconButton.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/profile/ProfileMenuStack.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/screens/WatchlistScreen.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/screens/ProfileScreen.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailOutlinedCtaButton.tsx"
+    },
+    {
+      "matchCount": 4,
+      "uri": "src/components/detail/DetailWatchlistActions.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/watchlist/WatchlistCollectionHeading.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailSectionHeader.tsx"
+    }
+  ],
+  "totalFiles": 13,
+  "totalMatches": 55
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating profile menu**
+
+I'm creating common components for AppBrandWordmark, AppHeaderBar, and RingAvatar with standardized props. 
+
+**Creating common components**
+
+I'm implementing shared components with standardized props including color values and layout options. 
+
+**Refactoring headings**
+
+I'm replacing WatchlistCollectionHeading with KickerTitleHeading and merging ProfileSectionHeading into it. I'm renaming `WatchlistCollectionHeading` to `KickerTitleHeading` and keeping `MenuSectionLabel` in common. 
+
+**Renaming components**
+
+I'm updating component imports and re-exports to use common versions for DetailScreen components. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeroCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistBrowseTrendingButton.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/profile/ProfileMenuStack.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Creating gradient buttons**
+
+I'm implementing `GradientPillButton` for text-only full-width gradients and will unify `WatchlistBrowseTrendingButton` with a `gradient` prop. I'm creating a shared `GradientButton` component to avoid duplicating gradient logic across multiple button types. 
+
+**Refactoring buttons**
+
+I'm refactoring button components to extract shared gradient logic into reusable components. 
+
+**Updating button component**
+
+I'm adding optional `icon` prop to `PrimaryGradientCtaButton` for flexible button designs. 
+
+**Adding gradient buttons**
+
+I'm implementing `GradientWideButton` and `GradientSurfaceButton` components with customizable gradients and border radii. 
+
+**Creating UI components**
+
+I'm creating foundational UI components like AppBrandWordmark and AppHeaderBar. I'm moving several UI component files to their new locations and updating imports accordingly. 
+
+**Updating imports**
+
+I'm refactoring imports for HomeHeader, SearchHeader, and WatchlistHeader components. I'm deleting unused header components and importing common components like IconScrimButton and SectionHeaderRow. I'm removing unused header components and adding barrel exports for common components. I'm updating the import paths for SVG icons to use the correct relative path from components/common. 
+
+I'm replacing HomeHeader's View with AppHeaderBar to match the intended layout. I'm adding AppBrandWordmark as the default left slot for AppHeaderBar. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Creating common primitives and refactoring feature components to use them. Implementing systematically.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Add src/components/common primitives + index.ts barrel",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Refactor headers, chips, headings, detail buttons, search field",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Update screens/imports; remove thin duplicate files",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Run tsc + lint on touched files",
+      "id": "4",
+      "status": "pending"
+    }
+  ],
+  "success": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/AppBrandWordmark.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/RingAvatar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/RingAvatar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/RingAvatar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/RingAvatar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/AppHeaderBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Checking home chip**
+
+I'm verifying if chipPressed applies to both Home and Search components. 
+
+**Updating chip styling**
+
+I'm adjusting chip styling to use surface_bright for idle pressed state in both Home and Search components. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Fixing chip press feedback to match Home vs Search.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Analyzing chip styles**
+
+When selected and pressed, chipPressed overrides chipSelected due to style order, using `backgroundColor: colors.surface_container_high`. I'm adjusting the chip style precedence to match Home's behavior where chipPressed always applies surface_container_high on press. 
+
+**Adjusting chip styles**
+
+I'm preserving Search's behavior where selected chips become gray when pressed, matching Home's surface_container_high precedence. I'm simplifying the chip press logic to use chipPressedSelected for selected chips and maintaining the original Home logic. I'm aligning the chip press styles with Home variant by applying `chipPressed` style to both selected and idle chips on press. I'm replicating the chip pressed style for Search by applying `chipPressedSelected` to match Home's `surface_container_high` background. 
+
+I'm implementing `pressSelectedTint` prop with default `surface_container_high` for consistent chip styling between Home and Search. I'm simplifying chip press states by using a mode prop to handle Home vs Search styling differences. I'm standardizing pressed state colors to use a single tint variable for consistency across Home and Search chips. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/HorizontalSelectableChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/SectionHeaderRow.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/KickerTitleHeading.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/MenuSectionLabel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/IconScrimButton.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/PrimaryGradientCtaButton.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/OutlinedGhostCtaButton.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/LeadingIconSearchInput.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating LeadingIconSearchInput**
+
+I'm adding `style` to LeadingIconSearchInput's props and fixing the spread order to prevent overriding placeholder. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailTopBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailWatchlistActions.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/index.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/GenreChipStrip.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchGenreChips.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchTextField.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailTopBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/detail/DetailWatchlistActions.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/ProfileScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/WatchlistScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/profile/ProfileMenuStack.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/ProfileScreen.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "DetailSectionHeader|DetailIconButton|DetailPrimaryCtaButton|DetailOutlinedCtaButton|WatchlistCollectionHeading|ProfileSectionHeading"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "DetailSectionHeader|DetailIconButton|DetailPrimaryCtaButton|DetailOutlinedCtaButton|WatchlistCollectionHeading|ProfileSectionHeading",
+  "topFiles": [
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailPrimaryCtaButton.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailIconButton.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailSectionHeader.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/watchlist/WatchlistCollectionHeading.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/profile/ProfileSectionHeading.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/detail/DetailOutlinedCtaButton.tsx"
+    }
+  ],
+  "totalFiles": 6,
+  "totalMatches": 17
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "WatchlistCollectionHeading|ProfileSectionHeading"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "WatchlistCollectionHeading|ProfileSectionHeading",
+  "topFiles": [
+    {
+      "matchCount": 3,
+      "uri": "src/components/watchlist/WatchlistCollectionHeading.tsx"
+    },
+    {
+      "matchCount": 9,
+      "uri": ".specstory/history/2026-04-09_07-18-19Z-movie-detail-page-ui.md"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/components/profile/ProfileSectionHeading.tsx"
+    },
+    {
+      "matchCount": 8,
+      "uri": ".specstory/history/2026-04-09_12-24-36Z-ui-component-development-best-practices.md"
+    }
+  ],
+  "totalFiles": 4,
+  "totalMatches": 22
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/homeMockContent.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/ContentRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Adjusting visual styles**
+
+I'm keeping ContentRow as is to avoid breaking the design, since SectionHeaderRow uses a different color for the action. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+/Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeader.tsx
+  5:10  error  'MovieIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Add src/components/common primitives + index.ts barrel",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Refactor headers, chips, headings, detail buttons, search field",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Update screens/imports; remove thin duplicate files",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Run tsc + lint on touched files",
+      "id": "4",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Add src/components/common primitives + index.ts barrel",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Refactor headers, chips, headings, detail buttons, search field",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Update screens/imports; remove thin duplicate files",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Run tsc + lint on touched files",
+      "id": "4",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/package.json</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npm test -- --passWithNoTests 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npm test -- --passWithNoTests 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 test
+&gt; jest --passWithNoTests
+
+watchman warning:  Recrawled this watch 7 times, most recently because:
+MustScanSubDirs UserDroppedTo resolve, please review the information on
+https://facebook.github.io/watchman/docs/troubleshooting.html#recrawl
+To clear this warning, run:
+&#96;watchman watch-del '/Users/aryansingh/Desktop/Project/StreamLite' ; watchman watch-project '/Users/aryansingh/Desktop/Project/StreamLite'&#96;
+
+PASS __tests__/App.test.tsx
+  ✓ renders correctly (14 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.369 s
+Ran all test suites.
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+Here’s what changed.
+
+### New `src/components/common/` primitives
+
+| Component | Role |
+|-----------|------|
+| `AppBrandWordmark.tsx` | Logo + “StreamList” wordmark (configurable icon size) |
+| `AppHeaderBar.tsx` | Top bar: brand left, optional `rightSlot`, `compact` (Home) vs `comfortable` padding |
+| `RingAvatar.tsx` | Circular avatar with configurable ring + fill colours |
+| `HorizontalSelectableChips.tsx` | Shared horizontal chip list (idle tone + press tint) |
+| `SectionHeaderRow.tsx` | Title + optional action (replaces old detail-only header) |
+| `KickerTitleHeading.tsx` | Kicker + title + optional footnote (watchlist/profile page titles) |
+| `MenuSectionLabel.tsx` | Uppercase menu group label (profile stacks) |
+| `IconScrimButton.tsx` | Circular scrim icon button (detail top bar) |
+| `PrimaryGradientCtaButton.tsx` | Primary gradient CTA with icon + label |
+| `OutlinedGhostCtaButton.tsx` | Outlined secondary CTA |
+| `LeadingIconSearchInput.tsx` | Search field with leading magnifier |
+| `index.ts` | Barrel exports for the above |
+
+### Feature components updated to compose common UI
+
+- **`HomeHeader`** → `AppHeaderBar` + notifications control  
+- **`SearchHeader`** → `AppHeaderBar` + `RingAvatar`  
+- **`WatchlistHeader`** → `AppHeaderBar` + search + `RingAvatar`  
+- **`GenreChipStrip` / `SearchGenreChips`** → `HorizontalSelectableChips` + local state + scroll padding props  
+- **`SearchTextField`** → thin wrapper around `LeadingIconSearchInput`  
+- **`DetailTopBar`** → `IconScrimButton`  
+- **`DetailWatchlistActions`** → `PrimaryGradientCtaButton` + `OutlinedGhostCtaButton`  
+
+### Screens
+
+- **`DetailScreen`** imports `SectionHeaderRow` from `common`  
+- **`WatchlistScreen` / `ProfileScreen`** use `KickerTitleHeading` instead of the old watchlist-only heading  
+
+### Removed (replaced by common)
+
+- `DetailSectionHeader.tsx`, `DetailIconButton.tsx`, `DetailPrimaryCtaButton.tsx`, `DetailOutlinedCtaButton.tsx`  
+- `WatchlistCollectionHeading.tsx`, `ProfileSectionHeading.tsx`  
+
+### Not added (on purpose)
+
+- **`components/specific/`** — the repo already uses `home/`, `search/`, `watchlist/`, `detail/`, `profile/`; nothing was only used once in a way that needed a new `specific` folder.  
+- **`ContentRow`** still uses its own header row so **“See All”** stays `on_surface_variant` (common `SectionHeaderRow` uses `primary_container` for actions).
+
+### Checks
+
+- `npx tsc --noEmit` — pass  
+- `npm run lint` — pass  
+- `npm test` — pass  
+
+Imports elsewhere can use either `../components/common` or the barrel: `../components/common/index` (same exports).
+
+---
+
+_**User**_
+
+tell me why the some tab have different icon size that other make sure the logo icon and logo title size is consistent accross all the screens 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+Checking how the brand icon size is set across headers.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/AppHeaderBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/AppBrandWordmark.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/home/HomeHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/search/SearchHeader.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing brand icon sizing**
+
+I'm removing `brandIconSize={spacing['3xl']}` from WatchlistHeader to fix inconsistent icon sizes across tabs. 
+
+**Standardizing brand icons**
+
+I'm standardizing brand icon sizes by removing overrides and adding a named constant for consistency. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "AppBrandWordmark|brandIconSize"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "AppBrandWordmark|brandIconSize",
+  "topFiles": [
+    {
+      "matchCount": 6,
+      "uri": "src/components/common/AppHeaderBar.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/common/index.ts"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/watchlist/WatchlistHeader.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "src/components/common/AppBrandWordmark.tsx"
+    }
+  ],
+  "totalFiles": 4,
+  "totalMatches": 11
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Removing overrides**
+
+I'm removing the WatchlistHeader override and adding a spacing token `headerBrandIconSize` set to `spacing.xl` for clarity. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Watchlist (and Profile, which reuses `WatchlistHeader`) passed `brandIconSize={spacing['3xl']}` (32px) while Home and Search used the default `spacing.xl` (24px). Removing that override so all tabs use the same brand icon and wordmark scale.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/watchlist/WatchlistHeader.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/common/AppBrandWordmark.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+### Why it looked different
+
+The **flame / movie icon** next to “StreamList” comes from `AppBrandWordmark`, which defaults to **`spacing.xl` (24)**.
+
+**Watchlist** (and **Profile**, which uses the same `WatchlistHeader`) was the only place that overrode that with **`brandIconSize={spacing['3xl']}` (32)**. **Home** and **Search** did not pass that prop, so they kept 24px. That mismatch made the logo icon larger on one tab.
+
+The **wordmark text** was already the same everywhere: `AppBrandWordmark` always uses `typography['display-md']` with **`fontSize: spacing.xl`** for “StreamList.”
+
+### What we changed
+
+- Removed **`brandIconSize={spacing['3xl']}`** from `WatchlistHeader.tsx` so every tab uses the **same default** (`spacing.xl` for both icon and title styling in `AppBrandWordmark`).
+- Updated the comment in `AppBrandWordmark.tsx` so it doesn’t imply a special case per tab.
+
+After this, Home, Search, Watchlist, and Profile should show a **consistent** logo icon + title size in the top chrome.
+
+---
+
+_**User**_
+
+#131313 this should be background of tab bar with opacity 70%
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/navigation",
+  "pattern": "tabBar|TabBar|blur|background"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/navigation",
+  "pattern": "tabBar|TabBar|blur|background",
+  "topFiles": [
+    {
+      "matchCount": 18,
+      "uri": "src/navigation/RootNavigator.tsx"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 18
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating tab bar background**
+
+I'm changing the tab bar background to rgba(19, 19, 19, 0.70) for 70% opacity. I'll use BlurView with overlayColor for the glass effect, matching the spec's rgba(35, 35, 35, 0.70) background. I'm adjusting the tab bar background to use a View overlay with backgroundColor='#131313' and opacity=0.7 over BlurView for consistent visual across platforms. I'm implementing a semi-transparent background overlay on top of the BlurView to achieve the desired opacity effect. I'm updating the color token to rgba(19,19,19,0.7) for the semi-transparent background. I'm updating tab_bar_background color token to rgba(19,19,19,0.7) for consistent tint. 
+
+I'm implementing the blurred background with reduced transparency fallback using the updated tab_bar_background color token. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "tab_bar_background"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "tab_bar_background",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": ".specstory/history/2026-04-09_05-18-07Z-image-format-for-color-change.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/navigation/RootNavigator.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": ".specstory/history/2026-04-08_17-47-42Z-library-installation-and-configuration-in-react-native.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/theme/colors.ts"
+    }
+  ],
+  "totalFiles": 4,
+  "totalMatches": 7
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Updating `tab_bar_background`: it was `rgba(35, 35, 35, 0.70)` (#232323). Replacing it with `surface` (#131313 → rgb(19, 19, 19)) at 70% opacity.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Testing blur effect**
+
+I'm adding a tint overlay for Android blur to match the requested rgba(35,35,35) color. I'm implementing the tint overlay with rgba(35,35,35) at 70% opacity as specified in the design, matching the HTML/CSS mental model. 
+
+**Adding tint overlay**
+
+I'm adding a semi-transparent overlay view to match the spec tint (surface @ 70%) rather than just using the blur effect alone. I'm implementing a semi-transparent overlay with 70% dark surface tint to match the spec. 
+
+I'm updating the background color token to rgba(35,35,35,0.7) to maintain the original appearance while adding the overlay. I'm implementing the tint overlay with rgba(35, 35, 35, 0.7) as specified in the project spec. I'm adding an rgba(19,19,19,0.7) overlay on top of the BlurView to ensure consistent dark appearance. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Applying the surface tint as an overlay over the blur so the bar matches the spec (blur + semi-transparent fill), not only the accessibility fallback.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Reconsidering overlay**
+
+The overlay introduces a behavior change from the pre-refactor navigator, which used only BlurView without rgba overlay. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Reverting the overlay — it would change the glass appearance. Updating only the color token so `#131313` at 70% is used where the tab bar background is defined (including accessibility fallback).
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was wrong and what we changed.
+
+### Before
+`tab_bar_background` was **`rgba(35, 35, 35, 0.70)`**, i.e. about **`#232323`** (`surface_container`), not **`#131313`** (`surface`).
+
+### After
+It’s now **`surface` at 70% opacity**:
+
+- `#131313` → `rgb(19, 19, 19)`
+- Token: **`rgba(19, 19, 19, 0.70)`**
+
+Defined in `src/theme/colors.ts` as `tab_bar_background`, and still passed to `BlurView` as `reducedTransparencyFallbackColor` in `RootNavigator.tsx` (e.g. “Reduce Transparency” / similar modes where blur isn’t used).
+
+### Note on the live blur look
+With the current setup, the normal tab bar is mostly **dark blur**; the updated token mainly corrects the **documented colour** and the **fallback** solid fill. If you want the bar to **always** look like a clear `#131313` @ 70% **tint on top of** the blur (like the spec’s `backgroundColor` + blur), say so and we can add a non-interactive overlay `View` using `colors.tab_bar_background`—that would change the default glass look a bit compared to blur-only.
+
+---
+
+_**User**_
+
+#131313 i said to use this color for background of tab bar 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Setting tab bar color**
+
+I'm using solid #131131 for the tab bar background as requested. 
+
+**Adjusting tab bar colors**
+
+I'm changing tab bar background to use `colors.surface` instead of raw hex to ensure proper display. I'm updating tab bar background to use `colors.surface` for consistency with design system. I'm setting tab bar background to '#131313' with comment 'same as surface' to avoid circular reference in color definitions. I'm setting tab_bar_background to '#131313' explicitly to match surface color. I'm implementing the tab bar background color as #131313 with 70% opacity using rgba format. I'm setting the tab bar background to solid `#131313` using the surface theme token for consistency. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "tab_bar_background"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "tab_bar_background",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/navigation/RootNavigator.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/theme/colors.ts"
+    }
+  ],
+  "totalFiles": 2,
+  "totalMatches": 2
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating tab bar background**
+
+I'm replacing TabBarBackground with a solid View using '#131313' to match the user's exact color preference. I'm changing the TabBarBackground to use a solid #131313 base layer with blur on top, instead of the previous implementation. I'm replacing the blur effect with a solid #131313 background view and removing the BlurView component. I'm implementing a solid background view with #131313 color instead of blur effect. 
+
+I'm switching to a solid surface color for the tab bar background to avoid blur complications. I'm adjusting the BlurView container to properly blur the background content without showing underlying surface colors. I'm implementing solid #131313 tab bar background as requested, removing the glass effect. I'm using solid `colors.surface` for the tab bar background instead of blur, since the user chose solid color. 
+
+I'm setting `tab_bar_background` to `'#131313'` and using `colors.surface` for the tab bar background in RootNavigator. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "blur\\.|from '../theme/spacing'"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "blur\\.|from '../theme/spacing'",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/screens/WatchlistScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/SearchScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/ProfileScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/HomeScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/DetailScreen.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/navigation/RootNavigator.tsx"
+    }
+  ],
+  "totalFiles": 6,
+  "totalMatches": 7
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating navigator**
+
+I'm replacing BlurView with a View component in RootNavigator and using colors.tab_bar_background for the background. I'm replacing `tab_bar_background` with `colors.surface` in RootNavigator to avoid duplication. 
+
+I'm using `colors.surface` directly in RootNavigator and updating the comment in colors to clarify that the tab bar uses surface. I'm removing `tab_bar_background` from colors and using `colors.surface` directly in RootNavigator to avoid confusion. I'm removing `tab_bar_background` from colors.ts and using `colors.surface` directly in RootNavigator. I'm keeping `tab_bar_background` for API clarity but setting it to the same value as `surface` with a comment explaining the duplication. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Using solid `#131313` (`colors.surface`) for the tab bar. `BlurView` was the main fill, so the bar didn't read as `#131313`. Replacing it with a solid `View` using the surface color and removing the redundant `tab_bar_background` token (or aligning it with `surface`).
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{tsx,ts}",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "blur\\.|from '@react-native-community/blur'"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "blur\\.|from '@react-native-community/blur'",
+  "topFiles": [],
+  "totalFiles": 0,
+  "totalMatches": 0
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "BlurView|@react-native-community/blur"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "BlurView|@react-native-community/blur",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "project-spec.md"
+    },
+    {
+      "matchCount": 2,
+      "uri": "ios/Podfile.lock"
+    },
+    {
+      "matchCount": 4,
+      "uri": ".specstory/history/2026-04-09_12-24-36Z-ui-component-development-best-practices.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/theme/spacing.ts"
+    },
+    {
+      "matchCount": 14,
+      "uri": ".specstory/history/2026-04-09_05-18-07Z-image-format-for-color-change.md"
+    },
+    {
+      "matchCount": 22,
+      "uri": ".specstory/history/2026-04-08_17-47-42Z-library-installation-and-configuration-in-react-native.md"
+    },
+    {
+      "matchCount": 3,
+      "uri": "package-lock.json"
+    },
+    {
+      "matchCount": 1,
+      "uri": "package.json"
+    }
+  ],
+  "totalFiles": 8,
+  "totalMatches": 49
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "blur"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "blur",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/theme/colors.ts"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/theme/spacing.ts"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/components/detail/detailMockContent.ts"
+    }
+  ],
+  "totalFiles": 3,
+  "totalMatches": 4
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "from '../theme/spacing'|from \\\"../theme/spacing\\\""
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "from '../theme/spacing'|from \\\"../theme/spacing\\\"",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/screens/SearchScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/HomeScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/DetailScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/ProfileScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/WatchlistScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/navigation/RootNavigator.tsx"
+    }
+  ],
+  "totalFiles": 6,
+  "totalMatches": 6
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/spacing.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit && npm run lint 2>&1
+```
+
+```
+
+&gt; StreamLite@0.0.1 lint
+&gt; eslint .
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{tsx,ts}",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "import.*blur"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "import.*blur",
+  "topFiles": [],
+  "totalFiles": 0,
+  "totalMatches": 0
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was going wrong and what we changed.
+
+### Why it didn’t look like `#131313`
+The tab bar was drawn mostly with **`BlurView`**. That blurs the content **behind** the bar; it is **not** a flat fill of `#131313`. The only place the old `tab_bar_background` rgba was used was `reducedTransparencyFallbackColor`, which mostly shows when blur is reduced (e.g. accessibility), so in normal use you still didn’t get a clear **`#131313`** bar.
+
+### What we did
+1. **`TabBarBackground`** is now a full-size **`View`** with **`backgroundColor: colors.surface`**, and `colors.surface` is **`#131313`** in `src/theme/colors.ts`.
+2. Removed **`BlurView`** from the tab bar so the bar is actually that solid app background color.
+3. Removed the unused **`tab_bar_background`** token (it duplicated what you want: **`surface`**).
+4. Removed the unused **`blur`** export from `src/theme/spacing.ts` (nothing referenced it after dropping `BlurView`).
+
+So the bottom tab bar background is explicitly the same **`#131313`** as the rest of the app surface.
+
+**Note:** The project spec also describes a **glass** tab bar (blur + tint). If you want **blur again** but still anchored on `#131313`, say so and we can layer blur with a **`#131313` @ 70%** tint on top; right now it’s **opaque `#131313`** as you asked.
+
+---
+
+_**User**_
+
+i want to decrease the opacity of tab bar background 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+Checking how the tab bar background is implemented now:
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/theme/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Right now the tab bar is **fully opaque**: `TabBarBackground` uses `backgroundColor: colors.surface`, and `surface` is **`#131313`** with **no alpha** (see ```43:49:src/navigation/RootNavigator.tsx```).
+
+So “decrease opacity” means making that fill **more transparent** (lower alpha), so you see more of the content behind the bar.
+
+### What to change (conceptually)
+
+1. **Add a theme token** in `src/theme/colors.ts` (per your “no hardcoded colors in components” rule), e.g.  
+   `tab_bar_background: 'rgba(19, 19, 19, 0.55)'`  
+   `#131313` is `rgb(19, 19, 19)`; pick an alpha **lower** than whatever you consider “current” (e.g. `0.70` → `0.55` or `0.5`).
+
+2. **Use that token** in `TabBarBackground` instead of `colors.surface`:  
+   `backgroundColor: colors.tab_bar_background`
+
+3. **Optional:** If the bar looks too “washed” or you want the spec’s **glass** look again, put **`BlurView`** behind the tinted `View` so blur + semi-transparent `#131313` stack together.
+
+### Naming note
+
+“Decrease opacity” in UI terms usually means **more see-through** → **lower** alpha (e.g. `0.7` → `0.5`). If you meant **stronger / darker** bar, that would be **higher** alpha.
+
+I’m in **Ask mode**, so I can’t edit the repo. If you want this applied for you, switch to **Agent mode** and say the target alpha (e.g. `0.6`) or whether you want blur back.

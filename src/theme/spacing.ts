@@ -96,9 +96,3 @@ export const spacing = {
 } as const;
 
 export type SpacingName = keyof typeof spacing;
-
-/** BlurView `blurAmount` — spec §6.4 (tab bar) vs general overlays */
-export const blur = {
-  tabBar: 20,
-  sm: 8,
-} as const;

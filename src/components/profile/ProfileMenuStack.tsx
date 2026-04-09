@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { MenuSectionLabel } from '../common/MenuSectionLabel';
 import type { ProfileMenuItem } from './profileMockContent';
 import { ProfileMenuRow } from './ProfileMenuRow';
-import { ProfileSectionHeading } from './ProfileSectionHeading';
 import { spacing } from '../../theme/spacing';
 
 export interface ProfileMenuStackProps {
@@ -22,7 +22,7 @@ export function ProfileMenuStack({
 }: ProfileMenuStackProps) {
   return (
     <View style={styles.section}>
-      <ProfileSectionHeading title={sectionTitle} />
+      <MenuSectionLabel title={sectionTitle} />
       <View style={styles.stack}>
         {items.map((item) => (
           <ProfileMenuRow

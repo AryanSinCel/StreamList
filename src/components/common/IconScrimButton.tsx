@@ -5,25 +5,31 @@ import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 
-export interface DetailIconButtonProps {
+export interface IconScrimButtonProps {
   children: React.ReactNode;
   onPress?: () => void;
   accessibilityLabel: string;
+  /** Defaults to detail hero scrim token. */
+  backgroundColor?: string;
+  testID?: string;
 }
 
-export function DetailIconButton({
+export function IconScrimButton({
   children,
   onPress,
   accessibilityLabel,
-}: DetailIconButtonProps) {
+  backgroundColor = colors.detail_top_bar_scrim,
+  testID,
+}: IconScrimButtonProps) {
   return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="button"
       onPress={onPress}
       style={({ pressed }) => [styles.hit, pressed && styles.pressed]}
+      testID={testID}
     >
-      <View style={styles.inner}>{children}</View>
+      <View style={[styles.inner, { backgroundColor }]}>{children}</View>
     </Pressable>
   );
 }
@@ -44,6 +50,5 @@ const styles = StyleSheet.create({
     borderRadius: radii.full,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.detail_top_bar_scrim,
   },
 });

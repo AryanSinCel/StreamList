@@ -14,7 +14,7 @@ import {
 import { DetailHeroBackdrop } from '../components/detail/DetailHeroBackdrop';
 import { DetailMetadataRow } from '../components/detail/DetailMetadataRow';
 import { DetailMoreLikeRow } from '../components/detail/DetailMoreLikeRow';
-import { DetailSectionHeader } from '../components/detail/DetailSectionHeader';
+import { SectionHeaderRow } from '../components/common/SectionHeaderRow';
 import { DetailSynopsisSection } from '../components/detail/DetailSynopsisSection';
 import { DetailTopBar } from '../components/detail/DetailTopBar';
 import { DetailWatchlistActions } from '../components/detail/DetailWatchlistActions';
@@ -75,7 +75,7 @@ export function DetailScreen({ navigation }: DetailScreenProps) {
           <Text style={styles.castHeading}>Cast</Text>
           <DetailCastRow members={[...DETAIL_CAST]} showSkeletonSlot />
 
-          <DetailSectionHeader title="More Like This" actionLabel="See All" />
+          <SectionHeaderRow title="More Like This" actionLabel="See All" />
           <DetailMoreLikeRow items={[...DETAIL_SIMILAR]} showSkeletonSlot />
         </View>
       </ScrollView>

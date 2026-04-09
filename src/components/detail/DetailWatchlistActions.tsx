@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { OutlinedGhostCtaButton } from '../common/OutlinedGhostCtaButton';
+import { PrimaryGradientCtaButton } from '../common/PrimaryGradientCtaButton';
 import { BookmarkAddIcon, BookmarkAddedIcon } from '../icons/svgIcons';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
-import { DetailOutlinedCtaButton } from './DetailOutlinedCtaButton';
-import { DetailPrimaryCtaButton } from './DetailPrimaryCtaButton';
 
 export interface DetailWatchlistActionsProps {
   stateLabel: string;
@@ -25,7 +25,7 @@ export function DetailWatchlistActions({
 }: DetailWatchlistActionsProps) {
   return (
     <View style={styles.block}>
-      <DetailPrimaryCtaButton
+      <PrimaryGradientCtaButton
         label="Add to Watchlist"
         icon={
           <BookmarkAddIcon color={colors.on_primary} size={spacing.lg} />
@@ -34,7 +34,7 @@ export function DetailWatchlistActions({
       />
       <View style={styles.secondaryBlock}>
         <Text style={styles.stateCaption}>{stateLabel}</Text>
-        <DetailOutlinedCtaButton
+        <OutlinedGhostCtaButton
           label="In Watchlist"
           icon={
             <BookmarkAddedIcon

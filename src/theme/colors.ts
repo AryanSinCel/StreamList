@@ -34,9 +34,6 @@ export const colors = {
   /** Secondary hero button (surface_container_highest @ ~80% opacity, home.html) */
   surface_container_highest_backdrop: 'rgba(53, 53, 52, 0.8)',
 
-  /** Glass tab bar (project-spec §6.4) */
-  tab_bar_background: 'rgba(35, 35, 35, 0.70)',
-
   /** Poster / hero dim overlay (stitch “group-hover” scrim) */
   image_overlay: 'rgba(0, 0, 0, 0.2)',
   /** Top app bar scrim over hero (stitch bg-neutral-900/70) */

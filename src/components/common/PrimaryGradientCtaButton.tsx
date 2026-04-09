@@ -7,22 +7,25 @@ import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
-export interface DetailPrimaryCtaButtonProps {
+export interface PrimaryGradientCtaButtonProps {
   label: string;
   icon: React.ReactNode;
   onPress?: () => void;
+  testID?: string;
 }
 
-export function DetailPrimaryCtaButton({
+export function PrimaryGradientCtaButton({
   label,
   icon,
   onPress,
-}: DetailPrimaryCtaButtonProps) {
+  testID,
+}: PrimaryGradientCtaButtonProps) {
   return (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
       style={({ pressed }) => [styles.pressable, pressed && styles.pressed]}
+      testID={testID}
     >
       <LinearGradient
         colors={primaryGradient.colors}

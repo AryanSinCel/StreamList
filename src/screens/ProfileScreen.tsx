@@ -17,7 +17,7 @@ import {
   PROFILE_PAGE_TITLE,
   PROFILE_STATS,
 } from '../components/profile/profileMockContent';
-import { WatchlistCollectionHeading } from '../components/watchlist/WatchlistCollectionHeading';
+import { KickerTitleHeading } from '../components/common/KickerTitleHeading';
 import { WatchlistHeader } from '../components/watchlist/WatchlistHeader';
 import type { ProfileScreenProps } from '../navigation/types';
 import { colors } from '../theme/colors';
@@ -48,10 +48,7 @@ export function ProfileScreen({ navigation }: ProfileScreenProps) {
           ]}
         >
           <View style={styles.page}>
-            <WatchlistCollectionHeading
-              kicker={PROFILE_KICKER}
-              title={PROFILE_PAGE_TITLE}
-            />
+            <KickerTitleHeading kicker={PROFILE_KICKER} title={PROFILE_PAGE_TITLE} />
             <ProfileIdentitySection
               avatarUri={PROFILE_AVATAR_URI}
               displayName={PROFILE_DISPLAY_NAME}

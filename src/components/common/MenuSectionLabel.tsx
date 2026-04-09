@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
-export interface ProfileSectionHeadingProps {
+export interface MenuSectionLabelProps {
   title: string;
+  style?: StyleProp<ViewStyle>;
+  testID?: string;
 }
 
-export function ProfileSectionHeading({ title }: ProfileSectionHeadingProps) {
+export function MenuSectionLabel({ title, style, testID }: MenuSectionLabelProps) {
   return (
-    <View style={styles.wrap}>
+    <View style={[styles.wrap, style]} testID={testID}>
       <Text style={styles.text}>{title}</Text>
     </View>
   );

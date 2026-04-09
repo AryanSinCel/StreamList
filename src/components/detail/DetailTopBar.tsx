@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { IconScrimButton } from '../common/IconScrimButton';
 import { ArrowBackIcon, ShareIcon } from '../icons/svgIcons';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
-import { DetailIconButton } from './DetailIconButton';
 
 export interface DetailTopBarProps {
   onBackPress: () => void;
@@ -19,19 +19,13 @@ export function DetailTopBar({ onBackPress, onSharePress }: DetailTopBarProps) {
       style={[styles.bar, { paddingTop: insets.top + spacing.sm }]}
       pointerEvents="box-none"
     >
-      <DetailIconButton
-        accessibilityLabel="Go back"
-        onPress={onBackPress}
-      >
+      <IconScrimButton accessibilityLabel="Go back" onPress={onBackPress}>
         <ArrowBackIcon color={colors.on_surface} size={spacing.iconMd} />
-      </DetailIconButton>
+      </IconScrimButton>
       <View style={styles.right}>
-        <DetailIconButton
-          accessibilityLabel="Share"
-          onPress={onSharePress}
-        >
+        <IconScrimButton accessibilityLabel="Share" onPress={onSharePress}>
           <ShareIcon color={colors.on_surface} size={spacing.iconMd} />
-        </DetailIconButton>
+        </IconScrimButton>
       </View>
     </View>
   );

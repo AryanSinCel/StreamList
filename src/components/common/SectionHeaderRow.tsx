@@ -1,23 +1,34 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
-export interface DetailSectionHeaderProps {
+export interface SectionHeaderRowProps {
   title: string;
   actionLabel?: string;
   onActionPress?: () => void;
+  style?: StyleProp<ViewStyle>;
+  testID?: string;
 }
 
-export function DetailSectionHeader({
+export function SectionHeaderRow({
   title,
   actionLabel,
   onActionPress,
-}: DetailSectionHeaderProps) {
+  style,
+  testID,
+}: SectionHeaderRowProps) {
   return (
-    <View style={styles.row}>
+    <View style={[styles.row, style]} testID={testID}>
       <Text style={styles.title}>{title}</Text>
       {actionLabel ? (
         <Pressable

@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { WatchlistBecauseRow } from '../components/watchlist/WatchlistBecauseRow';
-import { WatchlistCollectionHeading } from '../components/watchlist/WatchlistCollectionHeading';
+import { KickerTitleHeading } from '../components/common/KickerTitleHeading';
 import { WatchlistEmptyState } from '../components/watchlist/WatchlistEmptyState';
 import { WatchlistFilterChips } from '../components/watchlist/WatchlistFilterChips';
 import { WatchlistGridCard } from '../components/watchlist/WatchlistGridCard';
@@ -68,10 +68,10 @@ export function WatchlistScreen({ navigation }: WatchlistScreenProps) {
           ]}
         >
           <View style={styles.page}>
-            <WatchlistCollectionHeading
+            <KickerTitleHeading
               kicker={WATCHLIST_KICKER}
               title="My Watchlist"
-              countLabel={MOCK_WATCHLIST_UI_EMPTY ? '0 titles' : undefined}
+              footnote={MOCK_WATCHLIST_UI_EMPTY ? '0 titles' : undefined}
             />
 
             {MOCK_WATCHLIST_UI_EMPTY ? (

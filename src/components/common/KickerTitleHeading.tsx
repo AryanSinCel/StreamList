@@ -1,28 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
-export interface WatchlistCollectionHeadingProps {
+export interface KickerTitleHeadingProps {
   kicker: string;
   title: string;
-  countLabel?: string;
+  footnote?: string;
+  style?: StyleProp<ViewStyle>;
+  testID?: string;
 }
 
-export function WatchlistCollectionHeading({
+export function KickerTitleHeading({
   kicker,
   title,
-  countLabel,
-}: WatchlistCollectionHeadingProps) {
+  footnote,
+  style,
+  testID,
+}: KickerTitleHeadingProps) {
   return (
-    <View style={styles.wrap}>
+    <View style={[styles.wrap, style]} testID={testID}>
       <Text style={styles.kicker}>{kicker}</Text>
       <Text style={styles.title}>{title}</Text>
-      {countLabel ? (
-        <Text style={styles.count}>{countLabel}</Text>
-      ) : null}
+      {footnote ? <Text style={styles.footnote}>{footnote}</Text> : null}
     </View>
   );
 }
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
     ...typography['display-md'],
     color: colors.on_surface,
   },
-  count: {
+  footnote: {
     ...typography['body-md'],
     fontWeight: '500',
     color: colors.on_surface_variant,

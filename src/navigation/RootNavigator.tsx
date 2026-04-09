@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { BlurView } from '@react-native-community/blur';
+import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
@@ -15,7 +14,7 @@ import { ProfileScreen } from '../screens/ProfileScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { WatchlistScreen } from '../screens/WatchlistScreen';
 import { colors } from '../theme/colors';
-import { blur, spacing } from '../theme/spacing';
+import { spacing } from '../theme/spacing';
 import { typography } from '../theme/typography';
 import type {
   HomeStackParamList,
@@ -41,13 +40,11 @@ const detailScreenOptions = {
   headerShown: false,
 } as const;
 
+/** Tab bar fill — `surface` (#131313), project-spec §7.5 / §6.4 chrome. */
 function TabBarBackground() {
   return (
-    <BlurView
-      blurAmount={blur.tabBar}
-      blurType="dark"
-      reducedTransparencyFallbackColor={colors.tab_bar_background}
-      style={StyleSheet.absoluteFill}
+    <View
+      style={[StyleSheet.absoluteFill, { backgroundColor: colors.surface }]}
     />
   );
 }

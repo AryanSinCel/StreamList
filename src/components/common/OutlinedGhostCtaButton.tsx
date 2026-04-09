@@ -6,28 +6,28 @@ import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
-export interface DetailOutlinedCtaButtonProps {
+export interface OutlinedGhostCtaButtonProps {
   label: string;
   icon: React.ReactNode;
   onPress?: () => void;
+  testID?: string;
 }
 
 /**
- * “In Watchlist” — project-spec §7.3 (surface + outline_variant ghost border).
+ * Outlined CTA — `surface_container_highest` + `outline_variant` (spec §7.3).
  */
-export function DetailOutlinedCtaButton({
+export function OutlinedGhostCtaButton({
   label,
   icon,
   onPress,
-}: DetailOutlinedCtaButtonProps) {
+  testID,
+}: OutlinedGhostCtaButtonProps) {
   return (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
-      style={({ pressed }) => [
-        styles.pressable,
-        pressed && styles.pressed,
-      ]}
+      style={({ pressed }) => [styles.pressable, pressed && styles.pressed]}
+      testID={testID}
     >
       <View style={styles.inner}>
         {icon}
