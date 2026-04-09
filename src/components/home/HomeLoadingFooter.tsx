@@ -5,8 +5,14 @@ import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
-/** Visual-only footer matching home.html loading strip (no async behaviour). */
-export function HomeLoadingFooter() {
+export interface HomeLoadingFooterProps {
+  visible?: boolean;
+}
+
+export function HomeLoadingFooter({ visible = false }: HomeLoadingFooterProps) {
+  if (!visible) {
+    return null;
+  }
   return (
     <View style={styles.row}>
       <ActivityIndicator color={colors.primary_container} size="small" />

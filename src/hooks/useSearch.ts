@@ -1,8 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { searchMovies } from '../api/movies';
-import type { MovieListItem } from '../api/types';
-import { getErrorMessage } from '../utils/error';
+import { getGenres, getTrendingMovies, searchMovies } from '../api/movies';
+import type { Genre, MovieListItem } from '../api/types';
+import {
+  clearRecentSearches,
+  loadRecentSearches,
+  pushRecentSearch,
+  removeRecentSearch,
+} from '../utils/recentSearchesStorage';
+import { getErrorMessage, isAbortError } from '../utils/error';
+
+const DEBOUNCE_MS = 400;
 
 export interface SearchData {
   results: MovieListItem[];
@@ -12,19 +20,44 @@ export interface SearchData {
   hasMore: boolean;
   query: string;
   fetchNextPage: () => Promise<void>;
+  /** Trending for default (empty query) search screen — featured + grid. */
+  defaultTrending: MovieListItem[];
+  genres: Genre[];
+  defaultTrendingLoading: boolean;
+  defaultTrendingError: string | null;
+  refetchDefaultTrending: () => void;
+  recentSearches: string[];
+  clearAllRecentSearches: () => Promise<void>;
+  removeRecentSearchTerm: (term: string) => Promise<void>;
 }
 
 /**
- * TMDB movie search with append pagination. Pass the current query string;
- * debouncing / trimming for UX belongs in the screen.
+ * TMDB movie search: debounced query, cancellation, pagination, recent terms.
  */
-export function useSearch(query: string): {
-  data: SearchData | null;
+export function useSearch(rawQuery: string): {
+  data: SearchData;
   loading: boolean;
   error: string | null;
   refetch: () => void;
 } {
-  const trimmed = query.trim();
+  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (debounceTimerRef.current != null) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    debounceTimerRef.current = setTimeout(() => {
+      debounceTimerRef.current = null;
+      setDebouncedQuery(rawQuery.trim());
+    }, DEBOUNCE_MS);
+    return () => {
+      if (debounceTimerRef.current != null) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [rawQuery]);
+
   const [results, setResults] = useState<MovieListItem[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -32,10 +65,24 @@ export function useSearch(query: string): {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const requestIdRef = useRef(0);
+  const abortRef = useRef<AbortController | null>(null);
   const activeQueryRef = useRef('');
   const pageRef = useRef(1);
   const totalPagesRef = useRef(1);
   const fetchingMoreRef = useRef(false);
+
+  const [genres, setGenres] = useState<Genre[]>([]);
+  const [defaultTrending, setDefaultTrending] = useState<MovieListItem[]>([]);
+  const [defaultTrendingLoading, setDefaultTrendingLoading] = useState(true);
+  const [defaultTrendingError, setDefaultTrendingError] = useState<string | null>(
+    null,
+  );
+
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+
+  useEffect(() => {
+    loadRecentSearches().then(setRecentSearches).catch(() => {});
+  }, []);
 
   useEffect(() => {
     pageRef.current = page;
@@ -45,12 +92,36 @@ export function useSearch(query: string): {
     totalPagesRef.current = totalPages;
   }, [totalPages]);
 
+  const fetchDefaultTrending = useCallback(async () => {
+    setDefaultTrendingLoading(true);
+    setDefaultTrendingError(null);
+    try {
+      const [g, t] = await Promise.all([getGenres(), getTrendingMovies({ page: 1 })]);
+      setGenres(g.genres ?? []);
+      setDefaultTrending(t.results);
+    } catch (e) {
+      setDefaultTrendingError(getErrorMessage(e));
+      setDefaultTrending([]);
+    } finally {
+      setDefaultTrendingLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchDefaultTrending().catch(() => {});
+  }, [fetchDefaultTrending]);
+
   const runSearch = useCallback(
     async (pageNum: number, mode: 'replace' | 'append') => {
-      const q = trimmed;
+      const q = debouncedQuery;
       if (!q) {
         return;
       }
+      if (abortRef.current) {
+        abortRef.current.abort();
+      }
+      const controller = new AbortController();
+      abortRef.current = controller;
       const requestId = ++requestIdRef.current;
       if (mode === 'replace') {
         setLoading(true);
@@ -59,7 +130,10 @@ export function useSearch(query: string): {
       activeQueryRef.current = q;
 
       try {
-        const res = await searchMovies(q, { page: pageNum });
+        const res = await searchMovies(q, {
+          page: pageNum,
+          signal: controller.signal,
+        });
         if (requestId !== requestIdRef.current) {
           return;
         }
@@ -69,7 +143,14 @@ export function useSearch(query: string): {
         setResults((prev) =>
           mode === 'append' ? [...prev, ...res.results] : res.results,
         );
+        if (mode === 'replace' && res.total_results > 0) {
+          const next = await pushRecentSearch(q);
+          setRecentSearches(next);
+        }
       } catch (e) {
+        if (isAbortError(e)) {
+          return;
+        }
         if (requestId !== requestIdRef.current) {
           return;
         }
@@ -86,11 +167,14 @@ export function useSearch(query: string): {
         }
       }
     },
-    [trimmed],
+    [debouncedQuery],
   );
 
   useEffect(() => {
-    if (!trimmed) {
+    if (!debouncedQuery) {
+      if (abortRef.current) {
+        abortRef.current.abort();
+      }
       requestIdRef.current += 1;
       activeQueryRef.current = '';
       setResults([]);
@@ -102,17 +186,19 @@ export function useSearch(query: string): {
       return;
     }
     runSearch(1, 'replace').catch(() => {});
-  }, [trimmed, runSearch]);
+  }, [debouncedQuery, runSearch]);
 
   const refetch = useCallback(() => {
-    if (!trimmed) {
-      return;
+    if (debouncedQuery) {
+      runSearch(1, 'replace').catch(() => {});
+    } else {
+      fetchDefaultTrending().catch(() => {});
     }
-    runSearch(1, 'replace').catch(() => {});
-  }, [trimmed, runSearch]);
+  }, [debouncedQuery, runSearch, fetchDefaultTrending]);
 
   const fetchNextPage = useCallback(async () => {
-    if (!trimmed || activeQueryRef.current !== trimmed) {
+    const q = debouncedQuery;
+    if (!q || activeQueryRef.current !== q) {
       return;
     }
     if (fetchingMoreRef.current) {
@@ -127,11 +213,38 @@ export function useSearch(query: string): {
     } finally {
       fetchingMoreRef.current = false;
     }
-  }, [trimmed, runSearch]);
+  }, [debouncedQuery, runSearch]);
 
-  const data = useMemo<SearchData | null>(() => {
-    if (!trimmed) {
-      return null;
+  const clearRecent = useCallback(async () => {
+    await clearRecentSearches();
+    setRecentSearches([]);
+  }, []);
+
+  const dismissRecent = useCallback(async (term: string) => {
+    const next = await removeRecentSearch(term);
+    setRecentSearches(next);
+  }, []);
+
+  const data = useMemo<SearchData>(() => {
+    const hasQuery = debouncedQuery.length > 0;
+    if (!hasQuery) {
+      return {
+        results: [],
+        page: 1,
+        totalPages: 1,
+        totalResults: 0,
+        hasMore: false,
+        query: '',
+        fetchNextPage,
+        defaultTrending,
+        genres,
+        defaultTrendingLoading,
+        defaultTrendingError,
+        refetchDefaultTrending: fetchDefaultTrending,
+        recentSearches,
+        clearAllRecentSearches: clearRecent,
+        removeRecentSearchTerm: dismissRecent,
+      };
     }
     const hasMore = page < totalPages;
     return {
@@ -140,17 +253,36 @@ export function useSearch(query: string): {
       totalPages,
       totalResults,
       hasMore,
-      query: trimmed,
+      query: debouncedQuery,
       fetchNextPage,
+      defaultTrending,
+      genres,
+      defaultTrendingLoading,
+      defaultTrendingError,
+      refetchDefaultTrending: fetchDefaultTrending,
+      recentSearches,
+      clearAllRecentSearches: clearRecent,
+      removeRecentSearchTerm: dismissRecent,
     };
   }, [
-    trimmed,
+    debouncedQuery,
     results,
     page,
     totalPages,
     totalResults,
     fetchNextPage,
+    defaultTrending,
+    genres,
+    defaultTrendingLoading,
+    defaultTrendingError,
+    fetchDefaultTrending,
+    recentSearches,
+    clearRecent,
+    dismissRecent,
   ]);
 
-  return { data, loading, error, refetch };
+  const topLoading =
+    debouncedQuery.length > 0 ? loading : defaultTrendingLoading;
+
+  return { data, loading: topLoading, error, refetch };
 }

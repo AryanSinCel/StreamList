@@ -9,7 +9,7 @@ import { typography } from '../../theme/typography';
 export interface DetailCastMemberProps {
   name: string;
   character: string;
-  photoUri: string;
+  photoUri: string | null;
 }
 
 export function DetailCastMember({
@@ -17,13 +17,19 @@ export function DetailCastMember({
   character,
   photoUri,
 }: DetailCastMemberProps) {
+  const hasPhoto = photoUri != null && photoUri.length > 0;
+
   return (
     <View style={styles.cell}>
-      <Image
-        accessibilityIgnoresInvertColors
-        source={{ uri: photoUri }}
-        style={styles.avatar}
-      />
+      {hasPhoto ? (
+        <Image
+          accessibilityIgnoresInvertColors
+          source={{ uri: photoUri as string }}
+          style={styles.avatar}
+        />
+      ) : (
+        <View style={[styles.avatar, styles.avatarPlaceholder]} />
+      )}
       <Text style={styles.name} numberOfLines={2}>
         {name}
       </Text>
@@ -45,6 +51,10 @@ const styles = StyleSheet.create({
     borderRadius: radii.full,
     marginBottom: spacing.sm,
     backgroundColor: colors.surface_container_high,
+  },
+  avatarPlaceholder: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   name: {
     ...typography['label-cast-name'],

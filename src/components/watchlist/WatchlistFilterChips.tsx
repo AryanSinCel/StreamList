@@ -8,8 +8,18 @@ import { typography } from '../../theme/typography';
 
 const FILTERS = ['All', 'Movies', 'Series'] as const;
 
-export function WatchlistFilterChips() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+export interface WatchlistFilterChipsProps {
+  selectedIndex?: number;
+  onSelectIndex?: (index: number) => void;
+}
+
+export function WatchlistFilterChips({
+  selectedIndex: controlledIndex,
+  onSelectIndex,
+}: WatchlistFilterChipsProps) {
+  const [internalIndex, setInternalIndex] = useState(0);
+  const selectedIndex = controlledIndex ?? internalIndex;
+  const setIndex = onSelectIndex ?? setInternalIndex;
 
   return (
     <View style={styles.segment}>
@@ -20,7 +30,7 @@ export function WatchlistFilterChips() {
             key={label}
             accessibilityRole="button"
             accessibilityState={{ selected }}
-            onPress={() => setSelectedIndex(index)}
+            onPress={() => setIndex(index)}
             style={({ pressed }) => [
               styles.chip,
               selected ? styles.chipSelected : styles.chipIdle,

@@ -2,88 +2,108 @@ import React from 'react';
 import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { PlayIcon } from '../icons/svgIcons';
-import {
-  HERO_BACKDROP_URI,
-  HERO_OVERVIEW,
-  HERO_TITLE,
-} from './homeMockContent';
+import { MovieIcon, PlayIcon } from '../icons/svgIcons';
 import { colors, primaryGradientHorizontal } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
 export interface HomeHeroCardProps {
+  backdropUri: string | null;
+  title: string;
+  overview: string;
+  loading?: boolean;
   onPressWatch?: () => void;
   onPressDetails?: () => void;
 }
 
 export function HomeHeroCard({
+  backdropUri,
+  title,
+  overview,
+  loading = false,
   onPressWatch,
   onPressDetails,
 }: HomeHeroCardProps) {
+  const hasBackdrop = backdropUri != null && backdropUri.length > 0;
+
+  const inner = (
+    <>
+      <LinearGradient
+        colors={['transparent', colors.surface]}
+        locations={[0.45, 1]}
+        style={StyleSheet.absoluteFill}
+      />
+      <View style={styles.heroContent}>
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>New Release</Text>
+        </View>
+        <Text style={styles.heroTitle}>
+          {loading ? ' ' : title.toUpperCase()}
+        </Text>
+        <Text style={styles.heroBody} numberOfLines={2}>
+          {loading ? ' ' : overview}
+        </Text>
+        <View style={styles.actions}>
+          <Pressable
+            accessibilityRole="button"
+            onPress={onPressWatch}
+            style={({ pressed }) => [
+              styles.watchPressable,
+              pressed && styles.watchPressed,
+            ]}
+          >
+            <LinearGradient
+              colors={primaryGradientHorizontal.colors}
+              start={primaryGradientHorizontal.start}
+              end={primaryGradientHorizontal.end}
+              style={styles.watchGradient}
+            >
+              <View style={styles.watchContent}>
+                <PlayIcon color={colors.on_primary} size={spacing.lg} />
+                <Text
+                  style={styles.watchLabel}
+                  numberOfLines={1}
+                  adjustsFontSizeToFit
+                  minimumFontScale={0.85}
+                >
+                  Watch Now
+                </Text>
+              </View>
+            </LinearGradient>
+          </Pressable>
+          <Pressable
+            accessibilityRole="button"
+            onPress={onPressDetails}
+            style={({ pressed }) => [
+              styles.detailsBtn,
+              pressed && styles.detailsPressed,
+            ]}
+          >
+            <Text style={styles.detailsLabel}>Details</Text>
+          </Pressable>
+        </View>
+      </View>
+    </>
+  );
+
   return (
     <View style={styles.outer}>
-      <ImageBackground
-        accessibilityRole="image"
-        source={{ uri: HERO_BACKDROP_URI }}
-        style={styles.heroBg}
-        imageStyle={styles.heroImage}
-      >
-        <LinearGradient
-          colors={['transparent', colors.surface]}
-          locations={[0.45, 1]}
-          style={StyleSheet.absoluteFill}
-        />
-        <View style={styles.heroContent}>
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>New Release</Text>
-          </View>
-          <Text style={styles.heroTitle}>{HERO_TITLE}</Text>
-          <Text style={styles.heroBody} numberOfLines={2}>
-            {HERO_OVERVIEW}
-          </Text>
-          <View style={styles.actions}>
-            <Pressable
-              accessibilityRole="button"
-              onPress={onPressWatch}
-              style={({ pressed }) => [
-                styles.watchPressable,
-                pressed && styles.watchPressed,
-              ]}
-            >
-              <LinearGradient
-                colors={primaryGradientHorizontal.colors}
-                start={primaryGradientHorizontal.start}
-                end={primaryGradientHorizontal.end}
-                style={styles.watchGradient}
-              >
-                <View style={styles.watchContent}>
-                  <PlayIcon color={colors.on_primary} size={spacing.lg} />
-                  <Text
-                    style={styles.watchLabel}
-                    numberOfLines={1}
-                    adjustsFontSizeToFit
-                    minimumFontScale={0.85}
-                  >
-                    Watch Now
-                  </Text>
-                </View>
-              </LinearGradient>
-            </Pressable>
-            <Pressable
-              accessibilityRole="button"
-              onPress={onPressDetails}
-              style={({ pressed }) => [
-                styles.detailsBtn,
-                pressed && styles.detailsPressed,
-              ]}
-            >
-              <Text style={styles.detailsLabel}>Details</Text>
-            </Pressable>
-          </View>
+      {hasBackdrop ? (
+        <ImageBackground
+          accessibilityRole="image"
+          source={{ uri: backdropUri as string }}
+          style={styles.heroBg}
+          imageStyle={styles.heroImage}
+        >
+          {inner}
+        </ImageBackground>
+      ) : (
+        <View style={[styles.heroBg, styles.heroPlaceholder]}>
+          <MovieIcon color={colors.on_surface_variant} size={spacing['5xl']} />
+          {inner}
         </View>
-      </ImageBackground>
+      )}
     </View>
   );
 }
@@ -99,6 +119,11 @@ const styles = StyleSheet.create({
   heroBg: {
     height: spacing.homeHeroHeight,
     justifyContent: 'flex-end',
+  },
+  heroPlaceholder: {
+    backgroundColor: colors.surface_container_high,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   heroImage: {
     opacity: 0.6,
@@ -139,7 +164,6 @@ const styles = StyleSheet.create({
     gap: spacing.md,
     alignItems: 'stretch',
   },
-  /** Primary CTA gets more width so “Watch Now” stays on one line beside Details. */
   watchPressable: {
     flex: 2,
     minWidth: 0,

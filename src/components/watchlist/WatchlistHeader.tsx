@@ -4,7 +4,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import { AppHeaderBar } from '../common/AppHeaderBar';
 import { RingAvatar } from '../common/RingAvatar';
 import { SearchIcon } from '../icons/svgIcons';
-import { WATCHLIST_PROFILE_URI } from './watchlistMockContent';
+import { PROFILE_AVATAR_URI } from '../profile/profileMockContent';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
@@ -28,7 +28,7 @@ export function WatchlistHeader({ onSearchPress }: WatchlistHeaderProps) {
             <SearchIcon color={colors.on_surface_variant} size={spacing.xl} />
           </Pressable>
           <RingAvatar
-            imageUri={WATCHLIST_PROFILE_URI}
+            imageUri={PROFILE_AVATAR_URI}
             borderColor={colors.outline_variant}
             fillColor={colors.surface_container_high}
           />

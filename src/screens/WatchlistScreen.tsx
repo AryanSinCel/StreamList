@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { WatchlistBecauseRow } from '../components/watchlist/WatchlistBecauseRow';
@@ -9,18 +9,20 @@ import { WatchlistFilterChips } from '../components/watchlist/WatchlistFilterChi
 import { WatchlistGridCard } from '../components/watchlist/WatchlistGridCard';
 import { WatchlistHeader } from '../components/watchlist/WatchlistHeader';
 import { WatchlistPopularSkeletons } from '../components/watchlist/WatchlistPopularSkeletons';
-import {
-  BECAUSE_SAVED_ITEMS,
-  BECAUSE_SAVED_TITLE,
-  MOCK_WATCHLIST_UI_EMPTY,
-  WATCHLIST_GRID_ITEMS,
-  WATCHLIST_KICKER,
-} from '../components/watchlist/watchlistMockContent';
+import { useWatchlistFeed } from '../hooks/useWatchlistFeed';
 import type { WatchlistScreenProps } from '../navigation/types';
+import { useWatchlistStore, type WatchlistItem } from '../store/watchlistStore';
+import type { WatchlistGridDisplayItem } from '../types/watchlistGrid';
+import type { WatchlistLandscapeItem } from '../types/watchlistLandscape';
 import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
+import { typography } from '../theme/typography';
+import { buildImageUrl } from '../utils/image';
+import { extractYear, genreNamesFromIds, ratingLabelFromVote } from '../utils/movieDisplay';
 
-const PLACEHOLDER_DETAIL_ID = 550;
+const WATCHLIST_KICKER = 'YOUR COLLECTION';
+
+type FilterMode = 'all' | 'movie' | 'tv';
 
 function chunkPairs<T>(items: readonly T[]): T[][] {
   const rows: T[][] = [];
@@ -30,19 +32,71 @@ function chunkPairs<T>(items: readonly T[]): T[][] {
   return rows;
 }
 
-/**
- * Watchlist UI — toggle `MOCK_WATCHLIST_UI_EMPTY` in `watchlistMockContent.ts` for empty vs populated.
- * No Zustand / AsyncStorage wiring; navigation only for shell testing.
- */
 export function WatchlistScreen({ navigation }: WatchlistScreenProps) {
   const insets = useSafeAreaInsets();
+  const hydrated = useWatchlistStore((s) => s.hydrated);
+  const items = useWatchlistStore((s) => s.items);
+  const removeItem = useWatchlistStore((s) => s.removeItem);
 
-  const openDetail = () => {
-    navigation.navigate('Detail', {
-      id: PLACEHOLDER_DETAIL_ID,
-      mediaType: 'movie',
-    });
-  };
+  const [filter, setFilter] = useState<FilterMode>('all');
+
+  const mostRecentId =
+    items.length > 0 ? items[items.length - 1]?.id ?? null : null;
+
+  const { data: feed } = useWatchlistFeed(mostRecentId);
+
+  const genreMap = useMemo(() => {
+    const m = new Map<number, string>();
+    for (const g of feed?.genres ?? []) {
+      m.set(g.id, g.name);
+    }
+    return m;
+  }, [feed?.genres]);
+
+  const filtered = useMemo(() => {
+    if (filter === 'all') {
+      return items;
+    }
+    if (filter === 'movie') {
+      return items.filter((i) => i.mediaType === 'movie');
+    }
+    return items.filter((i) => i.mediaType === 'tv');
+  }, [items, filter]);
+
+  const toGridItem = useCallback(
+    (i: WatchlistItem): WatchlistGridDisplayItem => ({
+      id: i.id,
+      posterUri: buildImageUrl(i.posterPath, 'w342') ?? '',
+      title: i.title,
+      ratingLabel: ratingLabelFromVote(i.voteAverage),
+      year: extractYear(i.releaseDate),
+      genres: genreNamesFromIds(i.genreIds, genreMap),
+    }),
+    [genreMap],
+  );
+
+  const gridItems = useMemo(
+    () => filtered.map(toGridItem),
+    [filtered, toGridItem],
+  );
+
+  const gridRows = chunkPairs(gridItems);
+
+  const becauseItems: WatchlistLandscapeItem[] = useMemo(() => {
+    return (feed?.becauseSimilar ?? []).slice(0, 8).map((m) => ({
+      id: m.id,
+      title: m.title || m.original_title,
+      subtitle: `${extractYear(m.release_date)} • ${genreNamesFromIds(m.genre_ids, genreMap)}`,
+      imageUri: buildImageUrl(m.backdrop_path, 'w780') ?? buildImageUrl(m.poster_path, 'w342') ?? '',
+    }));
+  }, [feed?.becauseSimilar, genreMap]);
+
+  const openDetail = useCallback(
+    (id: number) => {
+      navigation.navigate('Detail', { id, mediaType: 'movie' });
+    },
+    [navigation],
+  );
 
   const goSearchTab = () => {
     navigation.navigate('SearchTab', { screen: 'SearchMain' });
@@ -52,7 +106,15 @@ export function WatchlistScreen({ navigation }: WatchlistScreenProps) {
     navigation.navigate('HomeTab', { screen: 'HomeMain' });
   };
 
-  const gridRows = chunkPairs(WATCHLIST_GRID_ITEMS);
+  const emptyByFilter =
+    items.length > 0 &&
+    filtered.length === 0 &&
+    filter !== 'all';
+
+  const showBecause =
+    items.length > 0 &&
+    becauseItems.length > 0 &&
+    !feed?.becauseError;
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
@@ -71,50 +133,89 @@ export function WatchlistScreen({ navigation }: WatchlistScreenProps) {
             <KickerTitleHeading
               kicker={WATCHLIST_KICKER}
               title="My Watchlist"
-              footnote={MOCK_WATCHLIST_UI_EMPTY ? '0 titles' : undefined}
+              footnote={
+                hydrated ? `${items.length} titles` : undefined
+              }
             />
 
-            {MOCK_WATCHLIST_UI_EMPTY ? (
+            {!hydrated ? (
+              <WatchlistPopularSkeletons />
+            ) : items.length === 0 ? (
               <>
                 <WatchlistEmptyState onBrowsePress={goHomeTab} />
-                <WatchlistPopularSkeletons />
+                {feed?.emptyTrendingLoading ? (
+                  <WatchlistPopularSkeletons />
+                ) : null}
               </>
             ) : (
               <>
-                <WatchlistFilterChips />
-                <View style={styles.grid}>
-                  {gridRows.map((rowItems, rowIndex) => (
-                    <View
-                      key={`row-${rowIndex}`}
-                      style={[
-                        styles.gridRow,
-                        rowIndex < gridRows.length - 1 && styles.gridRowSpacing,
-                      ]}
-                    >
-                      {rowItems.map((item) => (
-                        <View
-                          key={item.id}
-                          style={[
-                            styles.gridCell,
-                            rowItems.length === 1 && styles.gridCellSingle,
-                          ]}
-                        >
-                          <WatchlistGridCard
-                            item={item}
-                            onDetailsPress={openDetail}
-                            onRemovePress={() => undefined}
-                          />
-                        </View>
-                      ))}
-                    </View>
-                  ))}
-                </View>
-                <WatchlistBecauseRow
-                  title={BECAUSE_SAVED_TITLE}
-                  items={BECAUSE_SAVED_ITEMS}
-                  onViewAllPress={openDetail}
-                  onItemPress={openDetail}
+                <WatchlistFilterChips
+                  selectedIndex={
+                    filter === 'all' ? 0 : filter === 'movie' ? 1 : 2
+                  }
+                  onSelectIndex={(i) =>
+                    setFilter(i === 0 ? 'all' : i === 1 ? 'movie' : 'tv')
+                  }
                 />
+                {emptyByFilter ? (
+                  <View style={styles.filterEmpty}>
+                    <Text style={styles.filterEmptyTitle}>
+                      No{' '}
+                      {filter === 'movie' ? 'Movies' : 'Series'} in your watchlist
+                      yet
+                    </Text>
+                    <Pressable
+                      accessibilityRole="button"
+                      onPress={() => setFilter('all')}
+                      style={styles.filterBrowse}
+                    >
+                      <Text style={styles.filterBrowseLabel}>Browse All</Text>
+                    </Pressable>
+                  </View>
+                ) : (
+                  <View style={styles.grid}>
+                    {gridRows.map((rowItems, rowIndex) => (
+                      <View
+                        key={`row-${rowIndex}`}
+                        style={[
+                          styles.gridRow,
+                          rowIndex < gridRows.length - 1 && styles.gridRowSpacing,
+                        ]}
+                      >
+                        {rowItems.map((item) => (
+                          <View
+                            key={item.id}
+                            style={[
+                              styles.gridCell,
+                              rowItems.length === 1 && styles.gridCellSingle,
+                            ]}
+                          >
+                            <WatchlistGridCard
+                              item={item}
+                              onDetailsPress={() => openDetail(item.id)}
+                              onRemovePress={() => removeItem(item.id)}
+                            />
+                          </View>
+                        ))}
+                      </View>
+                    ))}
+                  </View>
+                )}
+                {showBecause && feed ? (
+                  <WatchlistBecauseRow
+                    title={`Because you saved ${items[items.length - 1]?.title ?? 'a title'}`}
+                    items={becauseItems}
+                    onViewAllPress={() =>
+                      mostRecentId && openDetail(mostRecentId)
+                    }
+                    onItemPress={(index) => {
+                      const m = becauseItems[index];
+                      if (m) {
+                        openDetail(m.id);
+                      }
+                    }}
+                  />
+                ) : null}
               </>
             )}
           </View>
@@ -157,5 +258,26 @@ const styles = StyleSheet.create({
   },
   gridCellSingle: {
     maxWidth: '50%',
+  },
+  filterEmpty: {
+    alignItems: 'center',
+    paddingVertical: spacing['5xl'],
+    gap: spacing.lg,
+  },
+  filterEmptyTitle: {
+    ...typography['headline-md'],
+    color: colors.on_surface,
+    textAlign: 'center',
+  },
+  filterBrowse: {
+    paddingHorizontal: spacing.xl,
+    paddingVertical: spacing.md,
+    borderRadius: spacing.md,
+    backgroundColor: colors.surface_container_highest,
+  },
+  filterBrowseLabel: {
+    ...typography['title-sm'],
+    color: colors.primary_container,
+    fontWeight: '600',
   },
 });

@@ -7,24 +7,26 @@ import { typography } from '../../theme/typography';
 
 export interface DetailSynopsisSectionProps {
   body: string;
+  expanded?: boolean;
   onReadMorePress?: () => void;
 }
 
 export function DetailSynopsisSection({
   body,
+  expanded = false,
   onReadMorePress,
 }: DetailSynopsisSectionProps) {
   return (
     <View style={styles.section}>
       <Text style={styles.title}>Synopsis</Text>
-      <Text style={styles.body} numberOfLines={3}>
+      <Text style={styles.body} numberOfLines={expanded ? undefined : 3}>
         {body}{' '}
         <Text
           accessibilityRole="button"
           style={styles.readMore}
           onPress={onReadMorePress}
         >
-          Read more
+          {expanded ? 'Show less' : 'Read more'}
         </Text>
       </Text>
     </View>

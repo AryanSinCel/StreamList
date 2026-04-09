@@ -13,6 +13,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { WatchlistScreen } from '../screens/WatchlistScreen';
+import { useWatchlistStore } from '../store/watchlistStore';
 import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { typography } from '../theme/typography';
@@ -143,6 +144,8 @@ const tabNavigatorScreenOptions = {
 };
 
 export function RootNavigator() {
+  const watchlistCount = useWatchlistStore((s) => s.count);
+
   return (
     <Tab.Navigator screenOptions={tabNavigatorScreenOptions}>
       <Tab.Screen
@@ -158,7 +161,11 @@ export function RootNavigator() {
       <Tab.Screen
         name="WatchlistTab"
         component={WatchlistStackNavigator}
-        options={{ tabBarLabel: 'WATCHLIST', tabBarIcon: WatchlistTabIcon }}
+        options={{
+          tabBarLabel: 'WATCHLIST',
+          tabBarIcon: WatchlistTabIcon,
+          tabBarBadge: watchlistCount > 0 ? watchlistCount : undefined,
+        }}
       />
       <Tab.Screen
         name="ProfileTab"

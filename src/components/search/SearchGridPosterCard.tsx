@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { SearchGridItem } from './searchMockContent';
+import type { SearchGridItem } from '../../types/searchGrid';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
@@ -25,9 +25,11 @@ export function SearchGridPosterCard({
           style={styles.poster}
           resizeMode="cover"
         />
-        <View style={styles.ratingBadge} pointerEvents="none">
-          <Text style={styles.ratingText}>{item.ratingLabel}</Text>
-        </View>
+        {item.ratingLabel ? (
+          <View style={styles.ratingBadge} pointerEvents="none">
+            <Text style={styles.ratingText}>{item.ratingLabel}</Text>
+          </View>
+        ) : null}
       </View>
       <Text style={styles.title} numberOfLines={1}>
         {item.title}

@@ -8,25 +8,47 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {
-  SEARCH_FEATURED_BACKDROP,
-  SEARCH_FEATURED_META,
-  SEARCH_FEATURED_TITLE,
-} from './searchMockContent';
+import { MovieIcon } from '../icons/svgIcons';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
 export interface SearchTrendingFeaturedProps {
+  backdropUri: string | null;
+  title: string;
+  meta: string;
+  loading?: boolean;
   onPress?: () => void;
 }
 
-export function SearchTrendingFeatured({ onPress }: SearchTrendingFeaturedProps) {
-  const inner = (
+export function SearchTrendingFeatured({
+  backdropUri,
+  title,
+  meta,
+  loading = false,
+  onPress,
+}: SearchTrendingFeaturedProps) {
+  const hasBackdrop = backdropUri != null && backdropUri.length > 0;
+
+  const copy = (
+    <View style={styles.copy}>
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>Featured</Text>
+      </View>
+      <Text style={styles.title} numberOfLines={2}>
+        {loading ? ' ' : title}
+      </Text>
+      <Text style={styles.meta} numberOfLines={1}>
+        {loading ? ' ' : meta}
+      </Text>
+    </View>
+  );
+
+  const inner = hasBackdrop ? (
     <ImageBackground
       accessibilityRole="image"
-      source={{ uri: SEARCH_FEATURED_BACKDROP }}
+      source={{ uri: backdropUri as string }}
       style={styles.image}
       imageStyle={styles.imageInner}
     >
@@ -35,18 +57,18 @@ export function SearchTrendingFeatured({ onPress }: SearchTrendingFeaturedProps)
         locations={[0.35, 1]}
         style={StyleSheet.absoluteFill}
       />
-      <View style={styles.copy}>
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>Featured</Text>
-        </View>
-        <Text style={styles.title} numberOfLines={2}>
-          {SEARCH_FEATURED_TITLE}
-        </Text>
-        <Text style={styles.meta} numberOfLines={1}>
-          {SEARCH_FEATURED_META}
-        </Text>
-      </View>
+      {copy}
     </ImageBackground>
+  ) : (
+    <View style={[styles.image, styles.placeholder]}>
+      <MovieIcon color={colors.on_surface_variant} size={spacing['5xl']} />
+      <LinearGradient
+        colors={['transparent', colors.surface_container_lowest]}
+        locations={[0.35, 1]}
+        style={StyleSheet.absoluteFill}
+      />
+      {copy}
+    </View>
   );
 
   if (onPress) {
@@ -80,6 +102,10 @@ const styles = StyleSheet.create({
     aspectRatio: 16 / 9,
     justifyContent: 'flex-end',
   },
+  placeholder: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   imageInner: {
     resizeMode: 'cover',
   },
@@ -95,12 +121,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xxs,
     borderRadius: radii.sm,
-    backgroundColor: colors.primary_container,
+    backgroundColor: colors.secondary_container,
     marginBottom: spacing.sm,
   },
   badgeText: {
     ...typography['label-xs'],
-    color: colors.on_primary_container,
+    color: colors.on_surface,
     textTransform: 'uppercase',
   },
   title: {

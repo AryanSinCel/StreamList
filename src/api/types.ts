@@ -11,6 +11,11 @@ export interface PaginationParams {
   page?: number;
 }
 
+/** Query params + optional `AbortSignal` for cancellation (search, pagination). */
+export interface MovieListRequestParams extends PaginationParams {
+  signal?: AbortSignal;
+}
+
 // ---------------------------------------------------------------------------
 // Shared / primitives
 // ---------------------------------------------------------------------------

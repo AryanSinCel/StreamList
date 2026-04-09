@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 
+import { MovieIcon } from '../icons/svgIcons';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
@@ -26,15 +27,23 @@ export function MoviePosterCard({
   subtitle,
   onPress,
 }: MoviePosterCardProps) {
+  const hasPoster = posterUri.length > 0;
+
   const card = (
     <View style={styles.card}>
       <View style={styles.posterWrap}>
-        <Image
-          accessibilityIgnoresInvertColors
-          source={{ uri: posterUri }}
-          style={styles.poster}
-          resizeMode="cover"
-        />
+        {hasPoster ? (
+          <Image
+            accessibilityIgnoresInvertColors
+            source={{ uri: posterUri }}
+            style={styles.poster}
+            resizeMode="cover"
+          />
+        ) : (
+          <View style={styles.placeholder} accessibilityRole="image">
+            <MovieIcon color={colors.on_surface_variant} size={spacing['3xl']} />
+          </View>
+        )}
       </View>
       <Text style={styles.title} numberOfLines={1}>
         {title}
@@ -92,6 +101,13 @@ const styles = StyleSheet.create({
   poster: {
     width: '100%',
     height: '100%',
+  },
+  placeholder: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surface_container_high,
   },
   title: {
     ...typography['title-sm'],

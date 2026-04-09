@@ -3,14 +3,14 @@ import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native
 import LinearGradient from 'react-native-linear-gradient';
 
 import { CloseIcon, StarIcon } from '../icons/svgIcons';
-import type { WatchlistGridItem } from './watchlistMockContent';
+import type { WatchlistGridDisplayItem } from '../../types/watchlistGrid';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
 export interface WatchlistGridCardProps {
-  item: WatchlistGridItem;
+  item: WatchlistGridDisplayItem;
   onDetailsPress?: () => void;
   onRemovePress?: () => void;
 }

@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { HorizontalSelectableChips } from '../common/HorizontalSelectableChips';
-import { SEARCH_GENRE_LABELS } from './searchMockContent';
 import { spacing } from '../../theme/spacing';
 
-export function SearchGenreChips() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+export interface SearchGenreChipsProps {
+  labels: readonly string[];
+  selectedIndex: number;
+  onSelectIndex: (index: number) => void;
+}
 
+export function SearchGenreChips({
+  labels,
+  selectedIndex,
+  onSelectIndex,
+}: SearchGenreChipsProps) {
   return (
     <HorizontalSelectableChips
-      labels={SEARCH_GENRE_LABELS}
+      labels={labels}
       selectedIndex={selectedIndex}
-      onSelectIndex={setSelectedIndex}
+      onSelectIndex={onSelectIndex}
       idleBackground="highest"
       pressTint="bright"
       contentContainerStyle={{

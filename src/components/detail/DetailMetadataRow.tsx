@@ -7,10 +7,10 @@ import { spacing } from '../../theme/spacing';
 import { DetailMetaChip } from './DetailMetaChip';
 
 export interface DetailMetadataRowProps {
-  year: string;
-  ratingLabel: string;
-  genre: string;
-  runtime: string;
+  year?: string | null;
+  ratingLabel?: string | null;
+  genre?: string | null;
+  runtime?: string | null;
 }
 
 export function DetailMetadataRow({
@@ -21,15 +21,17 @@ export function DetailMetadataRow({
 }: DetailMetadataRowProps) {
   return (
     <View style={styles.row}>
-      <DetailMetaChip label={year} />
-      <DetailMetaChip
-        label={ratingLabel}
-        leading={
-          <StarIcon color={colors.primary_container} size={spacing.smPlus} />
-        }
-      />
-      <DetailMetaChip label={genre} />
-      <DetailMetaChip label={runtime} />
+      {year ? <DetailMetaChip label={year} /> : null}
+      {ratingLabel ? (
+        <DetailMetaChip
+          label={ratingLabel}
+          leading={
+            <StarIcon color={colors.primary_container} size={spacing.smPlus} />
+          }
+        />
+      ) : null}
+      {genre ? <DetailMetaChip label={genre} /> : null}
+      {runtime ? <DetailMetaChip label={runtime} /> : null}
     </View>
   );
 }

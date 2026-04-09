@@ -4,6 +4,17 @@ import { LeadingIconSearchInput } from '../common/LeadingIconSearchInput';
 
 const PLACEHOLDER = 'Search movies, actors, directors...';
 
-export function SearchTextField() {
-  return <LeadingIconSearchInput placeholder={PLACEHOLDER} />;
+export interface SearchTextFieldProps {
+  value: string;
+  onChangeText: (text: string) => void;
+}
+
+export function SearchTextField({ value, onChangeText }: SearchTextFieldProps) {
+  return (
+    <LeadingIconSearchInput
+      placeholder={PLACEHOLDER}
+      value={value}
+      onChangeText={onChangeText}
+    />
+  );
 }

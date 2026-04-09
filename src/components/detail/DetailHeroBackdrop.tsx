@@ -2,11 +2,12 @@ import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { MovieIcon } from '../icons/svgIcons';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 
 export interface DetailHeroBackdropProps {
-  imageUri: string;
+  imageUri: string | null;
   children?: React.ReactNode;
 }
 
@@ -15,6 +16,24 @@ export function DetailHeroBackdrop({
   imageUri,
   children,
 }: DetailHeroBackdropProps) {
+  const hasImage = imageUri != null && imageUri.length > 0;
+
+  if (!hasImage) {
+    return (
+      <View style={styles.wrap}>
+        <View style={[styles.image, styles.placeholder]}>
+          <MovieIcon color={colors.on_surface_variant} size={spacing['5xl']} />
+        </View>
+        <LinearGradient
+          colors={['transparent', colors.surface]}
+          locations={[0.55, 1]}
+          style={StyleSheet.absoluteFill}
+        />
+        {children}
+      </View>
+    );
+  }
+
   return (
     <View style={styles.wrap}>
       <ImageBackground
@@ -47,5 +66,9 @@ const styles = StyleSheet.create({
   },
   imageInner: {
     resizeMode: 'cover',
+  },
+  placeholder: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

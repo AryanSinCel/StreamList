@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import type { WatchlistLandscapeItem } from './watchlistMockContent';
+import type { WatchlistLandscapeItem } from '../../types/watchlistLandscape';
 import { WatchlistLandscapeCard } from './WatchlistLandscapeCard';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
@@ -41,7 +41,7 @@ export function WatchlistBecauseRow({
       >
         {items.map((item, index) => (
           <WatchlistLandscapeCard
-            key={item.title}
+            key={item.id}
             item={item}
             onPress={() => onItemPress?.(index)}
           />

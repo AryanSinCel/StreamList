@@ -4,23 +4,34 @@ import type {
   GenresListResponse,
   MovieCreditsResponse,
   MovieDetails,
-  PaginationParams,
+  MovieListRequestParams,
   SearchMoviesResponse,
   SimilarMoviesResponse,
   TopRatedMoviesResponse,
   TrendingMoviesResponse,
 } from './types';
 
+function splitParams(
+  params?: MovieListRequestParams,
+): { page?: number; signal?: AbortSignal } {
+  if (params == null) {
+    return {};
+  }
+  const { signal, page } = params;
+  return { page, signal };
+}
+
 /**
  * GET /trending/movie/week
  * @see https://developer.themoviedb.org/reference/trending-movies
  */
 export async function getTrendingMovies(
-  params?: PaginationParams,
+  params?: MovieListRequestParams,
 ): Promise<TrendingMoviesResponse> {
+  const { signal, page } = splitParams(params);
   const { data } = await apiClient.get<TrendingMoviesResponse>(
     '/trending/movie/week',
-    { params },
+    { params: page != null ? { page } : undefined, signal },
   );
   return data;
 }
@@ -30,14 +41,13 @@ export async function getTrendingMovies(
  * @see https://developer.themoviedb.org/reference/movie-top-rated-list
  */
 export async function getTopRatedMovies(
-  params?: PaginationParams,
+  params?: MovieListRequestParams,
 ): Promise<TopRatedMoviesResponse> {
-  const { data } = await apiClient.get<TopRatedMoviesResponse>(
-    '/movie/top_rated',
-    {
-      params,
-    },
-  );
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<TopRatedMoviesResponse>('/movie/top_rated', {
+    params: page != null ? { page } : undefined,
+    signal,
+  });
   return data;
 }
 
@@ -45,8 +55,12 @@ export async function getTopRatedMovies(
  * GET /genre/movie/list
  * @see https://developer.themoviedb.org/reference/genre-movie-list
  */
-export async function getGenres(): Promise<GenresListResponse> {
-  const { data } = await apiClient.get<GenresListResponse>('/genre/movie/list');
+export async function getGenres(config?: {
+  signal?: AbortSignal;
+}): Promise<GenresListResponse> {
+  const { data } = await apiClient.get<GenresListResponse>('/genre/movie/list', {
+    signal: config?.signal,
+  });
   return data;
 }
 
@@ -56,17 +70,16 @@ export async function getGenres(): Promise<GenresListResponse> {
  */
 export async function getMoviesByGenre(
   genreId: number,
-  params?: PaginationParams,
+  params?: MovieListRequestParams,
 ): Promise<DiscoverMoviesResponse> {
-  const { data } = await apiClient.get<DiscoverMoviesResponse>(
-    '/discover/movie',
-    {
-      params: {
-        with_genres: genreId,
-        ...params,
-      },
+  const { signal, page } = splitParams(params);
+  const { data } = await apiClient.get<DiscoverMoviesResponse>('/discover/movie', {
+    params: {
+      with_genres: genreId,
+      ...(page != null ? { page } : {}),
     },
-  );
+    signal,
+  });
   return data;
 }
 
@@ -76,13 +89,15 @@ export async function getMoviesByGenre(
  */
 export async function searchMovies(
   query: string,
-  params?: PaginationParams,
+  params?: MovieListRequestParams,
 ): Promise<SearchMoviesResponse> {
+  const { signal, page } = splitParams(params);
   const { data } = await apiClient.get<SearchMoviesResponse>('/search/movie', {
     params: {
       query,
-      ...params,
+      ...(page != null ? { page } : {}),
     },
+    signal,
   });
   return data;
 }
@@ -91,8 +106,13 @@ export async function searchMovies(
  * GET /movie/{movie_id}
  * @see https://developer.themoviedb.org/reference/movie-details
  */
-export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
-  const { data } = await apiClient.get<MovieDetails>(`/movie/${movieId}`);
+export async function getMovieDetails(
+  movieId: number,
+  config?: { signal?: AbortSignal },
+): Promise<MovieDetails> {
+  const { data } = await apiClient.get<MovieDetails>(`/movie/${movieId}`, {
+    signal: config?.signal,
+  });
   return data;
 }
 
@@ -102,9 +122,11 @@ export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
  */
 export async function getMovieCredits(
   movieId: number,
+  config?: { signal?: AbortSignal },
 ): Promise<MovieCreditsResponse> {
   const { data } = await apiClient.get<MovieCreditsResponse>(
     `/movie/${movieId}/credits`,
+    { signal: config?.signal },
   );
   return data;
 }
@@ -115,11 +137,12 @@ export async function getMovieCredits(
  */
 export async function getSimilarMovies(
   movieId: number,
-  params?: PaginationParams,
+  params?: MovieListRequestParams,
 ): Promise<SimilarMoviesResponse> {
+  const { signal, page } = splitParams(params);
   const { data } = await apiClient.get<SimilarMoviesResponse>(
     `/movie/${movieId}/similar`,
-    { params },
+    { params: page != null ? { page } : undefined, signal },
   );
   return data;
 }

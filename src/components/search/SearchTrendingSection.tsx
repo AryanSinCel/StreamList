@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { SEARCH_TRENDING_GRID } from './searchMockContent';
+import type { SearchGridItem } from '../../types/searchGrid';
 import { SearchGridPosterCard } from './SearchGridPosterCard';
 import { SearchTrendingFeatured } from './SearchTrendingFeatured';
 import { colors } from '../../theme/colors';
@@ -9,36 +9,64 @@ import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
 export interface SearchTrendingSectionProps {
+  featuredBackdropUri: string | null;
+  featuredTitle: string;
+  featuredMeta: string;
+  gridItems: readonly SearchGridItem[];
+  loading?: boolean;
   onFeaturedPress?: () => void;
-  onPosterPress?: (index: number) => void;
+  onPosterPress?: (item: SearchGridItem) => void;
 }
 
 export function SearchTrendingSection({
+  featuredBackdropUri,
+  featuredTitle,
+  featuredMeta,
+  gridItems,
+  loading = false,
   onFeaturedPress,
   onPosterPress,
 }: SearchTrendingSectionProps) {
-  const [a, b, c] = SEARCH_TRENDING_GRID;
+  const [a, b, c] = gridItems;
 
   return (
     <View style={styles.section}>
       <Text style={styles.heading}>Trending Now</Text>
-      <SearchTrendingFeatured onPress={onFeaturedPress} />
+      <SearchTrendingFeatured
+        backdropUri={featuredBackdropUri}
+        title={featuredTitle}
+        meta={featuredMeta}
+        loading={loading}
+        onPress={onFeaturedPress}
+      />
       <View style={styles.row}>
-        <SearchGridPosterCard
-          item={a}
-          onPress={() => onPosterPress?.(0)}
-        />
+        {a ? (
+          <SearchGridPosterCard
+            item={a}
+            onPress={() => onPosterPress?.(a)}
+          />
+        ) : (
+          <View style={styles.flexSpacer} />
+        )}
         <View style={styles.gap} />
-        <SearchGridPosterCard
-          item={b}
-          onPress={() => onPosterPress?.(1)}
-        />
+        {b ? (
+          <SearchGridPosterCard
+            item={b}
+            onPress={() => onPosterPress?.(b)}
+          />
+        ) : (
+          <View style={styles.flexSpacer} />
+        )}
       </View>
       <View style={styles.row}>
-        <SearchGridPosterCard
-          item={c}
-          onPress={() => onPosterPress?.(2)}
-        />
+        {c ? (
+          <SearchGridPosterCard
+            item={c}
+            onPress={() => onPosterPress?.(c)}
+          />
+        ) : (
+          <View style={styles.flexSpacer} />
+        )}
         <View style={styles.gap} />
         <View style={styles.flexSpacer} />
       </View>

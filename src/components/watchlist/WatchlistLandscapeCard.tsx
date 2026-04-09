@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { WatchlistLandscapeItem } from './watchlistMockContent';
+import type { WatchlistLandscapeItem } from '../../types/watchlistLandscape';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';

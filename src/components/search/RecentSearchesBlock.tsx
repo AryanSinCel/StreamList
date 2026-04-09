@@ -2,23 +2,28 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { CloseIcon, HistoryIcon } from '../icons/svgIcons';
-import { RECENT_SEARCHES } from './searchMockContent';
 import { colors } from '../../theme/colors';
 import { radii } from '../../theme/radii';
 import { spacing } from '../../theme/spacing';
 import { typography } from '../../theme/typography';
 
 export interface RecentSearchesBlockProps {
+  terms: readonly string[];
   onClearAllPress?: () => void;
   onRowPress?: (term: string) => void;
   onDismissPress?: (term: string) => void;
 }
 
 export function RecentSearchesBlock({
+  terms,
   onClearAllPress,
   onRowPress,
   onDismissPress,
 }: RecentSearchesBlockProps) {
+  if (terms.length === 0) {
+    return null;
+  }
+
   return (
     <View style={styles.section}>
       <View style={styles.header}>
@@ -33,7 +38,7 @@ export function RecentSearchesBlock({
         </Pressable>
       </View>
       <View style={styles.list}>
-        {RECENT_SEARCHES.map((term) => (
+        {terms.map((term) => (
           <View key={term} style={styles.row}>
             <Pressable
               accessibilityRole="button"

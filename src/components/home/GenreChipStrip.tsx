@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { HorizontalSelectableChips } from '../common/HorizontalSelectableChips';
-import { GENRE_LABELS } from './homeMockContent';
 import { spacing } from '../../theme/spacing';
 
-export function GenreChipStrip() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+export interface GenreChipStripProps {
+  labels: readonly string[];
+  selectedIndex: number;
+  onSelectIndex: (index: number) => void;
+}
 
+export function GenreChipStrip({
+  labels,
+  selectedIndex,
+  onSelectIndex,
+}: GenreChipStripProps) {
   return (
     <HorizontalSelectableChips
-      labels={GENRE_LABELS}
+      labels={labels}
       selectedIndex={selectedIndex}
-      onSelectIndex={setSelectedIndex}
+      onSelectIndex={onSelectIndex}
       idleBackground="low"
       pressTint="high"
       contentContainerStyle={{
