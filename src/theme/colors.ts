@@ -20,6 +20,8 @@ export const colors = {
   // Text
   on_surface: '#E5E2E1',
   on_surface_variant: '#E4BDBA',
+  /** Input placeholder (search.html placeholder:text-on-surface-variant/50) */
+  on_surface_variant_muted: 'rgba(228, 189, 186, 0.5)',
   /** Text on `primary` / gradient CTAs (M3-style; resources/home.html) */
   on_primary: '#68000B',
   /** Text on `primary_container` badges */
@@ -34,6 +36,23 @@ export const colors = {
 
   /** Glass tab bar (project-spec §6.4) */
   tab_bar_background: 'rgba(35, 35, 35, 0.70)',
+
+  /** Poster / hero dim overlay (stitch “group-hover” scrim) */
+  image_overlay: 'rgba(0, 0, 0, 0.2)',
+  /** Top app bar scrim over hero (stitch bg-neutral-900/70) */
+  detail_top_bar_scrim: 'rgba(23, 23, 23, 0.70)',
+
+  /** Search poster rating pill (search.html black/40 + blur) */
+  rating_badge_scrim: 'rgba(0, 0, 0, 0.4)',
+  /** Profile avatar ring (outline-variant/20 in search.html) */
+  avatar_ring: 'rgba(255, 255, 255, 0.2)',
+
+  /** Empty watchlist radial glow (empty-watchlist.html bg-empty-glow) */
+  empty_state_glow: 'rgba(130, 38, 37, 0.15)',
+  /** Ghost “Popular recommendations” placeholders */
+  popular_skeleton: 'rgba(53, 53, 52, 0.35)',
+  /** Empty bookmark icon plate (empty-watchlist.html ring + soft fill) */
+  watchlist_empty_icon_plate: 'rgba(28, 27, 27, 0.35)',
 } as const;
 
 export type ColorName = keyof typeof colors;

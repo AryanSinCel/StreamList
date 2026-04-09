@@ -36,11 +36,9 @@ const stackScreenOptions = {
   headerShown: false,
 } as const;
 
+/** Detail uses in-screen hero + `DetailTopBar` (project-spec §7.3 / resources/movie-showDetail.html). */
 const detailScreenOptions = {
-  headerShown: true,
-  headerTitle: '',
-  headerTintColor: colors.on_surface,
-  headerStyle: { backgroundColor: colors.surface },
+  headerShown: false,
 } as const;
 
 function TabBarBackground() {
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
     elevation: 0,
     shadowOpacity: 0,
     paddingTop: spacing.xs,
-    paddingBottom: spacing['xl'],
+    paddingBottom: spacing.xl,
   },
   tabLabel: {
     textTransform: 'uppercase',

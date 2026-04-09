@@ -93,3 +93,84 @@ export function PlayIcon({ color, size }: SvgIconProps) {
     </Svg>
   );
 }
+
+/** Material-style 24dp icons (detail screen nav / CTAs) */
+const VB24 = '0 0 24 24';
+
+export function ArrowBackIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+      />
+    </Svg>
+  );
+}
+
+export function StarIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+      />
+    </Svg>
+  );
+}
+
+export function BookmarkAddIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M17 11v6h-2v-6h-6V9h6V3h2v6h6v2h-6zM20 20V4c0-1.1-.9-2-2-2H6c-1.11 0-2 .9-2 2v16c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2zM6 4h4v12l2-1 2 1V4h4v16H6V4z"
+      />
+    </Svg>
+  );
+}
+
+/** Filled bookmark — “In Watchlist” secondary CTA (project-spec §7.3) */
+export function BookmarkAddedIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"
+      />
+    </Svg>
+  );
+}
+
+export function HistoryIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"
+      />
+    </Svg>
+  );
+}
+
+export function CloseIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+      />
+    </Svg>
+  );
+}
+
+export function ChevronRightIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VB24}>
+      <Path
+        fill={color}
+        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+      />
+    </Svg>
+  );
+}
