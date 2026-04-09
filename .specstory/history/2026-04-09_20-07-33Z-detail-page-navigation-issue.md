@@ -1096,8 +1096,22 @@ Return only updated navigation files
 
 _**Agent (composer-2-fast)**_
 
+<think><details><summary>Thought Process</summary>
+**Restructuring navigation**
+
+I'm creating a root stack with tab navigator and moving detail/see-all screens to root level. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Restructuring navigation into a root stack containing tabs plus Detail and SeeAll. Reading navigation types and related files.
+
+
+
+_**Agent (composer-2-fast)**_
+
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/types.ts</summary>
 
 </details>
 </tool-use>
@@ -1110,54 +1124,7 @@ _**Agent (composer-2-fast)**_
 _**Agent (composer-2-fast)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
-
-</details>
-</tool-use>
-
-<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
-<summary>Tool use: **read_file_v2**</summary>
-
-</details></tool-use>
-
-_**Agent (composer-2-fast)**_
-
-<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
-<details>
-<summary>Tool use: **ripgrep_raw_search**</summary>
-
-Status: **loading**
-
-
-</details>
-</tool-use>
-
-<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
-<summary>Tool use: **ripgrep_raw_search**</summary>
-
-</details></tool-use>
-
-_**Agent (composer-2-fast)**_
-
-<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
-<details>
-<summary>Tool use: **ripgrep_raw_search**</summary>
-
-Status: **loading**
-
-
-</details>
-</tool-use>
-
-<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
-<summary>Tool use: **ripgrep_raw_search**</summary>
-
-</details></tool-use>
-
-_**Agent (composer-2-fast)**_
-
-<tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
 
 </details>
 </tool-use>
@@ -1173,7 +1140,126 @@ _**Agent (composer-2-fast)**_
 <details>
 <summary>Tool use: **ripgrep_raw_search**</summary>
 
-Status: **loading**
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "navigate\\(['\\\"]Detail|navigate\\(['\\\"]SeeAll"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "navigate\\(['\\\"]Detail|navigate\\(['\\\"]SeeAll",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "src/screens/HomeScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/SeeAllScreen.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/screens/DetailScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/WatchlistScreen.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "src/screens/SearchScreen.tsx"
+    }
+  ],
+  "totalFiles": 5,
+  "totalMatches": 7
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating navigation types**
+
+I'm adjusting the navigation types to ensure `navigate('Detail')` and `navigate('SeeAll')` work correctly while keeping existing screens unchanged. I confirmed that `navigation.navigate('Detail', ...)` works by ensuring RootParamList includes the root stack's routes. 
+
+I need to register Detail route on the root stack to make it accessible from tab navigators. I'm updating HomeScreenProps type to combine RootStackParamList and HomeStackParamList using Composite type. 
+
+I'm adjusting the HomeScreenProps composite type to correctly handle the tab navigator structure with RootStack -> MainTabs -> HomeTab -> HomeStack. I'm simplifying the HomeScreenProps type using React Navigation's recommended composite screen props pattern. I'm correcting the CompositeScreenProps order to match the nested stack structure. I'm correcting the navigation type definitions to align with the actual stack structure. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Checking how screens use navigation types and searching for other references:
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "HomeScreenProps|SeeAllScreenProps|DetailScreenProps|MainTabParamList|RootParamList"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "HomeScreenProps|SeeAllScreenProps|DetailScreenProps|MainTabParamList|RootParamList",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "src/screens/SeeAllScreen.tsx"
+    },
+    {
+      "matchCount": 9,
+      "uri": "src/navigation/types.ts"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/screens/HomeScreen.tsx"
+    },
+    {
+      "matchCount": 2,
+      "uri": "src/navigation/RootNavigator.tsx"
+    }
+  ],
+  "totalFiles": 4,
+  "totalMatches": 15
+}
+```
+Status: **completed**
 
 
 </details>
@@ -1187,7 +1273,7 @@ Status: **loading**
 _**Agent (composer-2-fast)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/AppNavigator.tsx</summary>
 
 </details>
 </tool-use>
@@ -1199,8 +1285,384 @@ _**Agent (composer-2-fast)**_
 
 _**Agent (composer-2-fast)**_
 
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "DetailScreenProps"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src",
+  "pattern": "DetailScreenProps",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/navigation/types.ts"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/DetailScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing nav typing**
+
+I'm tightening the navigation typing for DetailScreen to use a more specific type instead of `ParamListBase`. I'm ensuring `navigation.navigate('Detail')` from nested tab screens properly routes to the parent navigator in React Navigation 6. I'm defining type extensions for React Navigation 6 to ensure nested screen navigation bubbles up correctly with TypeScript support. 
+
+I'm defining the root stack parameter list with nested tab navigators and detail/see-all screens. I'm updating SeeAllScreen to use RootStackParamList instead of SeeAllFlowParamList and fixing HomeScreenProps composite type. 
+
+**Updating screen props**
+
+I'm updating HomeScreenProps and related screen props to use the correct composite type patterns. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/screens/SearchScreen.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Writing types**
+
+I'm implementing composite types for all tab roots in types.ts. I'm defining TypeScript interfaces for screen props and navigation parameters. I'm correcting the CompositeScreenProps usage to properly nest navigation types. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "SeeAllFlowParamList"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "SeeAllFlowParamList",
+  "topFiles": [
+    {
+      "matchCount": 3,
+      "uri": "src/navigation/types.ts"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 3
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Refactoring navigation**
+
+I'm replacing `SeeAllScreenProps` with `NativeStackScreenProps<RootStackParamList, 'SeeAll'>`. I'm extracting the tab navigator into a separate component `MainTabNav`. I'm removing unused tabBarStyleForStackRoot and related constants from the navigator. I'm testing navigation flows and confirming that `navigation.navigate` works correctly with new params in native stack. 
+
+**Testing navigation behavior**
+
+In React Navigation 6, navigating to the same route with new params typically updates the screen if it's the focused route, which is the expected behavior for Detail -> SeeAll navigation. In React Navigation 6, navigating from Detail to SeeAll pushes SeeAll onto the stack, resulting in stack order [MainTabs, Detail, SeeAll]. I confirmed that navigating from Detail to SeeAll properly pushes SeeAll onto the stack, maintaining correct navigation flow. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Implementing `RootStackParamList`, updating `types.ts`, and restructuring `RootNavigator.tsx`.
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/types.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/aryansingh/Desktop/Project/StreamLite && npx eslint src/navigation/</summary>
+
+```bash
+cd /Users/aryansingh/Desktop/Project/StreamLite && npx eslint src/navigation/
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{tsx,ts}",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "HomeStackParamList|MainTabParamList|SeeAllFlow"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite",
+  "pattern": "HomeStackParamList|MainTabParamList|SeeAllFlow",
+  "topFiles": [
+    {
+      "matchCount": 9,
+      "uri": "src/navigation/types.ts"
+    },
+    {
+      "matchCount": 4,
+      "uri": "src/navigation/RootNavigator.tsx"
+    }
+  ],
+  "totalFiles": 2,
+  "totalMatches": 13
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+**Updating navigation files**
+
+I updated types.ts and RootNavigator.tsx to refine the navigation structure. </details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **0** results in **1** directory</summary>
+
+Directory: **/Users/aryansingh/Desktop/Project/StreamLite** (0 files)
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s what was done (navigation-only, as requested).
+
+### `src/navigation/types.ts`
+- **`HomeStackParamList` / `SearchStackParamList` / `WatchlistStackParamList` / `ProfileStackParamList`** — only each tab’s root (`HomeMain`, `SearchMain`, etc.).
+- **`RootStackParamList`** — `{ MainTabs, Detail, SeeAll }` with `DetailParams` / `SeeAllParams`.
+- **`SeeAllFlowParamList` removed**; **`SeeAllScreenProps`** is now `NativeStackScreenProps<RootStackParamList, 'SeeAll'>`.
+- **Screen props** — each tab root is a **3-level `CompositeScreenProps`** so `navigation.navigate('Detail' | 'SeeAll', …)` is typed against **`RootStackParamList`**.
+- **`DetailScreenProps`** — `NativeStackScreenProps<RootStackParamList, 'Detail'>`.
+- **`ReactNavigation.RootParamList`** — extends **`RootStackParamList`** (so `navigate('Detail')` / `navigate('SeeAll')` stay typed globally).
+
+### `src/navigation/RootNavigator.tsx`
+- **`RootStack`**: `MainTabs` → `MainTabNavigator`, then **`Detail`**, then **`SeeAll`** (same components as before).
+- **Tab stacks** — only **`HomeMain`**, **`SearchMain`**, **`WatchlistMain`**, **`ProfileMain`** (no `Detail` / `SeeAll` in tab stacks).
+- **Removed** `getFocusedRouteNameFromRoute`, **`TAB_BAR_HIDDEN_STYLE`**, and per-route **`tabBarStyle`** — tabs always use **`styles.tabBar`**; **`Detail` / `SeeAll` are not under tabs**, so the tab bar never shows there.
+- **`MainTabNavigator`** — same four tabs / icons / badge as before.
+
+`npx tsc --noEmit` passes.
+
+**Files touched:** `src/navigation/types.ts`, `src/navigation/RootNavigator.tsx` only (`AppNavigator.tsx` / `navigationTheme.ts` unchanged).
+
+---
+
+_**User**_
+
+where is the code for tab bar icons , i want to make tab bar icon fill 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/navigation/RootNavigator.tsx</summary>
 
 </details>
 </tool-use>
@@ -1216,7 +1678,35 @@ _**Agent (composer-2-fast)**_
 <details>
 <summary>Tool use: **ripgrep_raw_search**</summary>
 
-Status: **loading**
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/components/icons",
+  "pattern": "HomeIcon|SearchIcon|BookmarkIcon|PersonIcon"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/aryansingh/Desktop/Project/StreamLite/src/components/icons",
+  "pattern": "HomeIcon|SearchIcon|BookmarkIcon|PersonIcon",
+  "topFiles": [
+    {
+      "matchCount": 4,
+      "uri": "src/components/icons/svgIcons.tsx"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 4
+}
+```
+Status: **completed**
 
 
 </details>
@@ -1224,5 +1714,119 @@ Status: **loading**
 
 <tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
 <summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/aryansingh/Desktop/Project/StreamLite/src/components/icons/svgIcons.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+Here’s where things live and how to get **filled** tab icons.
+
+### 1. Tab bar wiring (which icon per tab)
+
+Icons are passed as `tabBarIcon` on each `Tab.Screen` in **`src/navigation/RootNavigator.tsx`**, via small wrappers that forward `color` and `size` from React Navigation:
+
+```57:71:src/navigation/RootNavigator.tsx
+function HomeTabIcon({ color, size }: { color: string; size: number }) {
+  return <HomeIcon color={color} size={size} />;
+}
+
+function SearchTabIcon({ color, size }: { color: string; size: number }) {
+  return <SearchIcon color={color} size={size} />;
+}
+
+function WatchlistTabIcon({ color, size }: { color: string; size: number }) {
+  return <BookmarkIcon color={color} size={size} />;
+}
+
+function ProfileTabIcon({ color, size }: { color: string; size: number }) {
+  return <PersonIcon color={color} size={size} />;
+}
+```
+
+Those components are used in the `Tab.Screen` `options` further down the same file.
+
+### 2. The actual icon graphics (paths)
+
+The SVG paths are in **`src/components/icons/svgIcons.tsx`**: `HomeIcon`, `SearchIcon`, `BookmarkIcon`, `PersonIcon`. They use `react-native-svg` with a shared viewBox and `Path` + `fill={color}`:
+
+```12:53:src/components/icons/svgIcons.tsx
+export function HomeIcon({ color, size }: SvgIconProps) {
+  return (
+    <Svg width={size} height={size} viewBox={VIEWBOX}>
+      <Path
+        fill={color}
+        d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"
+      />
+    </Svg>
+  );
+}
+// ... SearchIcon, BookmarkIcon, PersonIcon ...
+```
+
+The file comment says they align with **`src/assets/icons/*.svg`** (Material-style 24dp). What you see in the UI is mostly **outline-style** symbol paths; “fill” in Material terms means using the **filled** variant’s path data, not changing `fill` on the same outline path.
+
+### What to change for “filled” look
+
+- **Edit the `d` attributes** in **`src/components/icons/svgIcons.tsx`** (or replace the SVGs in **`src/assets/icons/`** and mirror those paths) with the **Material Symbols filled** versions for home, search, bookmark, person — same viewBox if possible.
+- You do **not** need to change **`RootNavigator.tsx`** unless you rename components or add props (e.g. `focused` if you want different assets for active vs inactive).
+
+I’m in **Ask mode**, so I can’t edit the repo for you; if you want the paths swapped in place, switch to **Agent mode** and say which icon set (e.g. Material filled) you want to match.
+
+---
+
+_**User**_
+
+i want home , watchlist , profile icon filled 
+
+---
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="web_search">
+<details>
+<summary>Tool use: **web_search**</summary>
+
+Status: **loading**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="web_search"><details>
+<summary>Tool use: **web_search**</summary>
 
 </details></tool-use>

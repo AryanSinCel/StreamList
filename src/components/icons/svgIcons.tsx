@@ -4,6 +4,9 @@ import Svg, { Path } from 'react-native-svg';
 /** Matches `src/assets/icons/*.svg` viewBox (Material-style 24dp icons). */
 const VIEWBOX = '0 -960 960 960';
 
+/** Standard 24×24 viewBox for Material filled icons (solid shapes). */
+const VIEWBOX_24 = '0 0 24 24';
+
 export interface SvgIconProps {
   color: string;
   size: number;
@@ -11,10 +14,10 @@ export interface SvgIconProps {
 
 export function HomeIcon({ color, size }: SvgIconProps) {
   return (
-    <Svg width={size} height={size} viewBox={VIEWBOX}>
+    <Svg width={size} height={size} viewBox={VIEWBOX_24}>
       <Path
         fill={color}
-        d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"
+        d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
       />
     </Svg>
   );
@@ -33,10 +36,10 @@ export function SearchIcon({ color, size }: SvgIconProps) {
 
 export function BookmarkIcon({ color, size }: SvgIconProps) {
   return (
-    <Svg width={size} height={size} viewBox={VIEWBOX}>
+    <Svg width={size} height={size} viewBox={VIEWBOX_24}>
       <Path
         fill={color}
-        d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"
+        d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"
       />
     </Svg>
   );
@@ -44,10 +47,10 @@ export function BookmarkIcon({ color, size }: SvgIconProps) {
 
 export function PersonIcon({ color, size }: SvgIconProps) {
   return (
-    <Svg width={size} height={size} viewBox={VIEWBOX}>
+    <Svg width={size} height={size} viewBox={VIEWBOX_24}>
       <Path
         fill={color}
-        d="M367-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q560-607 560-640t-23.5-56.5Q513-720 480-720t-56.5 23.5Q400-673 400-640t23.5 56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z"
+        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
       />
     </Svg>
   );
